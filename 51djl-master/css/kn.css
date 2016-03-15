@@ -46,10 +46,11 @@
 		height: 100px;
 		line-height: 24px;
 		color: #1b1a20;
-		font-weight: bold;
+		/* font-weight: bold */;
 		padding: 0 0 0 12px;
 		margin: 0 0 4px 81px;
-		border-bottom: 1px solid #ccd3d9;}
+		border-bottom: 1px solid #ccd3d9;
+	}
 		.lawer_info li{
 			display: block;
 			padding-left: 18px;

@@ -107,8 +107,8 @@ angular.module('myApp.controllers')
             $scope.categorySelVar = true;
             $scope.cotSelVar = false;
             $scope.$broadcast('ctgShow', ''); 
-            $scope.CategoryFilter = [];
-            $scope.tmpCategoryFilter = []; 
+            /*$scope.CategoryFilter = [];
+            $scope.tmpCategoryFilter = [];*/ 
             $scope.filterBookSize = 0;
             $scope.detailBodyVar = false;
             $rootScope.defaultFooterVar = true;
@@ -176,8 +176,8 @@ angular.module('myApp.controllers')
             $scope.categorySelVar = false;
             $scope.cotSelVar = true;
             $scope.$broadcast('cotShow', ''); 
-            $scope.CotFilter = [];
-            $scope.tmpCotFilter = []; 
+            /*$scope.CotFilter = [];
+            $scope.tmpCotFilter = []; */
             $scope.filterBookSize = 0;
             $scope.detailBodyVar = false;
             $rootScope.defaultFooterVar = true;
@@ -220,7 +220,7 @@ angular.module('myApp.controllers')
             }
         }
         $scope.$on('ctgShow', function(d,data) {  
-            $scope.categoryClickVar = false; 
+            //$scope.categoryClickVar = false; 
         }); 
     }])
     .controller('ctgSelCtrl',['$scope',
@@ -237,7 +237,7 @@ angular.module('myApp.controllers')
             }
         }
         $scope.$on('cotShow', function(d,data) {  
-            $scope.cotClickVar = false; 
+            //$scope.cotClickVar = false; 
         });
     }]);
 

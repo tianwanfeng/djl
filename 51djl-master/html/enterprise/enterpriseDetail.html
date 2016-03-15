@@ -27,46 +27,131 @@
         <div class="item_wrap_other">
             <div class="item_wrap_title">
                 <ul class="item_wrap_tab">
-                    <li class="active"><a class="case_tab" href="####">案件分析</a></li>
-                    <li><a class="relation_tab" href="####">原被告关系图谱</a></li>
+                    <li ng-click="tabSelected1()" ng-class="{'active':tabVar == 1}">
+                        <a class="case_tab">案件分析</a>
+                    </li>
+                    <li ng-click="tabSelected2()" ng-class="{'active':tabVar == 2}">
+                        <a class="relation_tab">原被告关系图谱</a>
+                    </li>
                 </ul>
             </div>
+        </div>
+        <div ng-show="tabVar == 1">
             <ul class="item_wrap_filter item_wrap_filter_3">
-                <li><a href="####">时间&nbsp;&nbsp;></a></li>
-                <li><a href="####">地域&nbsp;&nbsp;></a></li>
-                <li><a href="####">案由&nbsp;&nbsp;></a></li>
+                <li ng-click="case_timeSelShow()"><a>时间&nbsp;&nbsp;></a></li>
+                <li ng-click="case_cotSelShow()"><a>地域&nbsp;&nbsp;></a></li>
+                <li ng-click="case_ctgSelShow()"><a>案由&nbsp;&nbsp;></a></li>
             </ul>
+            <div class="summary clearfix">
+                    <div class="defendant" id="analyDef">
+                        <div class="title def">被&#12288;告</div>
+                        <div class="detail">
+                            <div class="dl">
+                                <span class="dt">涉案金额：</span>
+                                <span class="dd" id="defCaseSum">{{amount.defCaseSum}}</span>
+                            </div>
+                            <div class="dl">
+                                <span class="dt">案件数量：</span>
+                                <span class="dd" id="defCaseAmount">{{amount.defCaseAmount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plaintiff" id="analyPla">
+                        <div class="title pla">原&#12288;告</div>
+                        <div class="detail">
+                            <div class="dl">
+                                <span class="dt">涉案金额：</span>
+                                <span class="dd" id="plaCaseSum">{{amount.plaCaseSum}}</span>
+                            </div>
+                            <div class="dl">
+                                <span class="dt">案件数量：</span>
+                                <span class="dd" id="plaCaseAmount">{{amount.plaCaseAmount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other" id="analyOth">
+                        <div class="title oth">其&#12288;他</div>
+                        <div class="detail">
+                            <div class="dl">
+                                <span class="dt">涉案金额：</span>
+                                <span class="dd" id="othCaseSum">{{amount.othCaseSum}}</span>
+                            </div>
+                            <div class="dl">
+                                <span class="dt">案件数量：</span>
+                                <span class="dd" id="othCaseAmount">{{amount.othCaseAmount}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div ng-show="cotSelVar">
+                <div class="header_back"><!-- ng-click="cotCancel()" -->
+                    <div class="title">地域选择</div>
+                    <div class="sure" ng-click="refreshTimeChart()">确定</div>
+                </div>
+                <div class="main">    
+                    <ul class="case_sel">
+                        <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
+                            ng-repeat="x in court | orderBy :'name'"
+                            ng-class="{'right':cotClickVar}">
+                            {{x.name}}({{x.count}})
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-show="ctgSelVar">
+                <div class="header_back"><!-- ng-click="cotCancel()" -->
+                    <div class="title">案由选择</div>
+                    <div class="sure" ng-click="refreshTimeChart()">确定</div>
+                </div>
+                <div class="main">    
+                    <ul class="case_sel">
+                        <li ng-controller="ctgSelCtrl" ng-click="ctgSel(x)" 
+                            ng-repeat="x in category | orderBy :'name'"
+                            ng-class="{'right':ctgClickVar}">
+                            {{x.name}}({{x.count}})
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chart timing scroll" id="caseTimingChart"></div>
         </div>
-        <!-- -->
-        <div ng-show="cotSelVar">
-            <div class="header_back"><!-- ng-click="cotCancel()" -->
-            <div class="title">地域选择</div>
-            <div class="sure" ng-click="cotSure()">确定</div>
-        </div>
-        <div class="main">    
-            <ul class="case_sel">
-                <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
-                    ng-repeat="x in court | orderBy :'name'"
-                    ng-class="{'right':cotClickVar}">
-                    {{x.name}}({{x.count}})
-                </li>
+        <div ng-show="tabVar == 2">
+            <ul class="item_wrap_filter item_wrap_filter_3">
+                <li ng-click="rel_timeSelShow()"><a>时间&nbsp;&nbsp;></a></li>
+                <li ng-click="rel_plnSelShow()"><a>原告&nbsp;&nbsp;></a></li>
+                <li ng-click="rel_ctgSelShow()"><a>案由&nbsp;&nbsp;></a></li>
             </ul>
+            <div ng-show="plaintiffrelVar">
+                <div class="header_back"><!-- ng-click="cotCancel()" -->
+                    <div class="title">原告选择</div>
+                    <div class="sure" ng-click="refreshRelationChart()">确定</div>
+                </div>
+                <div class="main">    
+                    <ul class="case_sel">
+                        <li ng-controller="plaintifflCtrl" ng-click="plaintiffSel(x)" 
+                            ng-repeat="x in plaintiffs | orderBy :'x'"
+                            ng-class="{'right':plaintiffClickVar}">
+                            {{x}}
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+            <div ng-show="rectgSelVar">
+                <div class="header_back"><!-- ng-click="cotCancel()" -->
+                    <div class="title">案由选择</div>
+                    <div class="sure" ng-click="refreshRelationChart()">确定</div>
+                </div>
+                <div class="main">    
+                    <ul class="case_sel">
+                        <li ng-controller="rectgSelCtrl" ng-click="rectgSel(x)" 
+                            ng-repeat="x in recategory | orderBy :'name'"
+                            ng-class="{'right':rectgClickVar}">
+                            {{x.name}}({{x.count}})
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+            <div class="chart rel-svg" id="relation"></div>
         </div>
-        </div>
-        <div ng-show="ctgSelVar">
-            <div class="header_back"><!-- ng-click="cotCancel()" -->
-            <div class="title">案由选择</div>
-            <div class="sure" ng-click="ctgSure()">确定</div>
-        </div>
-        <div class="main">    
-            <ul class="case_sel">
-                <li ng-controller="ctgSelCtrl" ng-click="ctgSel(x)" 
-                    ng-repeat="x in category | orderBy :'name'"
-                    ng-class="{'right':ctgClickVar}">
-                    {{x.name}}({{x.count}})
-                </li>
-            </ul>
-        </div>
-        </div>
-        <div class="chart timing scroll" id="caseTimingChart"></div>  
 </div>

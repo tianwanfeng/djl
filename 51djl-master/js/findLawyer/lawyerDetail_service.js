@@ -601,6 +601,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
     "loadTable": function(r, total){
         var $table = $(".lyr-interact .rts-table");
         $table.find("tbody").remove();
+        djl.interact.data.cases = [];
         $.each(r, function(i, e){
             var Case = {};
 
@@ -611,7 +612,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             Case.num = num;
             Case.rate = (win>=0?rate:"-");
             Case.winRate = (win>=0?winRate:"-");           
-           
+            
             djl.interact.data.cases.push(Case);
         });
     },
@@ -626,6 +627,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
         }
         
         var count = 0, isContinue = true;
+        djl.interact.data.books = [];
         $.each(r, function(i, e){
             if (!isContinue) {return false;}
             
@@ -659,18 +661,6 @@ lawyerDetailServices.factory('lyrpageChart', function(){
     },
     "init": function(dat){
         this.loadChsingConds(dat);
-        
-        /*$(".lyr-interact .conds .chsing-type").click(function(){
-            var $me = $(this), t = $me.data("t"), $p = $me.parent(), $pSiblings = $p.siblings();
-            $me.find("i").addClass("icon-dn1").removeClass("icon-rt1");
-            $p.addClass("active");
-            $pSiblings.removeClass("active");
-            $pSiblings.find("i").addClass("icon-rt1").removeClass("icon-dn1");
-            $(".lyr-interact .conds .chsing-itms").each(function(){
-                if ($(this).data("t")==t) { $(this).removeClass("hide"); } else { $(this).addClass("hide"); }
-            });
-        });*/
-        
         this.filter(dat);
     },
     "getInteractyData": function (){

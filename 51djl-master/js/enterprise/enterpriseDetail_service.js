@@ -4,6 +4,21 @@ var enterpriseDetailServices = angular.module('enterpriseDetailServices', []);
 enterpriseDetailServices.factory('enterprisePageChart', function(){
     var djl = {};
     var ctx="";
+    djl.common = {
+        moneySimple: function(e, h, g, f) {
+            var d = parseFloat(e),
+            i = parseFloat(h),
+            a = parseFloat(g);
+            if (isNaN(d) || isNaN(i) || isNaN(a) || !a) {
+                return e
+            }
+            if (d > i) {
+                return Number((d / a).toFixed(f))
+            } else {
+                return e
+            }
+        }
+    };
     djl.chart_quarterCaseAmount = {
         "conf": {
             "width": 1100, /*宽度*/
@@ -707,6 +722,24 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             }
         }
     };
+    djl.chart_timing.processAmount = function (data){
+        var obj = {};
+        var defCsSum = data.defendantCaseSum || "";
+        var ndefCsSum = djl.common.moneySimple(defCsSum, 100000, 10000, 2);
+        var priCsSum = data.plaintiffCaseSum || "";
+        var npriCsSum = djl.common.moneySimple(priCsSum, 100000, 10000, 2);
+        var othCsSum = data.otherCaseSum || "";
+        var nothCsSum = djl.common.moneySimple(othCsSum, 100000, 10000, 2);
+        
+        obj.defCaseSum = (ndefCsSum + ((defCsSum!=ndefCsSum)?"万":"")+"元");
+        obj.defCaseAmount = ((data.defendantCaseAmount || "")+"件");
+        obj.plaCaseSum = (npriCsSum + ((priCsSum!=npriCsSum)?"万":"")+"元");
+        obj.plaCaseAmount = ((data.plaintiffCaseAmount || "")+"件");
+        obj.othCaseSum = (nothCsSum + ((othCsSum!=nothCsSum)?"万":"")+"元");
+        obj.othCaseAmount = ((data.otherCaseAmount || "")+"件");
+
+        return obj;
+    },
     djl.chart_timing.handle = function(corpName, filter) {
         if (corpName) {
             var param = {"enterpriseName": corpName};
@@ -801,6 +834,28 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             "areaes": djl.caseConditions.area.join("#"), 
             "courts": djl.caseConditions.court.join("#")});
     };
+    djl.caseConditions.timeChartFormat = function (name,data) {
+        return {
+            "enterpriseName":name,
+            "startDate": data.startDate, 
+            "endDate": data.endDate, 
+            "fragmentedDate": data.fragmentedDate, 
+            "categories": data.category.join("#"), 
+            "areaes": data.area.join("#"), 
+            "courts": data.court.join("#")};
+    },
+    djl.caseConditions.timeChartFormat2 = function (name,data) {
+
+        var ret = "enterpriseName="+ name+
+            "&startDate="+ data.startDate+ 
+            "&endDate="+ data.endDate+
+            "&fragmentedDate="+ data.fragmentedDate+ 
+            "&categories="+ data.category.join("#")+
+            "&areaes="+ data.area.join("#")+ 
+            "&courts="+ data.court.join("#");
+
+        return ret;
+    },
     djl.caseConditions.add = function(type, condition) {
         var flag = false;
         if (type == "startDate") {
@@ -1088,6 +1143,18 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
         }
         return construct;
     };
+    djl.chart_relation.formatPlaintiffs = function (processedData,corpName){
+        var names = [], isExistMe = false;
+        $.each(processedData.nodes, function(i, e){
+            if (e.direction) {
+                if (e.name == corpName) { isExistMe = true; }
+                else { names.push(e.name); }
+            }
+        });
+        names.sort(function(a,b){return b.length - a.length;});
+        if (isExistMe) { names.unshift(corpName); }
+        return names;
+    },
     djl.chart_relation.handle = function(corpName, filter) {
         if (corpName) {
             var param = {"enterpriseName": corpName};
@@ -1133,6 +1200,26 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
         "plaintiffs": [],
         "categorys": []
     };
+    djl.relConditions.paramFormat = function (name,data) {
+        return {
+            "enterpriseName":name,
+            "relStart": data.relStart, 
+            "relEnd": data.relEnd, 
+            "relFragment": data.relFragment, 
+            "plaintiffs": data.plaintiffs.join("#"), 
+            "categorys": data.category.join("#")};
+    },
+    djl.relConditions.paramFormat2 = function (name,data) {
+
+        var ret = "enterpriseName="+ name+
+            "&relStart="+ data.relStart+ 
+            "&relEnd="+ data.relEnd+
+            "&relFragment="+ data.relFragment+ 
+            "&plaintiffs="+ data.plaintiffs.join("#")+
+            "&categorys="+ data.category.join("#");
+
+        return ret;
+    },
     djl.relConditions.refresh = function() {
         $(".rel .rel-cond").removeClass("choosed");
         $("#relStart").val("");
