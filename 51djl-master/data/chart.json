@@ -1,0 +1,64 @@
+{
+	"data": [{
+			"letter": "A",
+			"count": 10,
+			"color": "98d9ff"
+		},{
+			"letter": "B",
+			"count": 13,
+			"color": "66c0f8"
+		},{
+			"letter": "C",
+			"count": 15,
+			"color": "00a2f4"
+		},{
+			"letter": "D",
+			"count": 14,
+			"color": "00e0ff"
+		},{
+			"letter": "E",
+			"count": 20,
+			"color": "ffcf8c"
+		},{
+			"letter": "F",
+			"count": 18,
+			"color": "ffb675"
+		},{
+			"letter": "G",
+			"count": 25,
+			"color": "ff8f00"
+		},{
+			"letter": "H",
+			"count": 14,
+			"color": "ff6b00"
+		},{
+			"letter": "I",
+			"count": 12,
+			"color": "958989"
+		},{
+			"letter": "J",
+			"count": 10,
+			"color": "9aa9b3"
+		},{
+			"letter": "K",
+			"count": 19,
+			"color": "c9d1d6"
+		},{
+			"letter": "L",
+			"count": 10,
+			"color": "98d9ff"
+		},{
+			"letter": "M",
+			"count": 13,
+			"color": "66c0f8"
+		},{
+			"letter": "N",
+			"count": 15,
+			"color": "00a2f4"
+		},{
+			"letter": "O",
+			"count": 14,
+			"color": "00e0ff"
+		}
+	]
+}

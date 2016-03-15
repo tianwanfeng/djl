@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+</head>
+<body>
+    <div class="topbar" ng-show="detailBodyVar">
+        <div class="toolbar_btn back_btn" ng-click="goBackPage()"></div>
+        <span class="title">律师详情</span>
+        <div class="toolbar_btn srh_btn" ng-click="goFindLawyerIndex()"></div>
+    </div>
+    <div class="detail_wrap" ng-show="detailBodyVar">
+        <div class="lawer_box lawer_box_detail">
+            <div class="avatar_box">
+                <img src="img/avatar.jpg" alt="">
+                王新安
+                <span class="certified">已认证</span>
+            </div><!-- /.avatar_box -->
+
+            <ul class="lawer_info">
+                <li class="lawer_info_sex">男</li>
+                <li class="lawer_info_years">３年</li>
+                <li class="lawer_info_id">16103201311475819</li>
+                <li class="lawer_info_skill">知识产权、合同纠纷</li>
+                <li class="lawer_info_address">江苏省南通市、江苏省淮安市</li>
+                <li class="lawer_info_company">上海申中律师事务所</li>
+                <li class="lawer_info_phone"><a class="phone_login" href="####">登录查看</a></li>
+            </ul><!-- /.lawer_info -->
+        </div>
+        <div class="lawer_intro">
+            <div class="item_title">
+                律师介绍
+            </div>
+            <div class="item_wrap">
+                <div class="item item_self">
+                    <div class="item_left">自我 <br> 描述：</div>
+                    <div class="item_right">江苏省南京市律师事务所江苏省南京市律师事务所江苏省南京市律师事务所江苏省南京市律师事务所江苏省南京市律师江苏省南京市律师事务所</div>
+                </div>
+            </div>
+            <div class="item_wrap next_item_wrap">
+                <div class="item item_report">
+                    <div class="item_left">媒体 <br> 报道：</div>
+                    <div class="item_right">
+                        <a href="####">|&nbsp;&nbsp;&nbsp;xx纠纷案例xx纠纷案例xx纠纷案例xx纠纷案例</a>
+                        <a href="####">|&nbsp;&nbsp;&nbsp;xx纠纷案例xx纠纷案例xx纠纷案例xx纠纷案例</a>
+                    </div>
+                </div>
+                <div class="item item_workbook">
+                    <div class="item_left">相关 <br> 著作：</div>
+                    <div class="item_right">
+                        <ul class="workbook_list">
+                            <li>| <span class="book_name">xx纠纷案例</span><span class="book_press">南京人民日报出版社出版</span><span class="book_time">2015/12/20</span></li>
+                            <li>| <span class="book_name">xx纠纷案例</span><span class="book_press">南京人民日报出版社出版</span><span class="book_time">2015/12/20</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lawer_analyze">
+            <div class="item_title">
+                数据分析
+            </div>
+            <div class="item_wrap_other">
+                <div class="item_wrap_title">
+                    <ul class="item_wrap_tab">
+                        <li ng-click="tabSelected1()" ng-class="{'active':tabVar == 1}"><a class="interact_tab" >交互分析</a></li>
+                        <li ng-click="tabSelected2()" ng-class="{'active':tabVar == 2}"><a class="common_tab">综合分析</a></li>
+                    </ul>
+                </div>
+                <div ng-show="tabVar == 2">
+                    <div class="item_other">
+                        <div class="item_other_title">
+                            <b class="item_title_text">基于法院的案件及胜诉率统计</b>
+                        </div>
+                        <div class="item_other_detail">
+                            <div id="chart_1"></div>
+                            <div class="chart_des">
+                                <ul class="chart_list" id="cotNameList">
+                                </ul>
+                                <div class="pie" id="pie_1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item_other">
+                        <div class="item_other_title">
+                            基于案由的案件及胜诉率统计
+                        </div>
+                        <div class="item_other_detail">
+                            <div id="chart_2"></div>
+                            <div class="chart_des">
+                                <ul class="chart_list" id="ctgNameList">
+                                </ul>
+                                <div class="pie" id="pie_2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="tabVar == 1">
+                <ul class="item_wrap_filter">
+                    <li ng-click="ctgShow()"><a >案由&nbsp;&nbsp;></a></li>
+                    <li ng-click="cotShow()"><a >地域&nbsp;&nbsp;></a></li>
+                </ul>
+                <div class="item_other">
+                    <div class="item_other_title item_title_control">
+                        <b class="item_title_text">所选条件：</b>
+                        <span ng-repeat="x in caseSelected" class="case_select">{{x+" "}}</span>
+                    </div>
+                    <div class="item_other_detail">
+
+                        <table class="item_table">
+                            <tbody>
+                                <tr class="table_header">
+                                    <th>法院</th>
+                                    <th>件数</th>
+                                    <th>占比</th>
+                                    <th>胜诉率</th>
+                                </tr>
+                                <tr ng-repeat = "x in cases | filter:courtFilter | filter:categoryFilter ">
+                                    <td>{{x.cot}}</td>
+                                    <td>{{x.num}}</td>
+                                    <td>{{x.rate}}</td>
+                                    <td>{{x.winRate}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="item_other">
+                    <div class="item_other_title">
+                        相关文书：
+                    </div>
+                    <div class="item_other_detail">
+                        <div class="hidden" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter as showbooks"></div>
+                        <ul class="item_book_list">
+                            <li class="red_book" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter| limitTo:maxBookSize">
+                                <div class="item_book {{x.bgSty}}">
+                                    <div class="item_book_name">
+                                        <a href="{{x.link}}">{{x.tit}}</a>
+                                    </div>
+                                    <div class="item_book_info">
+                                        <span class="item_book_refer">{{x.cot}}</span>
+                                        <span class="item_book_time">{{x.day}}</span>
+                                    </div>
+                                </div>
+                            </li>                            
+                        </ul>
+                        <a class="item_more" ng-show="moreVar" ng-click="getMoreBook()">查看更多</a>
+                    </div>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="categorySelVar">
+        <div class="header_back"><!-- ng-click="ctgCancel()" -->
+        <div class="title">案由选择</div>
+        <div class="sure" ng-click="categorySure()">确定</div>
+    </div>
+    <div class="main">    
+        <ul class="case_sel">
+            <li ng-controller="categorySelCtrl" ng-click="categorySel(x)" 
+                ng-repeat="x in category | orderBy :'name'"
+                ng-class="{'right':categoryClickVar}">
+                {{x.name}}({{x.count}})
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <div ng-show="cotSelVar">
+        <div class="header_back"><!-- ng-click="cotCancel()" -->
+        <div class="title">地域选择</div>
+        <div class="sure" ng-click="cotSure()">确定</div>
+    </div>
+    <div class="main">    
+        <ul class="case_sel">
+            <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
+                ng-repeat="x in court | orderBy :'name'"
+                ng-class="{'right':cotClickVar}">
+                {{x.name}}({{x.count}})
+            </li>
+        </ul>
+    </div>
+    </div>
+</body>
+</html>

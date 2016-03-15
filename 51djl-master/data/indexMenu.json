@@ -1,0 +1,331 @@
+[
+    {
+        "index": "0",
+        "menus": [
+            {
+                "index": "0.0",
+                "categoryName": "普通民事纠纷",
+                "shortName": "ptmsjf",
+                "subCategories": [
+                    {
+                        "index": "0.0.0",
+                        "categoryName": "债权债务纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.1",
+                        "categoryName": "婚姻家庭",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.2",
+                        "categoryName": "交通事故",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.3",
+                        "categoryName": "保险纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.4",
+                        "categoryName": "医疗纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.5",
+                        "categoryName": "劳动争议",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.6",
+                        "categoryName": "侵权损害赔偿纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.0.7",
+                        "categoryName": "其他普通民事纠纷",
+                        "subCategories": null
+                    }
+                ]
+            },
+            {
+                "index": "0.1",
+                "categoryName": "房地产类",
+                "shortName": "fdc",
+                "subCategories": [
+                    {
+                        "index": "0.1.0",
+                        "categoryName": "建设工程合同纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.1.1",
+                        "categoryName": "房地产开发经营纠纷",
+                        "subCategories": null
+                    }
+                ]
+            },
+            {
+                "index": "0.2",
+                "categoryName": "合同纠纷",
+                "shortName": "ht",
+                "subCategories": [
+                    {
+                        "index": "0.2.0",
+                        "categoryName": "常见合同纠纷",
+                        "subCategories": [
+                            {
+                                "categoryName": "买卖合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "租赁合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "房屋租赁合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "车辆租赁合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "承揽合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "劳务合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "不当得利纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "合伙合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "电信服务合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "委托合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "服务合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "居间合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "供用热力合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "公交运输合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "供用水合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "供用电力合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "法律服务合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "供用气合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "保管合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "仓储合同纠纷",
+                                "subCategories": null
+                            },
+                            {
+                                "categoryName": "行纪合同纠纷",
+                                "subCategories": null
+                            }
+                        ]
+                    },
+                    {
+                        "index": "0.2.1",
+                        "categoryName": "土地、矿产类合同纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.2.2",
+                        "categoryName": "其他类合同纠纷",
+                        "subCategories": null
+                    }
+                ]
+            },
+            {
+                "index": "0.3",
+                "categoryName": "涉外类",
+                "shortName": "sw",
+                "subCategories": [
+                    {
+                        "index": "0.3.0",
+                        "categoryName": "国际贸易金融合同纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.3.1",
+                        "categoryName": "涉外仲裁",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "0.3.2",
+                        "categoryName": "信用证纠纷",
+                        "subCategories": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": "1",
+        "menus": [
+            {
+                "index": "1.0",
+                "categoryName": "公司纠纷",
+                "shortName": "gsjf",
+                "subCategories": [
+                    {
+                        "index": "1.0.0",
+                        "categoryName": "股东权益",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.0.1",
+                        "categoryName": "公司并购、收购",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.0.2",
+                        "categoryName": "公司破产清算",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.0.3",
+                        "categoryName": "其他公司纠纷",
+                        "subCategories": null
+                    }
+                ]
+            },
+            {
+                "index": "1.1",
+                "categoryName": "海事海商",
+                "shortName": "hshs",
+                "subCategories": null
+            },
+            {
+                "index": "1.2",
+                "categoryName": "知识产权",
+                "shortName": "zscq",
+                "subCategories": [
+                    {
+                        "index": "1.2.0",
+                        "categoryName": "垄断、不正当竞争",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.2.1",
+                        "categoryName": "专利",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.2.2",
+                        "categoryName": "商标",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.2.3",
+                        "categoryName": "著作权纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.2.4",
+                        "categoryName": "技术合同",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.2.5",
+                        "categoryName": "其他知识产权纠纷",
+                        "subCategories": null
+                    }
+                ]
+            },
+            {
+                "index": "1.3",
+                "categoryName": "投融资业务",
+                "shortName": "trzyw",
+                "subCategories": [
+                    {
+                        "index": "1.3.0",
+                        "categoryName": "证券纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.3.1",
+                        "categoryName": "期货交易纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.3.2",
+                        "categoryName": "信托纠纷",
+                        "subCategories": null
+                    },
+                    {
+                        "index": "1.3.3",
+                        "categoryName": "票据纠纷",
+                        "subCategories": null
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "index": "2",
+        "menus": [
+            {
+                "index": "2.0",
+                "categoryName": "刑事",
+                "shortName": "xs",
+                "subCategories": null
+            },
+            {
+                "index": "2.1",
+                "categoryName": "赔偿案件",
+                "shortName": "pcaj",
+                "subCategories": null
+            },
+            {
+                "index": "2.2",
+                "categoryName": "行政纠纷",
+                "shortName": "xzjf",
+                "subCategories": null
+            },
+            {
+                "index": "2.3",
+                "categoryName": "执行案件",
+                "shortName": "zxaj",
+                "subCategories": null
+            }
+        ]
+    }
+]

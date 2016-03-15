@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+    <title>findlawyer</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header-icon"></div>
+        <div class="header-sel"  ng-click="areaSelect()">{{curArea}}</div>
+    </div>
+    <div class="main panel">
+        <div class="findlawyer_head_pic" ng-show="pannerVar">
+            <img src="img/findlawyer_head.jpg"/>
+        </div>
+        <div class="findlawyer_select">
+            <div class="inputbox">
+                <input placeholder="案由+地域/律所/律师" ng-model="searchKeys"></input>
+                <div class="button"><a class="search-btn" href="#/findLawyer/list/{{searchKeys}}">找律师</a></div>
+            </div>
+            
+        </div>
+        <div>
+            <ul index="{{x.index}}" ng-repeat="x in list" class="icon-text-line clearfix">
+                <li index="{{y.index}}" ng-repeat="y in x.menus" ng-click="flm_select(y)">
+                    <div class="icon {{ y.shortName }}"></div>
+                    <div class="text">{{ y.categoryName }}</div>
+                </li>
+                <div class="first-list hidden">
+                    <div index="{{z.index}}" ng-click="slm_select(z)" ng-repeat="z in firstLvlMenu" class="item">
+                          {{z.categoryName}}
+                    </div>
+                </div>
+                <div class="second-list hidden">
+                    <div class="title">
+                        <span class="text">当前选择：</span>
+                        <span class="title-first" ng-click="lvl1TitleClick(lvl1Menus)">{{subMenuTitlelv1}}</span>
+                        <span class="title-second">{{subMenuTitlelv2}}</span>
+                
+                    </div>
+                    <div class="clearfix">
+                        <div ng-click="tlm_select(o)" ng-repeat="o in secondLvlMenu" class="item">{{o.categoryName}}</div>
+                    </div>
+                </div>
+            </ul>
+        </div>  
+    </div>
+
+    <!-- 城市选择 -->
+    <div class="main city hidden">
+        <div class="icon-text-line lawer_city_sel">
+            <div class="city-first-list">
+                <div class="title">
+                    <span class="text">当前选择：</span>
+                    <span class="title-first" ng-click="provinceSelect(provinces)">全国</span>
+                    <span ng-show="provincesFlag" class="provinces title-second" ng-click="citySelect(citys)">{{provinceName}}</span>
+                    <span ng-show="citysFlag" class="citys title-second">{{cityName}}</span>
+                </div>
+                <div class="clearfix">
+                    <div ng-repeat="x in area" class="item" ng-click="getSubAreas(x)"><div>{{x.name}}</div></div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+</body>
+</html>

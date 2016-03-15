@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+    <title>findlawer</title>
+    <link rel="stylesheet" href="css/base.css" media="all">
+    <link rel="stylesheet" href="css/howe.css" media="all">
+    <link rel="stylesheet" href="css/kn.css" media="all">
+
+    <script src="js/findLawyer/chart.js"></script>
+</head>
+<body>
+    <div class="topbar">
+        <div class="toolbar_btn back_btn"></div>
+        <span class="title">律师详情</span>
+        <div class="toolbar_btn srh_btn"></div>
+    </div>
+
+    <div class="list_title">
+        搜索条件：
+        <strong>房屋租赁合同纠纷、上海市</strong>
+    </div><!-- /.list_title -->
+
+    <div class="lawer_box">
+        <div class="avatar_box">
+            <img src="../img/avatar.jpg" alt="">
+            王新安
+            <span class="certified">已认证</span>
+        </div><!-- /.avatar_box -->
+
+        <ul class="lawer_info">
+            <li class="lawer_info_sex">男</li>
+            <li class="lawer_info_years">３年</li>
+            <li class="lawer_info_skill">知识产权、合同纠纷</li>
+            <li class="lawer_info_address">江苏省南通市、江苏省淮安市</li>
+            <li class="lawer_info_company">上海申中律师事务所</li>
+        </ul><!-- /.lawer_info -->
+
+        <!--chart.drwPersent("#pie_1");-->
+        <table class="lawer_tb">
+            <tr>
+                <td>
+                    所查类型案件<br />占比为：<br />
+                    <div id="d3" class="d3"></div>
+                </td>
+                <td>
+                    <div class="border_wrap">上海市<br />（217件）</div>
+                </td>
+                <td>
+                    <ul class="percent_ul fold">
+                        <li>
+                            <span>
+                                上海市第一中级人民法院
+                                <span class="color_span">上海市第一中级人民法院</span>
+                            </span>
+                            <small>100%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                崇明县人民法院
+                                <span class="color_span" style="width: 90%;">崇明县人民法院</span>
+                            </span>
+                            <small>90%</small>
+                            <strong>(1件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 60%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>60%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 70%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>70%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 50%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>50%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 10%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>10%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 2%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>2%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                崇明县人民法院
+                                <span class="color_span" style="width: 90%;">崇明县人民法院</span>
+                            </span>
+                            <small>90%</small>
+                            <strong>(1件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 60%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>60%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 70%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>70%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 50%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>50%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 10%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>10%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 2%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>2%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                    </ul><!-- /.percent_ul -->
+                </td>
+            </tr>
+        </table><!-- /.lawer_tb -->
+
+        <div class="show_btn show">显示</div>
+    </div><!-- /.lawer_box -->
+
+    <div class="lawer_box">
+        <div class="avatar_box">
+            <img src="../img/avatar.jpg" alt="">
+            王新安
+            <span class="certified">已认证</span>
+        </div><!-- /.avatar_box -->
+
+        <ul class="lawer_info">
+            <li class="lawer_info_sex">男</li>
+            <li class="lawer_info_years">３年</li>
+            <li class="lawer_info_skill">知识产权、合同纠纷</li>
+            <li class="lawer_info_address">江苏省南通市、江苏省淮安市</li>
+            <li class="lawer_info_company">上海申中律师事务所</li>
+        </ul><!-- /.lawer_info -->
+
+        <!--chart.drwPersent("#pie_1");-->
+        <table class="lawer_tb">
+            <tr>
+                <td>
+                    所查类型案件<br />占比为：<br />
+                    <div class="d3"></div>
+                </td>
+                <td>
+                    <div class="border_wrap">上海市<br />（217件）</div>
+                </td>
+                <td>
+                    <ul class="percent_ul">
+                        <li>
+                            <span>
+                                上海市第一中级人民法院
+                                <span class="color_span">上海市第一中级人民法院</span>
+                            </span>
+                            <small>100%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                崇明县人民法院
+                                <span class="color_span" style="width: 90%;">崇明县人民法院</span>
+                            </span>
+                            <small>90%</small>
+                            <strong>(1件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 60%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>60%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 70%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>70%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 50%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>50%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 70%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>70%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 50%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>50%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 10%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>10%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 2%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>2%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 50%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>50%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 10%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>10%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                        <li>
+                            <span>
+                                上海奉贤区人民法院
+                                <span class="color_span" style="width: 2%;">上海奉贤区人民法院</span>
+                            </span>
+                            <small>2%</small>
+                            <strong>(2件)</strong>
+                        </li>
+                    </ul><!-- /.percent_ul -->
+                </td>
+            </tr>
+        </table><!-- /.lawer_tb -->
+
+        <div class="show_btn">显示</div>
+    </div><!-- /.lawer_box -->
+
+    <div class="right_btn_wrap">
+        <a href="#">滑动到页首</a>
+        <a href="#">对话</a>
+    </div><!-- /.right_btn_wrap -->
+
+    <a href="#" class="more">查看更多</a>
+
+    <footer>
+        <a href="#">关于点击律</a> |
+        <a href="#">联系我们</a> |
+        <a href="#">电脑版</a>
+
+        <span>
+            Copyright 2015 Shanghai LegalNest Network Technology Co.,Ltd. All Rights Reserved<br />
+            上海律巢网络科技有限公司（沪ICP备 15048288号）
+        </span>
+    </footer>
+
+    <script type="text/javascript">
+        // chart.drwPersent("#d3");
+    </script>
+</body>
+</html>

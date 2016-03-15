@@ -1,0 +1,72 @@
+<!-- --> 
+<head>
+    <link rel="stylesheet" href="css/test2.css" media="all">
+    <link rel="stylesheet" href="css/test.css" media="all">
+</head>
+
+<div class="detail_wrap">
+    <div class="case_company">
+        <div class="item_wrap">
+            <h1 class="company_name">{{id}}</h1>   
+            <a class="control_company" id="cancel_follow_btn" href="####">取消关注</a>
+            <a class="control_company" id="follow_btn" href="####"><span>+&nbsp;</span>关注</a>
+        </div>
+    </div>
+    <div class="case_statistic">
+        <div class="item_title">
+            案件统计
+        </div>
+        <div class="item_wrap">
+            <div class="" id="case_statistic_wrap"></div>
+        </div>
+    </div>
+    <div class="lawer_analyze">
+        <div class="item_title">
+            数据分析
+        </div>
+        <div class="item_wrap_other">
+            <div class="item_wrap_title">
+                <ul class="item_wrap_tab">
+                    <li class="active"><a class="case_tab" href="####">案件分析</a></li>
+                    <li><a class="relation_tab" href="####">原被告关系图谱</a></li>
+                </ul>
+            </div>
+            <ul class="item_wrap_filter item_wrap_filter_3">
+                <li><a href="####">时间&nbsp;&nbsp;></a></li>
+                <li><a href="####">地域&nbsp;&nbsp;></a></li>
+                <li><a href="####">案由&nbsp;&nbsp;></a></li>
+            </ul>
+        </div>
+        <!-- -->
+        <div ng-show="cotSelVar">
+            <div class="header_back"><!-- ng-click="cotCancel()" -->
+            <div class="title">地域选择</div>
+            <div class="sure" ng-click="cotSure()">确定</div>
+        </div>
+        <div class="main">    
+            <ul class="case_sel">
+                <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
+                    ng-repeat="x in court | orderBy :'name'"
+                    ng-class="{'right':cotClickVar}">
+                    {{x.name}}({{x.count}})
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div ng-show="ctgSelVar">
+            <div class="header_back"><!-- ng-click="cotCancel()" -->
+            <div class="title">案由选择</div>
+            <div class="sure" ng-click="ctgSure()">确定</div>
+        </div>
+        <div class="main">    
+            <ul class="case_sel">
+                <li ng-controller="ctgSelCtrl" ng-click="ctgSel(x)" 
+                    ng-repeat="x in category | orderBy :'name'"
+                    ng-class="{'right':ctgClickVar}">
+                    {{x.name}}({{x.count}})
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div class="chart timing scroll" id="caseTimingChart"></div>  
+</div>

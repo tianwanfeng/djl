@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--所有子页面的样式引用 -->
+  <link rel="stylesheet" href="css/base.css" media="all">
+  <link rel="stylesheet" href="css/howe.css" media="all">
+  <link rel="stylesheet" href="css/kn.css" media="all">
+  <link rel="stylesheet" href="css/findlawyer.css" media="all">
+  
+  <!--所有公共js文件引用 -->
+  <script src="lib/jquery.1.9.0.js"></script> 
+  <script src="lib/angular.1.4.0.js"></script> 
+  <script src="lib/angular-route.1.4.0.js"></script>
+  <script src="lib/ng-scroll.js"></script> 
+  <script src="lib/zepto.js"></script> 
+  <script src="lib/d3.min.js"></script> 
+
+</head>
+<body>
+
+  <div ng-view></div>
+  <!--所有子页面的js引用 -->
+  
+  <footer ng-hide="defaultFooterVar" class="footer-top">
+      <a href="#">关于点击律</a> |
+      <a href="#">联系我们</a> |
+      <a href="#">电脑版</a>
+
+      <span>
+          Copyright 2015 Shanghai LegalNest Network Technology Co.,Ltd. All Rights Reserved<br />
+          上海律巢网络科技有限公司（沪ICP备 15048288号）
+      </span>
+  </footer>
+
+  <script src="js/app.js"></script>
+
+  <script src="js/findLawyer/index_controller.js"></script> 
+
+  <script src="js/findLawyer/lawyerList_controller.js"></script>
+  <script src="js/findLawyer/lawyerList_service.js"></script>
+
+  <script src="js/findLawyer/lawyerDetail_controller.js"></script>
+  <script src="js/findLawyer/lawyerDetail_service.js"></script>
+
+  <script src="js/enterprise/index_controller.js"></script> 
+  <script src="js/enterprise/enterpriseDetail_controller.js"></script>
+  <script src="js/enterprise/enterpriseDetail_service.js"></script>  
+</body>
+</html>
