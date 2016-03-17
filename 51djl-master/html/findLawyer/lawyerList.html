@@ -11,60 +11,61 @@
         <span class="title">律师详情</span>
         <div class="toolbar_btn srh_btn" ng-click="goFindLawyerIndex()"></div>
     </div>
+    <div class="main">
+        <div class="list_title">
+            搜索条件：
+            <strong>{{searchKeys}}</strong>
+        </div><!-- /.list_title -->
 
-    <div class="list_title">
-        搜索条件：
-        <strong>{{searchKeys}}</strong>
-    </div><!-- /.list_title -->
+        <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box" ng-controller="lawyerliCtrl">
+            <a href="#/findLawyer/detail/{{lawyer.id}}">
+                <div class="avatar_box">
+                    <img onerror="this.src='img/avatar.jpg'" src="{{lawyer.photo}}" alt="">
+                    {{lawyer.name}}
+                    <span ng-show="{{lawyer.hasV}}" class="certified">已认证</span>
+                </div>
 
-    <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box" ng-controller="lawyerliCtrl">
-        <a href="#/findLawyer/detail/{{lawyer.id}}">
-            <div class="avatar_box">
-                <img onerror="this.src='img/avatar.jpg'" src="{{lawyer.photo}}" alt="">
-                {{lawyer.name}}
-                <span ng-show="{{lawyer.hasV}}" class="certified">已认证</span>
-            </div>
+                <ul class="lawer_info">
+                    <li class="lawer_info_sex">{{lawyer.gender}}</li>
+                    <li class="lawer_info_years">{{lawyer.experience}}年</li>
+                    <li class="lawer_info_skill">{{lawyer.wkField}}</li>
+                    <li class="lawer_info_address">{{lawyer.wkArea}}</li>
+                    <li class="lawer_info_company">{{lawyer.wkOffice}}</li>
+                </ul><!-- /.lawer_info -->
+            </a>
+            <!--chart.drwPersent("#pie_1");-->
+            <table class="lawer_tb">
+                <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
+                    <td>
+                        <div class="d3"></div>
+                    </td>
+                    <td>
+                        <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
+                    </td>
+                    <td>
+                        <ul class="percent_ul">
+                            <li ng-repeat="y in x.courts">
+                                <span>
+                                    {{y.court}}
+                                    <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
+                                </span>
+                                <small>{{y.winRate}}</small>
+                                <strong>({{y.num}}件)</strong>
+                            </li>
+                            
+                        </ul><!-- /.percent_ul -->
+                    </td>
+                </tr>
+            </table><!-- /.lawer_tb -->
 
-            <ul class="lawer_info">
-                <li class="lawer_info_sex">{{lawyer.gender}}</li>
-                <li class="lawer_info_years">{{lawyer.experience}}年</li>
-                <li class="lawer_info_skill">{{lawyer.wkField}}</li>
-                <li class="lawer_info_address">{{lawyer.wkArea}}</li>
-                <li class="lawer_info_company">{{lawyer.wkOffice}}</li>
-            </ul><!-- /.lawer_info -->
-        </a>
-        <!--chart.drwPersent("#pie_1");-->
-        <table class="lawer_tb">
-            <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
-                <td>
-                    <div class="d3"></div>
-                </td>
-                <td>
-                    <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
-                </td>
-                <td>
-                    <ul class="percent_ul">
-                        <li ng-repeat="y in x.courts">
-                            <span>
-                                {{y.court}}
-                                <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
-                            </span>
-                            <small>{{y.winRate}}</small>
-                            <strong>({{y.num}}件)</strong>
-                        </li>
-                        
-                    </ul><!-- /.percent_ul -->
-                </td>
-            </tr>
-        </table><!-- /.lawer_tb -->
+            <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
+        </div><!-- /.lawer_box -->
+        <div class="right_btn_wrap">
+            <a href="#">滑动到页首</a>
+            <a href="#">对话</a>
+        </div><!-- /.right_btn_wrap -->
 
-        <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
-    </div><!-- /.lawer_box -->
-    <div class="right_btn_wrap">
-        <a href="#">滑动到页首</a>
-        <a href="#">对话</a>
-    </div><!-- /.right_btn_wrap -->
-
-    <a ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</a>
+        <a ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</a>
+    </div>
 </body>
 </html>
