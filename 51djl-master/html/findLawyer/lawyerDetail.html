@@ -155,34 +155,36 @@
     </div>
     <div ng-show="categorySelVar">
         <div class="header_back"><!-- ng-click="ctgCancel()" -->
-        <div class="title">案由选择</div>
-        <div class="sure" ng-click="categorySure()">确定</div>
-    </div>
-    <div class="main">    
-        <ul class="case_sel">
-            <li ng-controller="categorySelCtrl" ng-click="categorySel(x)" 
-                ng-repeat="x in category | orderBy :'name'"
-                ng-class="{'right':categoryClickVar}">
-                {{x.name}}({{x.count}})
-            </li>
-        </ul>
-    </div>
+            <div class="back" ng-click="ctgCancel()"></div>
+            <div class="title">案由选择</div>
+            <div class="sure" ng-click="categorySure()">确定</div>
+        </div>
+        <div class="main">    
+            <ul class="case_sel">
+                <li ng-controller="categorySelCtrl" ng-click="categorySel(x)" 
+                    ng-repeat="x in category | orderBy :'name'"
+                    ng-class="{'right':categoryClickVar}">
+                    {{x.name}}({{x.count}})
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div ng-show="cotSelVar">
-        <div class="header_back"><!-- ng-click="cotCancel()" -->
-        <div class="title">地域选择</div>
-        <div class="sure" ng-click="cotSure()">确定</div>
-    </div>
-    <div class="main">    
-        <ul class="case_sel">
-            <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
-                ng-repeat="x in court | orderBy :'name'"
-                ng-class="{'right':cotClickVar}">
-                {{x.name}}({{x.count}})
-            </li>
-        </ul>
-    </div>
+        <div class="header_back">
+            <div class="back" ng-click="cotCancel()"></div><!-- ng-click="cotCancel()" -->
+            <div class="title">地域选择</div>
+            <div class="sure" ng-click="cotSure()">确定</div>
+        </div>
+        <div class="main">    
+            <ul class="case_sel">
+                <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
+                    ng-repeat="x in court | orderBy :'name'"
+                    ng-class="{'right':cotClickVar}">
+                    {{x.name}}({{x.count}})
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

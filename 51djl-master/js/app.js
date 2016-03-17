@@ -5,7 +5,9 @@ angular.module('myApp', [
   'lawyerDetailServices',
   'lawyerListServices',
   'infinite-scroll',
-  'enterpriseDetailServices'
+  'enterpriseDetailServices',
+  'enterpriseDetailDirective',
+  'lyrD3Directive'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider

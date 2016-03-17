@@ -50,31 +50,32 @@ angular.module('myApp.controllers')
 
         //案由选择
         $scope.categorySelVar = false;
-        $scope.CategoryFilter = [];
-        $scope.tmpCategoryFilter = [];
+        var CategoryFilter = new Array();
+        var tmpCategoryFilter = new Array();
+        var dftCategoryFilter = new Array();
         $scope.$on('categorySelAdd', function(d,data) {
-            for (var i = 0;i < $scope.tmpCategoryFilter.length; i++) {
-                if ($scope.tmpCategoryFilter[i] == data.name) {
+            for (var i = 0;i < tmpCategoryFilter.length; i++) {
+                if (tmpCategoryFilter[i] == data.name) {
                     return;
                 }
             }
-            $scope.tmpCategoryFilter.push(data.name);
+            tmpCategoryFilter = tmpCategoryFilter.concat([data.name]);
             $scope.filterBookSize += data.count;  
-            console.log($scope.tmpCategoryFilter+$scope.tmpCotFilter);       
+            console.log(tmpCategoryFilter+tmpCotFilter);       
         }); 
         $scope.$on('categorySelDel', function(d,data) {  
-            for (var i = 0;i < $scope.tmpCategoryFilter.length; i++) {
-                if ($scope.tmpCategoryFilter[i] == data.name) {
-                    $scope.tmpCategoryFilter.splice(i, 1);
+            for (var i = 0;i < tmpCategoryFilter.length; i++) {
+                if (tmpCategoryFilter[i] == data.name) {
+                    tmpCategoryFilter = tmpCategoryFilter.slice(0,i).concat(tmpCategoryFilter.slice(i+1));
                 }
             }
             $scope.filterBookSize -= data.count;
-            console.log($scope.tmpCategoryFilter+$scope.tmpCotFilter);      
+            console.log(tmpCategoryFilter+tmpCotFilter);      
         }); 
         //案由选择-右上角确定按钮-点击事件
         $scope.categorySure = function (){
-            $scope.CategoryFilter = $scope.tmpCategoryFilter;
-            $scope.CotFilter = [];
+            dftCategoryFilter = CategoryFilter = tmpCategoryFilter;
+            CotFilter = [];
             $scope.categorySelVar = false;
             $scope.caseSelected = getCaseSelected();
             $scope.maxBookSize = 10;
@@ -84,12 +85,18 @@ angular.module('myApp.controllers')
         };
         //案由选择-取消-点击事件
         $scope.ctgCancel = function (){
-            $scope.CategoryFilter = [];
+            CategoryFilter = dftCategoryFilter;
             $scope.categorySelVar = false;
+            $scope.detailBodyVar = true;
+            $rootScope.defaultFooterVar = false;
+            //$scope.$broadcast('dftCtgShow', dftCategoryFilter); 
         };
+        $scope.$watch('dftCategoryFilter',function(newValue,oldValue, scope){
+            console.log(newValue+"|"+oldValue);
+        });
         //交互分析-基于案由的filter
         $scope.categoryFilter = function (item) {
-            var ctgs = $scope.CategoryFilter;
+            var ctgs = CategoryFilter;
 
             if (ctgs.length == 0) 
                 return true;
@@ -107,8 +114,8 @@ angular.module('myApp.controllers')
             $scope.categorySelVar = true;
             $scope.cotSelVar = false;
             $scope.$broadcast('ctgShow', ''); 
-            /*$scope.CategoryFilter = [];
-            $scope.tmpCategoryFilter = [];*/ 
+            /*CategoryFilter = [];
+            tmpCategoryFilter = [];*/ 
             $scope.filterBookSize = 0;
             $scope.detailBodyVar = false;
             $rootScope.defaultFooterVar = true;
@@ -116,33 +123,34 @@ angular.module('myApp.controllers')
 
         //区域选择
         $scope.cotSelVar = false;
-        $scope.CotFilter = [];
-        $scope.tmpCotFilter = [];
+        var CotFilter = [];
+        var tmpCotFilter = [];
+        var dftCotFilter = [];
         $scope.$on('CotSelAdd', function(d,data) {
-            for (var i = 0;i < $scope.tmpCotFilter.length; i++) {
-                if ($scope.tmpCotFilter[i] == data.name) {
+            for (var i = 0;i < tmpCotFilter.length; i++) {
+                if (tmpCotFilter[i] == data.name) {
                     return;
                 }
             }
-            $scope.tmpCotFilter.push(data.name);
+            tmpCotFilter = tmpCotFilter.concat([data.name]);
             $scope.filterBookSize += data.count;
 
-            console.log($scope.tmpCategoryFilter+$scope.tmpCotFilter);       
+            console.log(tmpCategoryFilter+tmpCotFilter);       
         }); 
         $scope.$on('CotSelDel', function(d,data) {  
-            for (var i = 0;i < $scope.tmpCotFilter.length; i++) {
-                if ($scope.tmpCotFilter[i] == data.name) {
-                    $scope.tmpCotFilter.splice(i, 1);
+            for (var i = 0;i < tmpCotFilter.length; i++) {
+                if (tmpCotFilter[i] == data.name) {
+                    tmpCotFilter = tmpCotFilter.slice(0,i).concat(tmpCotFilter.slice(i+1));
                 }
             }
             $scope.filterBookSize -= data.count;
-            console.log($scope.tmpCategoryFilter+$scope.tmpCotFilter);      
+            console.log(tmpCategoryFilter+tmpCotFilter);      
         }); 
 
         //地域选择-确认按钮-点击事件
         $scope.cotSure = function (){
-            $scope.CotFilter = $scope.tmpCotFilter;
-            $scope.CategoryFilter = [];
+            dftCotFilter = CotFilter = tmpCotFilter;
+            CategoryFilter = [];
             $scope.cotSelVar = false;
             $scope.caseSelected = getCaseSelected();
             $scope.maxBookSize = 10;
@@ -152,12 +160,14 @@ angular.module('myApp.controllers')
         };
         //地域选择-取消按钮-点击事件
         $scope.cotCancel = function (){
-            $scope.CotFilter = [];
+            CotFilter = dftCotFilter;
             $scope.cotSelVar = false;
+            $scope.detailBodyVar = true;
+            $rootScope.defaultFooterVar = false;
         };
         //交互分析-基于地域的filter
         $scope.courtFilter = function (item) {
-            var cots = $scope.CotFilter;
+            var cots = CotFilter;
 
             if (cots.length == 0) 
                 return true;
@@ -176,8 +186,8 @@ angular.module('myApp.controllers')
             $scope.categorySelVar = false;
             $scope.cotSelVar = true;
             $scope.$broadcast('cotShow', ''); 
-            /*$scope.CotFilter = [];
-            $scope.tmpCotFilter = []; */
+            /*CotFilter = [];
+            tmpCotFilter = []; */
             $scope.filterBookSize = 0;
             $scope.detailBodyVar = false;
             $rootScope.defaultFooterVar = true;
@@ -187,7 +197,7 @@ angular.module('myApp.controllers')
         var getCaseSelected = function  () {
             var caseSelected = [];
 
-            caseSelected = $scope.CategoryFilter.concat($scope.CotFilter);
+            caseSelected = CategoryFilter.concat(CotFilter);
             
             if (caseSelected.length == 0) {
                 caseSelected.push("全部");
@@ -219,7 +229,7 @@ angular.module('myApp.controllers')
                 $scope.$emit('categorySelDel', data);
             }
         }
-        $scope.$on('ctgShow', function(d,data) {  
+        $scope.$on('dftCtgShow', function(d,data) {  
             //$scope.categoryClickVar = false; 
         }); 
     }])

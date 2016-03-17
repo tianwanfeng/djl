@@ -11,11 +11,11 @@
         <span class="title">律师详情</span>
         <div class="toolbar_btn srh_btn" ng-click="goFindLawyerIndex()"></div>
     </div>
-
-    <div class="list_title">
-        搜索条件：
-        <strong>{{searchKeys}}</strong>
-    </div><!-- /.list_title -->
+    <div class="main">
+        <div class="list_title">
+            搜索条件：
+            <strong>{{searchKeys}}</strong>
+        </div><!-- /.list_title -->
 
     <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box" ng-controller="lawyerliCtrl">
         <a href="#/findLawyer/detail/{{lawyer.id}}">
@@ -32,6 +32,7 @@
                 <li class="lawer_info_address">{{lawyer.wkArea}}</li>
                 <li class="lawer_info_company">{{lawyer.wkOffice}}</li>
             </ul><!-- /.lawer_info -->
+            <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie>
         </a>
         <!--chart.drwPersent("#pie_1");-->
         <table class="lawer_tb">
@@ -65,6 +66,7 @@
         <a href="#">对话</a>
     </div><!-- /.right_btn_wrap -->
 
-    <a ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</a>
+        <a ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</a>
+    </div>
 </body>
 </html>

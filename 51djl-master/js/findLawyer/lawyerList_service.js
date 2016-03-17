@@ -33,9 +33,34 @@ lawyerListServices.factory('lyrListChart', function(){
                     "hitCount":datItem[5]
                 };
                 //djl.chart.caseCtg.init("ctgChart"+i, datItem[3], datItem[2], datItem[5]);
+                lawyerItem.hitRate = this.datProcess(datItem[3], datItem[2], datItem[5]).hitRate;
+                
                 djl.data.info.push(lawyerItem);
             }
             
+        },
+        "datProcess": function(dat, dets, hitCount) {
+            var r = {"total":0, "wins":"0%", "items": [], "hitRate":"0"};
+            if (!dat) {return r;}
+            r.total = (dat.totalCaseAmount || 0);
+            
+            var totalWin = (dat.totalWinCaseAmount || 0);
+            r.wins = r.total==0 ? "0%" : (new Number(totalWin*100/r.total).toFixed(0)+"%");
+            r.hitRate = r.total==0 ? "0" : (new Number((hitCount||0)*100/r.total).toFixed(0)+"");
+            
+            if (dat.detail) {
+                var json = [];
+                try { json = eval("("+dat.detail+")"); } catch(e) { json = []; }
+                for (var i=0; i<json.length; i++) {
+                    var win = json[i].winCaseAmount || 0, num = json[i].amount || 0, name = (json[i].caseCategory || "");
+                    name = name.length >= 6? name.substring(0,4):name;
+                    var e = {"name": name, "rate": (r.total==0)?"0%":(new Number(num*100/r.total).toFixed(0)+"%"), 
+                            "num": num, "win": win};
+                    r.items.push(e);
+                }
+            }
+            
+            return r;
         },
         "lyBaseHtml": function(basic, detail, summary, year) {
             var lawyer = {};
@@ -47,7 +72,7 @@ lawyerListServices.factory('lyrListChart', function(){
                 var arr = fields.split(",");
                 var r = "";
                 for (var i=0; i<arr.length; i++) {
-                    if (i>0) {r += "<br>";}
+                    if (i>0) {r += ",";}
                     if (arr[i].indexOf("-")>0) {r += arr[i].substring(0, arr[i].indexOf("-"));}
                     else {r += arr[i];}
                 }
@@ -55,7 +80,7 @@ lawyerListServices.factory('lyrListChart', function(){
             };
             var areaProcess = function(area) {
                 if (!summary.workArea) {return "";}
-                return summary.workArea.replace(/-/g,"").replace(/,/g,",<br>");
+                return summary.workArea.replace(/-/g,"").replace(/,/g,",");
             };
             var wkArea = areaProcess(summary.workArea), wkField = fieldProcess(summary.workField), wkOffice = summary.lawOffice || "", knowMe = ctx+"lawyer/detail?id="+summary.lawyerId,id=summary.lawyerId;
             var hasV = (bas.isVerified == 1);
