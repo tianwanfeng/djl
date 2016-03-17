@@ -1,13 +1,13 @@
 .header-icon{
-	position: relative;
-  	top: 7px;
-  	left: 7px;
-	height: 30px;
-	width: 192px;
-	background: url('../img/logo.png') no-repeat;
-	background-size: 192px 30px;
+	position: absolute;
+  	top: 12px;
+  	left: 9px;
+	height: 22px;
+	width: 22px;
+	background: url('../img/icon_home.png') no-repeat;
+	background-size: 22px 22px;
 }
-.header-icon:before{
+/*.header-icon:before{
 	position: absolute;
 	left: 80px;
 	top: 3px;
@@ -15,7 +15,7 @@
 	height: 25px;
 	width: 1px;
 	border-left: 1px solid #868484;
-}
+}*/
 .header-sel{
 	position: absolute;
 	top: 0px;

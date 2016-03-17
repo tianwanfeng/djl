@@ -126,10 +126,15 @@ a.search-btn {
 
 /*头部*/
 .header{
+  position: fixed;
+  width: 100%;
   height: 46px;
   line-height: 46px;
   background: #fff;
   border-bottom: 1px solid #c0c0c0;
+  text-align: center;
+  color: #3e3534;
+  font-size: 1.7rem;
 }
 .header_back{
   position: relative;
@@ -174,7 +179,9 @@ a.search-btn {
   background: url(../img/icon_set.png) no-repeat 0px 0px;
   background-size: 23px 15px;
 }
-
+.main{
+  padding-top: 47px;
+}
 
 
 
