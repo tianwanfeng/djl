@@ -1,0 +1,52 @@
+.dialog_list_box{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/*background: rgba(0,0,0,.4);*/
+	z-index: 1000;
+}
+.dialog_list{
+	position: absolute;
+	bottom: 20px;
+	margin: 0 5px;
+	background: #ffffff;
+	border-radius: 10px;
+	max-height: 400px;
+	overflow: auto;
+}
+	.dialog_list_title{
+		background: #08a6f5;
+		height: 33px;
+		line-height: 33px;
+		color: #fff;
+		font-size: 1.2rem;
+		padding: 0 8px;
+	}
+	.dialog_list_subtitle{
+		height: 30px;
+		line-height: 30px;
+		color: #1b1a20;
+		font-size: 1rem;
+		padding: 0 8px;
+		border-bottom: 1px solid #cccccc;
+		border-left: 1px solid #ff780a;
+		border-right: 1px solid #ff780a;
+	}
+	.dialog_list ul{
+		border-left: 1px solid #ff780a;
+		border-right: 1px solid #ff780a;
+		border-bottom: 1px solid #ff780a;
+	}
+	.dialog_list ul li{position:relative;color: #0e0e0e;font-size: .9rem;padding: 11px 8px 26px 8px;border-bottom: 1px solid #cccccc;}
+	.dialog_list ul li .time{position: absolute;right: 8px;bottom: 0px;}
+	.dialog_list_title .cancel{
+		width: 25px;
+		height: 25px;
+		position: absolute;
+		right: 3px;
+		top: 4px;
+		background: url(../img/cancel.png) no-repeat;
+		background-size: 25px 25px;
+	}
