@@ -97,3 +97,10 @@
 	.tip_box span{
 		color: #ff1800;
 	}
+
+.tip_login{
+	right: 10px;
+	top: 50px;
+	padding: 8px;
+	margin: 0;
+}

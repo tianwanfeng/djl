@@ -21,51 +21,76 @@
                 <a href="#">企业</a>
                 <a class="current" href="#">个人</a>
             </div><!-- /.register_tab -->
+            <form name="myForm" novalidate>
+                <label class="reg_label" for="name">
+                    <span>姓名</span>
+                    <input type="text" name="name" id="name">
+                </label>
 
-            <label class="reg_label" for="name">
-                <span>姓名</span>
-                <input type="text" name="name" id="name">
-            </label>
+                <label class="reg_label" for="phone">
+                    <span>手机号码</span>
+                    <input type="text" name="phone" id="phone" ng-model="phone" required ng-focus ng-pattern="/^0?1[3|4|5|8][0-9]\d{8}$/">
 
-            <label class="reg_label" for="phone">
-                <span>手机号码</span>
-                <input type="text" name="phone" id="phone">
-            </label>
+                    <div class="tip shadow tip_login" ng-show="myForm.phone.$dirty && myForm.phone.$invalid && !myForm.phone.$focused">
+                        <div class="tip_sar"></div>
+                        <div class="tip_box">
+                            <div class="tip_icon"></div>
+                            <div>
+                                <span>请输入正确的手机号</span>
+                            </div>
+                        </div>
+                        
+                    </div>
 
-            <div class="reg_label right">
-                <a class="label_title" href="javascript:void(0);">获取验证码</a>
-                <input type="text" name="code" id="code">
-            </div>
+                </label>
 
-            <label class="reg_label" for="password">
-                <span>密码</span>
-                <input type="text" name="password" id="password" placeholder="密码长度6-20个字符">
-            </label>
+                <div class="reg_label right">
+                    <a class="label_title" href="javascript:void(0);">获取验证码</a>
+                    <input type="text" name="code" id="code">
+                </div>
 
-            <label class="reg_label" for="repassword">
-                <span>确认密码</span>
-                <input type="text" name="repassword" id="repassword">
-            </label>
+                <label class="reg_label" for="password">
+                    <span>密码</span>
+                    <input type="password" name="pwd1" id="pwd1" ng-model="pwd1" required ng-focus ng-minlength="6" ng-maxlength="20" placeholder="密码长度6-20个字符">
 
-            <label class="apply_label" for="apply">
-                <input type="checkbox" name="apply" id="apply" checked="checked" />
-                我同意并阅读
-                <a target="_blank" href="#">《点击律服务协议》</a>
-            </label>
+                    <div class="tip shadow tip_login" ng-show="myForm.pwd1.$dirty && myForm.pwd1.$invalid && !myForm.pwd1.$focused">
+                        <div class="tip_sar"></div>
+                        <div class="tip_box">
+                            <div class="tip_icon"></div>
+                            <div>
+                                <span>密码长度6-20个字符</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </label>
 
-            <input type="button" class="btn_red" value="注册登录">
+                <label class="reg_label" for="repassword">
+                    <span>确认密码</span>
+                    <input type="password" name="pwd2" id="pwd2" ng-model="pwd2" required ng-focus ng-minlength="6" ng-maxlength="20" pw-check="pwd1">
+                    <div class="tip shadow tip_login" ng-show="myForm.pwd2.$dirty && myForm.pwd2.$invalid && !myForm.pwd2.$focused">
+                        <div class="tip_sar"></div>
+                        <div class="tip_box">
+                            <div class="tip_icon"></div>
+                            <div>
+                                <span>两次密码不一致</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </label>
+
+                <label class="apply_label" for="apply">
+                    <input type="checkbox" name="apply" id="apply" checked="checked" />
+                    我同意并阅读
+                    <a target="_blank" href="#">《点击律服务协议》</a>
+                </label>
+
+                <input type="submit" class="btn_red" value="注册登录" ng-disabled="myForm.phone.$dirty && myForm.phone.$invalid ||  
+myForm.pwd1.$dirty && myForm.pwd1.$invalid || myForm.pwd2.$dirty && myForm.pwd2.$invalid">
+            </form>
         </div><!-- /.register_wrap -->
     </div><!-- /.register_box -->
 
-    <footer>
-        <a href="#">关于点击律</a> |
-        <a href="#">联系我们</a> |
-        <a href="#">电脑版</a>
-
-        <span>
-            Copyright 2015 Shanghai LegalNest Network Technology Co.,Ltd. All Rights Reserved<br />
-            上海律巢网络科技有限公司（沪ICP备 15048288号）
-        </span>
-    </footer>
 </body>
 </html>

@@ -7,7 +7,8 @@ angular.module('myApp', [
   'infinite-scroll',
   'enterpriseDetailServices',
   'enterpriseDetailDirective',
-  'lyrD3Directive'
+  'lyrD3Directive',
+  'onfocusDirective'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider

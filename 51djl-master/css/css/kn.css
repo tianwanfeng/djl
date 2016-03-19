@@ -184,6 +184,7 @@ footer{
 				background-position: left 0;}
 	.register_tab_lawer{padding-top: 1px;}
 	.reg_label{
+		position: relative;
 		line-height: 25px;
 		display: block;
 		padding: 8px 0;
@@ -230,6 +231,9 @@ footer{
 		background: #ff3a00;
 		box-shadow: 1px 1px 1px #c5dce8;}
 		.apply_label + .btn_red{margin-top: 30px;}
+	.btn_red:disabled{
+		color: #f2f3f7;
+	}
 
 
 
