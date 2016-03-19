@@ -13,6 +13,18 @@
                 <input placeholder="请输入企业名称" ng-model="searchKeys"></input>
                 <div class="button"><a class="search-btn" href="#/enterprise/detail/{{searchKeys}}">搜索</a></div>
             </div>
+            <div class="tip shadow tip_long">
+                <div class="tip_sar"></div>
+                <div class="tip_box">
+                    <div class="tip_icon"></div>
+                    <div>
+                        <span>很抱歉，没有找到您搜索企业的诉讼信息</span>，可能因为： <br/>1、企业名称输入错误（您可以核对企业名称后重新搜索或在记不清楚全称时采用关键字搜索...);<br/>
+                        2、该企业没有发生过诉讼； <br/>
+                        3、基于人民法院未将该企业诉讼信息上传互联网，导致搜索不到；
+                    </div>
+                </div>
+                
+            </div>
             
         </div>
         <div class="enterp_bg" ng-show="judgeVar">

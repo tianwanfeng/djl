@@ -23,6 +23,18 @@ body {
 .footer-top {
   margin-top: 20px;
 }
+/*@media only screen and (min-height:569px){
+  .footer-top {
+    position: absolute;
+    bottom: 10px;
+
+  }
+
+}*/
+.footer-short{
+  position: absolute;
+  bottom: 10px;
+}
 input {
   margin: 0;
   padding: 0;
@@ -169,7 +181,9 @@ a.search-btn {
   font-size: 1.5rem;
 }
 .header_company{
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
   height: 46px;
   line-height: 46px;
 }

@@ -30,6 +30,10 @@ config(['$routeProvider', function($routeProvider) {
     .when('/enterprise/detail/:id', {
         templateUrl: 'html/enterprise/enterpriseDetail.html',
         controller: 'enterpriseDetailCtrl'    
+    })
+    .when('/register/personal', {
+        templateUrl: 'html/login/register_personal.html',
+        controller: 'personalRegisterCtrl'    
     });
-  $routeProvider.otherwise({redirectTo: 'findLawyer/index'});
+  $routeProvider.otherwise({redirectTo: '/register/personal'});
 }]);

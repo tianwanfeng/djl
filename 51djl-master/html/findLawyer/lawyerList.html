@@ -32,33 +32,38 @@
                 <li class="lawer_info_address">{{lawyer.wkArea}}</li>
                 <li class="lawer_info_company">{{lawyer.wkOffice}}</li>
             </ul><!-- /.lawer_info -->
-            <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie>
+            <!-- <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie> -->
         </a>
         <!--chart.drwPersent("#pie_1");-->
-        <table class="lawer_tb">
-            <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
-                <td>
-                    <div class="d3"></div>
-                </td>
-                <td>
-                    <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
-                </td>
-                <td>
-                    <ul class="percent_ul">
-                        <li ng-repeat="y in x.courts">
-                            <span>
-                                {{y.court}}
-                                <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
-                            </span>
-                            <small>{{y.winRate}}</small>
-                            <strong>({{y.num}}件)</strong>
-                        </li>
+        <div class="clearfix">
+            <div class="d3 floatl"></div>
+            <div class="floatl">
+                <table class="lawer_tb">
+                    <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
                         
-                    </ul><!-- /.percent_ul -->
-                </td>
-            </tr>
-        </table><!-- /.lawer_tb -->
+                        <td>
+                            <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
+                        </td>
+                        <td>
+                            <ul class="percent_ul">
+                                <li ng-repeat="y in x.courts">
+                                    <span>
+                                        {{y.court}}
+                                        <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
+                                    </span>
+                                    <small>{{y.winRate}}</small>
+                                    <strong>({{y.num}}件)</strong>
+                                </li>
+                                
+                            </ul><!-- /.percent_ul -->
+                        </td>
+                    </tr>
+                </table><!-- /.lawer_tb -->
 
+            </div>
+            
+        </div>
+        
         <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
     </div><!-- /.lawer_box -->
     <div class="right_btn_wrap">

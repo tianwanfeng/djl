@@ -1,0 +1,171 @@
+.mt_body{
+	height: 400px;
+	overflow: hidden;
+	position: relative;
+	margin: 10px 20px;
+    /* box-sizing: border-box; */
+    background: #fff;
+    border-radius: 3px;
+}
+.mt_panel{
+	background-color: #F7F7F7;
+	/*padding: 35px 0 0 0;*/
+	border-radius: 3px;
+}
+.mt_panel h3{
+	color: #4eccc4;
+	font-size: 16px;
+	text-align: center;
+	font-weight: normal;
+}
+.mt_year, .mt_month, .mt_day, .mt_hour, .mt_minute, .mt_second{
+	position: relative;
+	float: left;
+	width: 33.33%;
+	height: 50%;
+	vertical-align: top;
+	text-align: center;
+	overflow: hidden;
+}
+.mt_year:after,.mt_month:after,.mt_day:after{
+	position: absolute;
+	top: 92px;
+	right: 3px;
+	content: '年';
+	color: #ff3a00;
+	font-size: 1.7rem;
+}
+.mt_month:after{content: '月';}
+.mt_day:after{content: '日';}
+
+.mt_body ul li{
+	font-size: 1.2rem;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	color: #c3c3c3;
+}
+.mt_indicate{
+	position: absolute;
+	top: 80px;
+	border: 1px solid #ff3a00;
+	width: 100%;
+	height: 40px;
+	box-sizing: border-box;
+	border-radius: 3px;
+}
+/*.mt_indicate:after{
+	content: "";
+    top: 40px;
+}*/
+.mt_indicate.cate2{
+	top: 280px;
+}
+.mt_body li.selected{
+	font-size: 1.8rem;
+	color: #ff3a00;
+}
+.mt_body ul .mt_note{
+	font-size: 12px;
+	color: #000;
+}
+.mt_confirm{
+	text-align: center;
+	margin-top: 10px;
+	overflow: hidden;
+}
+.mt_ok, .mt_cancel, .mt_setnow{
+	display: inline-block;
+	float: left;
+	vertical-align: top;
+	width: 33.33%;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #4eccc4;
+	color: #4eccc4;
+	box-sizing: border-box;
+	border-bottom: none;
+	border-right: none;
+}
+.mt_ok{
+	margin-left: -1px;
+}
+.mt_cancel, .mt_setnow{
+	
+}
+.mt_mask{
+	width: 100%;
+    height: 100%;
+    -moz-transition: opacity .5s linear 0s;
+    -webkit-transition: opacity .5s linear 0s;
+    -o-transition: opacity .5s linear 0s;
+    -ms-transition: opacity .5s linear 0s;
+    transition: opacity .5s linear 0s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    visibility: hidden;
+    background: #000;
+    opacity: 0;
+    z-index: 10;
+}
+.mt_mask.show{
+	visibility: visible;
+	opacity: 0.25;
+}
+.mt_poppanel {
+    -moz-transition: -moz-transform .3s ease-in-out 0s;
+    -ms-transition: -ms-transform .3s ease-in-out 0s;
+    -webkit-transition: -webkit-transform .3s ease-in-out 0s;
+    -o-transition: -o-transform .3s ease-in-out 0s;
+    transition: transform .3s ease-in-out 0s;
+    -ms-transform: translate3d(0,100%,0);
+    -moz-transform: translate3d(0,100%,0);
+    -webkit-transform: translate3d(0,100%,0);
+    -o-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 11;
+    -webkit-user-select : none;
+
+    padding: 7px;
+	box-sizing: border-box;
+	background: #939395;
+}
+.mt_poppanel.show{
+	-ms-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.mt_sepline{
+	width: 100%;
+	height: 0;
+	border-top: 1px solid #4eccc4;
+	clear: both;
+}
+/*new*/
+.new_mt_ok{
+	position: absolute;
+	right: 17px;
+	top: 15px;
+	color: #ff3a00 !important;
+
+}
+.mt_panel_title{
+	height: 35px;
+	width: 100%;
+	border-bottom: 1px solid #939395;
+	font-size: 1.7rem;
+}
+
+
+
+
+
