@@ -407,8 +407,52 @@
 
 	
 }
+/*律师详情页 比例图*/
+.lawyerDetail_rate{
+	color: #000;
+	font-size: 1.1rem;
+	border:1px solid #ccd3d9;
+}
+.lawyerDetail_rate li{
+	padding: 10px 4px;
+	border-top: 1px solid #ccd3d9;
+}
+.lawyerDetail_rate li:first-child{
+	border-top: none;
+}
+.lawyerDetail_rate li:nth-child(2n){
+	background: #f5f5f9;
 
-
+}
+.lawyerDetail_rate_l{
+	width: 50%;
+}
+.lawyerDetail_rate_l .tu{
+	margin-top: 11px;
+}
+.lawyerDetail_rate_l .title{
+	position: relative;
+}
+.lawyerDetail_rate_l .title .num{
+	position: absolute;
+	right: 0;
+}
+.lawyerDetail_rate_l .rate{
+	border-radius: 10px;
+	display: inline-block;
+	width: 80px;
+	height: 10px;
+	background: #e0e0e8;
+}
+.lawyerDetail_rate_l .rate b{
+	border-radius: 10px;
+	display: inline-block;
+	height: 10px;
+	background: #ff7200;
+}
+.lawyerDetail_rate_l .rate b.blue{
+	background: #00a3f5;
+}
 
 
 
