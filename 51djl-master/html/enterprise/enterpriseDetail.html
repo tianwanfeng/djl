@@ -47,48 +47,57 @@
                 <li ng-click="case_cotSelShow()"><a>地域&nbsp;&nbsp;></a></li>
                 <li ng-click="case_ctgSelShow()"><a>案由&nbsp;&nbsp;></a></li>
             </ul>
-            <!-- <div class="summary clearfix">
-                <div class="defendant" id="analyDef">
-                    <div class="title def">被&#12288;告</div>
-                    <div class="detail">
-                        <div class="dl">
-                            <span class="dt">涉案金额：</span>
-                            <span class="dd" id="defCaseSum">{{amount.defCaseSum}}</span>
-                        </div>
-                        <div class="dl">
-                            <span class="dt">案件数量：</span>
-                            <span class="dd" id="defCaseAmount">{{amount.defCaseAmount}}</span>
-                        </div>
+            <div class="item_other">
+                    <div class="item_other_title item_title_control">
+                        <b class="item_title_text">所选条件：</b>
+                        <span class="case_select">{{tConditions}}</span>
                     </div>
-                </div>
-                <div class="plaintiff" id="analyPla">
-                    <div class="title pla">原&#12288;告</div>
-                    <div class="detail">
-                        <div class="dl">
-                            <span class="dt">涉案金额：</span>
-                            <span class="dd" id="plaCaseSum">{{amount.plaCaseSum}}</span>
-                        </div>
-                        <div class="dl">
-                            <span class="dt">案件数量：</span>
-                            <span class="dd" id="plaCaseAmount">{{amount.plaCaseAmount}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="other" id="analyOth">
-                    <div class="title oth">其&#12288;他</div>
-                    <div class="detail">
-                        <div class="dl">
-                            <span class="dt">涉案金额：</span>
-                            <span class="dd" id="othCaseSum">{{amount.othCaseSum}}</span>
-                        </div>
-                        <div class="dl">
-                            <span class="dt">案件数量：</span>
+                    <div class="item_other_detail">
+                        <div class="display-flexbox case_type">
+                            <div class="flexbox-children case_count_wrap beigao_wrap">
+                                <div class="case_count_title">被告</div>
+                                <div class="case_count_detail">
+                                    <div class="case_count_item">
+                                        <span class="case_count_lbl">涉案金额：</span>
+                                        <span class="case_count_value">{{amount.defCaseSum}}</span>
+                                    </div>
+                                    <div class="case_count_item">
+                                        <span class="case_count_lbl">案件数量：</span>
+                                        <span class="case_count_value">{{amount.defCaseAmount}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox-children case_count_wrap yuangao_wrap">
+                                <div class="case_count_title">原告</div>
+                                <div class="case_count_detail">
+                                    <div class="case_count_item">
+                                        <span class="case_count_lbl">涉案金额：</span>
+                                        <span class="case_count_value">{{amount.plaCaseSum}}</span>
+                                    </div>
+                                    <div class="case_count_item">
+                                        <span class="case_count_lbl">案件数量：</span>
+                                        <span class="case_count_value">{{amount.plaCaseAmount}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flexbox-children case_count_wrap other_wrap">
+                                <div class="case_count_title">其他</div>
+                                <div class="case_count_detail">
+                                    <div class="case_count_item">
+                                        <span class="case_count_lbl">涉案金额：</span>
+                                        <span class="case_count_value">{{amount.othCaseSum}}</span>
+                                    </div>
+                                    <div class="case_count_item">
+                                        <span class="case_count_lbl">案件数量：</span>
                             <span class="dd" id="othCaseAmount">{{amount.othCaseAmount}}</span>
-                        </div>
+                                        <span class="case_count_value">62件</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
                     </div>
                 </div>
-            </div> -->
-            <div>{{tConditions}}</div>
+            
             <div class="chart timing scroll" id="caseTimingChart"></div>
         </div>
         <div ng-show="tabVar == 2">
@@ -97,7 +106,10 @@
                 <li ng-click="rel_plnSelShow()"><a>原告&nbsp;&nbsp;></a></li>
                 <li ng-click="rel_ctgSelShow()"><a>案由&nbsp;&nbsp;></a></li>
             </ul>
-            <div>{{rConditions}}</div>
+            <div class="item_other_title item_title_control">
+                <b class="item_title_text">所选条件：</b>
+                <span class="case_select">{{rConditions}}</span>
+            </div>
             <div class="chart rel-svg" id="relation"></div>
         </div>
     </div>
@@ -219,14 +231,14 @@
 </div>
 
 <!-- 弹出层 -->
-<div class="dialog_list_box">
+<div class="dialog_list_box hidden" id="docView">
     <div class="dialog_list">
         <div class="dialog_list_title">
-            <span>三英大泰和财产保险股份有限公司南通中心支公司</span>
-            <span class="cancel"></span>
+            <span id="nodeName"></span>
+            <span class="cancel" ng-click="bookCancel()"></span>
         </div>
-        <div class="dialog_list_subtitle">相关文章</div>
-        <ul>
+        <div class="dialog_list_subtitle" id="nodeBookNum"></div>
+        <ul id="relbookList">
             <li>
                 <a href="">
                     <span>1、小米科技有限责任公司与无锡易莲超市有限公司侵害商标权纠纷一审民事裁定书</span>

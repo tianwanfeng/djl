@@ -1,16 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
-</head>
+
 <body>
     <div class="topbar" ng-show="detailBodyVar">
         <div class="toolbar_btn back_btn" ng-click="goBackPage()"></div>
         <span class="title">律师详情</span>
         <div class="toolbar_btn srh_btn" ng-click="goFindLawyerIndex()"></div>
     </div>
-    <div class="main">
+    <div class="main" ng-show="detailBodyVar">
         <div class="detail_wrap" ng-show="detailBodyVar">
             <div class="lawer_box lawer_box_detail">
                 <div class="avatar_box">
@@ -108,67 +103,31 @@
                             <span ng-repeat="x in caseSelected" class="case_select">{{x+" "}}</span>
                         </div>
                         <div class="item_other_detail">
+    						<ul class="lawyerDetail_rate">
+                                <li class="clearfix" ng-repeat = "x in cases | filter:courtFilter | filter:categoryFilter">
+                                    <div class="lawyerDetail_rate_l floatl">
+                                        <div>{{x.ctg}}</div>
+                                        <div class="tu">
+                                            <span>占比</span>
+                                            <span class="rate"><b style="width:{{x.rate}};"></b></span>
+                                            <span>{{x.rate}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="lawyerDetail_rate_l floatl">
+                                        <div class="title">
+                                            <span>{{x.cot}}</span>
+                                            <span class="num">{{x.num}}件</span>
+                                        </div>
+                                        <div class="tu">
+                                            <span>胜诉率</span>
+                                            <span class="rate"><b class="blue" style="width:{{x.winRate}};"></b></span>
+                                            <span>{{x.winRate}}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                            </ul>  
 
-                            <!-- <table class="item_table">
-                                <tbody>
-                                    <tr class="table_header">
-                                        <th>法院</th>
-                                        <th>件数</th>
-                                        <th>占比</th>
-                                        <th>胜诉率</th>
-                                    </tr>
-                                    <tr ng-repeat = "x in cases | filter:courtFilter | filter:categoryFilter ">
-                                        <td>{{x.cot}}</td>
-                                        <td>{{x.num}}</td>
-                                        <td>{{x.rate}}</td>
-                                        <td>{{x.winRate}}</td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
-                            <ul class="lawyerDetail_rate">
-                                <li class="clearfix">
-                                    <div class="lawyerDetail_rate_l floatl">
-                                        <div>侵害外观设计专利权纠纷</div>
-                                        <div class="tu">
-                                            <span>占比</span>
-                                            <span class="rate"><b style="width:80%;"></b></span>
-                                            <span>60%</span>
-                                        </div>
-                                    </div>
-                                    <div class="lawyerDetail_rate_l floatl">
-                                        <div class="title">
-                                            <span>上海徐汇区人民法院</span>
-                                            <span class="num">42件</span>
-                                        </div>
-                                        <div class="tu">
-                                            <span>占比</span>
-                                            <span class="rate"><b class="blue" style="width:100%;"></b></span>
-                                            <span>60%</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="clearfix">
-                                    <div class="lawyerDetail_rate_l floatl">
-                                        <div>侵害外观设计专利权纠纷</div>
-                                        <div class="tu">
-                                            <span>占比</span>
-                                            <span class="rate"><b style="width:80%;"></b></span>
-                                            <span>60%</span>
-                                        </div>
-                                    </div>
-                                    <div class="lawyerDetail_rate_l floatl">
-                                        <div class="title">
-                                            <span>上海徐汇区人民法院</span>
-                                            <span class="num">42件</span>
-                                        </div>
-                                        <div class="tu">
-                                            <span>占比</span>
-                                            <span class="rate"><b class="blue" style="width:100%;"></b></span>
-                                            <span>60%</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>                          
                         </div>
                     </div>
                     <div class="item_other">
@@ -198,7 +157,9 @@
                 </div>
             </div>
         </div>
-        <div ng-show="categorySelVar">
+        
+    </div>
+    <div ng-show="categorySelVar">
             <div class="header_back"><!-- ng-click="ctgCancel()" -->
                 <div class="back" ng-click="ctgCancel()"></div>
                 <div class="title">案由选择</div>
@@ -231,6 +192,3 @@
                 </ul>
             </div>
         </div>
-    </div>
-</body>
-</html>
