@@ -1,7 +1,8 @@
 
-angular.module('myApp.controllers', [])
+angular.module('myApp.controllers',[])
   .controller('findLawyerIndexCtrl', ['$scope','$http','$location', function($scope,$http,$location) {
         $scope.pannerVar = true;
+        $scope.errorTip = false;
         //搜索关键字临时cache
         var tmpCtgKey ={
             type:"ctg",
@@ -182,5 +183,17 @@ angular.module('myApp.controllers', [])
             }
             tmpKey.type=='ctg'?tmpCtgKey.name=newKey:tmpAreaKey.name=newKey;
         }
+
+        $scope.searchLawyer = function () {
+            var kw = $scope.searchKeys;
+
+            $http.get("data/lawyerList.json?kw="+kw).success(function(dat) {
+             if (dat.code == 1) {
+                    $location.path('/findLawyer/list/'+kw);
+                } else {
+                    $scope.errorTip = true;
+                }
+            })
+        };
 
 }]);

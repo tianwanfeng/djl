@@ -334,13 +334,13 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
 
     djl.chart_timing = {
         "conf": {
-            "visWdt": 870, /*可见宽度*/
+            "visWdt": 350, /*可见宽度*/
             "mgn": {"t": 0, "r": 0, "b": 0, "l": 0}, /*绘图区域留白*/
             "xAxisHgt": 2, /*X轴高度*/
-            "itemWdt": 200, /*案件宽度*/
-            "itemHgt": 80, /*案件高度*/
+            "itemWdt": 140, /*案件宽度*/
+            "itemHgt": 60, /*案件高度*/
             "itemMgn": {"t": 0, "r": 10, "b": 10, "l": 10}, /*案件区域留白*/
-            "itemBaseMgn": 30, /*案件距离坐标轴最小距离*/
+            "itemBaseMgn": 35, /*案件距离坐标轴最小距离*/
             "layers": 3 /*设置最高堆叠层数*/
         },
         "dataProcess": function(data) {
@@ -452,8 +452,17 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             var g = svg.append("g").attr("transform", "translate(" + x + "," + y + ")");
             g.append("rect").attr("class", "rect")
                 .attr({"width": conf.itemWdt, "height": conf.itemHgt, "x": conf.itemMgn.l, "y": rectY, "stroke": color});
+            if (x == 0) {
+                lineX = conf.itemWdt+10;
+                lineY1 = 0.5*conf.itemHgt + 5;
+                lineX2 = lineX + conf.itemBaseMgn+10;
+            } else {
+                lineX = -1*conf.itemBaseMgn;
+                lineX2 = 10;
+                lineY1 = 0.5*conf.itemHgt + 5;
+            }
             if (hasLine)
-                g.append("line").attr("class", "line").attr({"x1": lineX, "y1": lineY1, "x2": lineX, "y2": lineY2, "stroke": color});
+                g.append("line").attr("class", "line").attr({"x1": lineX, "y1": lineY1, "x2": lineX2, "y2": lineY1, "stroke": color});
             
             var text = g.append("a").attr({"xlink:href": ctx+"document/"+data.uri, "target":"_blank"})
                 .append("text").attr("class", "desc").attr('text-anchor', 'middle').attr("transform", "translate(" + textBaseX + ",0)")
@@ -678,14 +687,19 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
         
         var e = document.getElementById(docId);
         $(e).html("");
+        realWdt = 400;
+        realHgt = 200+data["date"].length*65;
         var svg = d3.select(e).append("svg").attr("id", "caseChart").attr("class", "timing-svg").attr("width", realWdt).attr("height", realHgt);
         
-        svg.append("line").attr("class", "xAxis").attr("x1", 0).attr("y1", yUpHgt).attr("x2", realWdt).attr("y2", yUpHgt);
+        svg.append("line").attr("class", "xAxis").attr("x1", 195).attr("y1", 0).attr("x2", 195).attr("y2", realHgt);
         var dateArr = data["date"];
+        var offset = 0;
         for (var i = 0; i < dateArr.length; i++) {
             var grpData = data[dateArr[i]], grpPostion = position.arr[i];
             var direction = grpPostion.direction;
             
+
+
             var x = grpPostion.x;
             if (position.expectGrpGap > itemWrapWdt) {
                 var move = (position.expectGrpGap-itemWrapWdt)/2;
@@ -694,8 +708,8 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             }
             
             var dateY = direction ? (yUpHgt-5) : (yUpHgt+15);
-            svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
-                .attr("transform", "translate("+(x+conf.itemWdt/2+conf.itemMgn.l+5)+","+dateY+")");
+            /*svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
+                .attr("transform", "translate("+(x+conf.itemWdt/2+conf.itemMgn.l+5)+","+dateY+")");*/
             
             for (var j = 0; j < grpData.length; j++) {
                 var y;
@@ -717,6 +731,19 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                     }
                 }
                 var hasLine = (j < 2);
+                if (direction) {
+                    x = 0;
+                } else {
+                    x = 400-conf.itemWdt -35;
+                }
+                
+                y = (i+j+offset)*(conf.itemHgt+10);
+                if (j>0) {
+                    offset ++;
+                }
+                svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
+                .attr("transform", "translate("+(165)+","+(y+30)+")");
+
                 djl.chart_timing.drawCase(svg, conf, x, y, yUpHgt, grpData[j], hasLine);
                 direction = !direction;
             }
@@ -936,8 +963,8 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
 
     djl.chart_relation = {
         "conf": {
-            "width": 870, /*svg宽度*/
-            "hgt": {"ratio":25, "min":200, "max":3200}, /*svg高度系数/最小高度/最大高度*/
+            "width": 400, /*svg宽度*/
+            "hgt": {"ratio":35, "min":200, "max":3200}, /*svg高度系数/最小高度/最大高度*/
             "height": 200,  /*svg高度*/
             "nodeRadius": {"items": [30, 36, 40, 45, 50], "min": 30, "max": 50}, /*节点半径参数*/
             "layout": {"linkDistance": 170, "charge": -2000}
@@ -954,7 +981,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             
             var svgHgt = Math.min(conf.height, conf.hgt.max);
             
-            var svg = d3.select(docId).append("svg").attr("class", "rel").attr("width",conf.width).attr("height", svgHgt);
+            var svg = d3.select(docId).append("svg").attr("class", "rel").attr("width",window.screen.width).attr("height", svgHgt);
             
             var force = d3.layout.force()
                 .nodes(data.nodes).links(data.edges)
@@ -1042,13 +1069,15 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
     //      }).on("mousemove", function(){
     //          d3.select(".rel-tooltip").style("left", (d3.event.pageX) + "px").style("top", (d3.event.pageY + 20) + "px");  
     //      });
-            nodes.on("dblclick", function(d){
-                $("#docView").modal("show");
+            nodes.on("click", function(d){
+                $("#docView").removeClass("hidden");
+                $("#nodeName").text(d.name);
+                $("#nodeBookNum").text("相关文书列表（共"+ d.cases.length+"篇）");
                 var $c = $("#relbookList");
                 $c.empty();
                 $.each(d.cases, function(i, e){
-                    $c.append("<li><span>"+(i+1)+
-                            "、</span><a target='_blank' href='"+ctx+"document/"+d.urls[i]+"' title='【"+d.codes[i]+"】"+d.titles[i]+"'>【"+d.codes[i]+"】"+d.titles[i]+"</a></li>")
+                    $c.append("<li><a target='_blank' href='"+ctx+"document/"+d.urls[i]+"' title='【"+d.codes[i]+"】"+d.titles[i]+"'>"+"<span>"+(i+1)+
+                            "、</span>"+d.titles[i]+"</a><span class='time'>"+ d.codes[i] +"</span></li>")
                 });
             });
             

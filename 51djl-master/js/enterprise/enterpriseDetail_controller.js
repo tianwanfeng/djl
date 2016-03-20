@@ -11,6 +11,9 @@ angular.module('myApp.controllers')
 		$scope.restart = '';
 		$scope.detailBodyVar = true;
 		$scope.category = [];
+		$scope.bookListVar = false;
+		$scope.tConditions = "全部";
+		$scope.rConditions = "全部";
 
 		$scope.amount = {
 
@@ -41,6 +44,9 @@ angular.module('myApp.controllers')
 				ret += (" 时间:到"+params.endDate);
 			else 
 				ret += (" 时间：从"+ params.startDate+"到"+params.endDate);
+			
+			if (ret == '')
+				ret = '全部';
 			return ret;
 
 		};
@@ -69,6 +75,10 @@ angular.module('myApp.controllers')
 				ret += (" 时间:到"+params.relEnd);
 			else 
 				ret += (" 时间：从"+ params.relStart+"到"+params.relEnd);
+
+			if (ret == '')
+				ret = '全部';
+
 			return ret;
 
 		};
@@ -126,7 +136,7 @@ angular.module('myApp.controllers')
 		});      
 
 		//案件分析/关系图谱tab切换处理
-		$scope.tabVar = 2;
+		$scope.tabVar = 1;
 		
 		$scope.tabSelected1 = function () {
 			$scope.tabVar = 1;
@@ -344,6 +354,10 @@ angular.module('myApp.controllers')
 				}
 			});
 		}
+
+		$scope.bookCancel = function (){
+			$("#docView").addClass("hidden");
+		};
 }])
 .controller('ctgSelCtrl',['$scope',
 	function($scope){

@@ -6,14 +6,14 @@
     </div>
     <div class="main">    
         <div class="findlawyer_head_pic">
-            <img src="../img/enterprise_head.png"/>
+            <img src="img/enterprise_head.png"/>
         </div>
         <div class="findlawyer_select">
             <div class="inputbox">
                 <input placeholder="请输入企业名称" ng-model="searchKeys"></input>
-                <div class="button"><a class="search-btn" href="#/enterprise/detail/{{searchKeys}}">搜索</a></div>
+                <div class="button" ng-click="searchEnterprise()">搜索</div>
             </div>
-            <div class="tip shadow tip_long">
+            <div class="tip shadow tip_long" ng-show="errorTip">
                 <div class="tip_sar"></div>
                 <div class="tip_box">
                     <div class="tip_icon"></div>

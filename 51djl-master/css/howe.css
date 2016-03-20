@@ -452,3 +452,159 @@ polyline{
 .case_company{
 
 }
+.case_type{
+}
+.case_count_wrap{
+	border:1px #a5b3bb solid;
+}
+.case_count_wrap .case_count_title{
+	height: 29px;
+	line-height: 29px;
+	font-size: 1.4rem;
+	color: #fff;
+	text-align: center;
+	/*letter-spacing: 10px;*/
+}
+.beigao_wrap .case_count_title{
+	background: #00a3f5;
+}
+.yuangao_wrap{
+	margin: 0 3px;
+}
+.yuangao_wrap .case_count_title{
+	background: #ff3a00;
+}
+.other_wrap .case_count_title{
+	background: #a5b3bb;
+}
+.case_count_wrap .case_count_detail{
+	padding: 4px 7px;
+}
+.case_count_wrap .case_count_item{
+	font-size: 0.9rem;
+	line-height: 20px;
+	color: #6e6a6a;
+}
+.case_count_wrap .case_count_item .case_count_value{
+	font-size: 1rem;
+	color: #212122;
+}
+.time_line_wrap{
+	border-top: 1px #96aab4 solid;
+	border-bottom: 1px #96aab4 solid;
+	margin-top: 20px;
+	background: #fff;
+	margin-bottom: 20px;
+}
+.time_line_box{
+	width: 98%;
+	margin:0 auto;
+	border-left: 1px #c8c8c8 solid;
+	border-right: 1px #c8c8c8 solid;
+	position: relative;
+	padding-top: 10px;
+	background: #fbfbfb;
+	/*height: 100px;*/
+}
+.time_line{
+	position: absolute;
+	width: 1px;
+	height: calc(100% - 10px);
+	left: 50%;
+	margin-left: -1px;
+	background: #c8c8c8;
+}
+.case_list_item{
+	width: 96%;
+	height: 60px;
+	/*border:1px #ccc solid;*/
+	margin:0 auto;
+	padding:6px 0;
+	position: relative;
+}
+.case_time_begin{
+	height: 15px;
+	width: 57px;
+	line-height: 15px;
+	text-align: center;
+	font-size: 0.8rem;
+	border:1px #c8c8c8 solid;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -29px;
+	margin-top: -8px;
+	background: #fff;
+}
+.case_time_durgin{
+	width: 52px;
+	height: 16px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -26px;
+	margin-top: -8px;
+}
+.icon_timeline{
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	left: 50%;
+	margin-left: -7px;
+	background: url(../img/icon_timeline.png) no-repeat center center;
+	background-size: 15px 15px;
+	z-index: 10;
+}
+.icon_line{
+	height: 1px;
+	width: 26px;
+	background: #c8c8c8;
+	position: absolute;
+	top: 50%;
+	margin-top: -1px;
+}
+.icon_line.icon_left{
+	left: 0;
+}
+.icon_line.icon_right{
+	right: 0;
+}
+.case_item{
+	width: 36%;
+	height: 50px;
+	border-radius: 3px;
+	padding:4px;
+	color: #000;
+	font-size: 0.9rem;
+	text-align: center;
+	line-height: 18px;
+	font-weight: bold;
+}
+.case_item.case_beigao{
+	border:1px #ff3a00 solid;
+}
+.case_item.case_yuangao{
+	border:1px #00a3f5 solid;
+}
+.case_item.case_other{
+	border:1px #96aab4 solid;
+}
+.case_item div{
+	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

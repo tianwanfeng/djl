@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
-    <title>findlawyer</title>
-</head>
-<body>
+
     <div class="header">
         <div class="header-icon"></div>
         <span>找律师</span>
@@ -18,9 +11,9 @@
         <div class="findlawyer_select">
             <div class="inputbox">
                 <input placeholder="案由+地域/律所/律师" ng-model="searchKeys"></input>
-                <div class="button"><a class="search-btn" href="#/findLawyer/list/{{searchKeys}}">找律师</a></div>
+                <div class="button" ng-click="searchLawyer()">找律师</div>
             </div>
-            <div class="tip shadow">
+            <div class="tip shadow" ng-show="errorTip">
                 <div class="tip_sar"></div>
                 <div class="tip_box">
                     <div class="tip_icon"></div>
@@ -59,7 +52,7 @@
     </div>
 
     <!-- 城市选择 -->
-    <div class="main city hidden">
+    <div class="city hidden">
         <div class="icon-text-line lawer_city_sel">
             <div class="city-first-list">
                 <div class="title">
@@ -74,6 +67,3 @@
             </div>
         </div>    
     </div>
-
-</body>
-</html>
