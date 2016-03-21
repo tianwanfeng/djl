@@ -140,7 +140,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             
         },
         drwPie: function (id,data) {
-            var width = window.screen.width * 0.92 * 0.6,
+            var width = window.screen.width * 0.92 * 0.65,
                 height = 140,
                 radius = Math.min(width, height) / 2;
 
