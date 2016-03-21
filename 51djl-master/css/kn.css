@@ -81,6 +81,7 @@
 	.lawer_tb_wrap{}
 	.lawer_tb{
 		margin: 3px 0 0;
+		min-height: 116px;
 		font-size: 9px;}
 		.lawer_tb tr.fold ~ tr{display: none;}
 		.lawer_tb td{
@@ -89,11 +90,16 @@
 			vertical-align: middle;}
 			.d3_wrap{
 				padding: 15px 0 0;
+				min-width: 80px;
 				float: left;
 				text-align: center;}
+				.d3_wrap span{
+					color: #ff4711;
+				}
 				.d3{
 					width: 75px;
-					height: 60px;
+					height: 50px;
+					margin-top: 7px;
 					display: block;}
 			.border_wrap{
 				padding: 25px 3px;
@@ -114,8 +120,9 @@
 					.percent_ul span{
 						width: 100px;
 						/* width: 160px; */
+						font-size: .9rem;
 						text-indent: 2px;
-						line-height: 22px;
+						line-height: 15px;
 						overflow: hidden;
 						white-space: nowrap;
 						position: relative;
