@@ -1,6 +1,6 @@
 
-<body>
-    <div class="topbar" ng-show="detailBodyVar">
+
+    <div class="topbar" id="header" ng-show="detailBodyVar">
         <div class="toolbar_btn back_btn" ng-click="goBackPage()"></div>
         <span class="title">律师详情</span>
         <div class="toolbar_btn srh_btn" ng-click="goFindLawyerIndex()"></div>
@@ -10,17 +10,17 @@
             <div class="lawer_box lawer_box_detail">
                 <div class="avatar_box">
                     <img src="img/avatar.jpg" alt="">
-                    王新安
+                    {{lawyerInfo.lawyerName}}
                     <span class="certified">已认证</span>
                 </div><!-- /.avatar_box -->
 
                 <ul class="lawer_info">
-                    <li class="lawer_info_sex">男</li>
+                    <li class="lawer_info_sex">{{lawyerInfo.lawyerName}}</li>
                     <li class="lawer_info_years">３年</li>
-                    <li class="lawer_info_id">16103201311475819</li>
-                    <li class="lawer_info_skill">知识产权、合同纠纷</li>
-                    <li class="lawer_info_address">江苏省南通市、江苏省淮安市</li>
-                    <li class="lawer_info_company">上海申中律师事务所</li>
+                    <li class="lawer_info_id">{{lawyerInfo.lawyerId}}</li>
+                    <li class="lawer_info_skill">{{lawyerInfo.workField}}</li>
+                    <li class="lawer_info_address">{{lawyerInfo.workArea}}</li>
+                    <li class="lawer_info_company">{{lawyerInfo.lawOffice}}</li>
                     <li class="lawer_info_phone"><a class="phone_login" href="####">登录查看</a></li>
                 </ul><!-- /.lawer_info -->
             </div>
@@ -174,21 +174,21 @@
                     </li>
                 </ul>
             </div>
-        </div>
+    </div>
 
-        <div ng-show="cotSelVar">
-            <div class="header_back">
-                <div class="back" ng-click="cotCancel()"></div><!-- ng-click="cotCancel()" -->
-                <div class="title">地域选择</div>
-                <div class="sure" ng-click="cotSure()">确定</div>
-            </div>
-            <div class="main">    
-                <ul class="case_sel">
-                    <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
-                        ng-repeat="x in court | orderBy :'name'"
-                        ng-class="{'right':cotClickVar}">
-                        {{x.name}}({{x.count}})
-                    </li>
-                </ul>
-            </div>
+    <div ng-show="cotSelVar">
+        <div class="header_back">
+            <div class="back" ng-click="cotCancel()"></div><!-- ng-click="cotCancel()" -->
+            <div class="title">地域选择</div>
+            <div class="sure" ng-click="cotSure()">确定</div>
         </div>
+        <div class="main">    
+            <ul class="case_sel">
+                <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
+                    ng-repeat="x in court | orderBy :'name'"
+                    ng-class="{'right':cotClickVar}">
+                    {{x.name}}({{x.count}})
+                </li>
+            </ul>
+        </div>
+    </div>

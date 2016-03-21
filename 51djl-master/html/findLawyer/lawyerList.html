@@ -1,10 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
-</head>
-<body>
+
     <!-- <a href="#/findLawyer/detail/{{id}}">详情页</a> -->
     <div class="topbar">
         <div class="toolbar_btn back_btn" ng-click="goBackPage()"></div>
@@ -18,7 +12,7 @@
         </div><!-- /.list_title -->
 
     <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box" ng-controller="lawyerliCtrl">
-        <a href="#/findLawyer/detail/{{lawyer.id}}">
+        <a href="#/findLawyer/detail/{{lawyer.id}}#header">
             <div class="avatar_box">
                 <img onerror="this.src='img/avatar.jpg'" src="{{lawyer.photo}}" alt="">
                 {{lawyer.name}}
@@ -64,11 +58,21 @@
         <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
     </div><!-- /.lawer_box -->
     <div class="right_btn_wrap">
-        <a href="#">滑动到页首</a>
+        <a gotop style="display:none" id="scrollVar">滑动到页首</a>
         <a href="#">对话</a>
     </div><!-- /.right_btn_wrap -->
 
         <a ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</a>
     </div>
-</body>
-</html>
+    <script type="text/javascript">
+        $(window).scroll(function(){ 
+            //获取窗口的滚动条的垂直位置 
+            var s = $(window).scrollTop(); 
+            //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐 
+            if( s > 500){ 
+                $("#scrollVar").fadeIn(100); 
+            }else{ 
+                $("#scrollVar").fadeOut(200); 
+            }; 
+        }); 
+    </script>

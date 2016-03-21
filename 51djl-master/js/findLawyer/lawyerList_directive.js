@@ -55,4 +55,30 @@ lyrD3Directive.directive('pie', function ($parse) {
 
       }
     }
-   });
+   })
+.directive("gotop",function(){
+      return{
+        ristrict:"E",
+        controller:function($scope){
+          $scope.scrollVar=false;
+        },
+        link:function($scope,element,attr){
+          $(element).on("click",function(){
+            console.log($(element).scrollTop())
+            $("body").animate({
+              scrollTop:0
+            },1000,function(){$scope.$apply($scope.kg=false)})
+            $scope.$apply($scope.kg=true)
+          })
+        }
+      }
+    }).directive('whenScrolled', function() { 
+  return function(scope, elm, attr) { 
+    var raw = elm[0]; 
+    elm.bind('scroll', function() { 
+      if (raw.scrollTop+raw.offsetHeight >= raw.scrollHeight) { 
+        scope.$apply(attr.whenScrolled); 
+      } 
+    }); 
+  }; 
+});;

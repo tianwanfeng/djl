@@ -6,11 +6,20 @@ angular.module('myApp.controllers')
         
         var djl = lyrpageChart;
         //更新：$scope.id 为律师id
+        $http.get("data/lawyerInfo.json")
+            .success(function(dat) {
+                //初始化页面所需数据
+                if (dat.code == 1 && dat.info) {
+                    $scope.lawyerInfo = dat.info.summary;
+                    $("body").scrollTop(0);
+                }
+            });
+
+
         $http.get("data/lawyerDetailData.json")
             .success(function(dat) {
                 //初始化页面所需数据
-                if (dat.code == 1 && dat.info) 
-                {
+                if (dat.code == 1 && dat.info) {
                     djl.chart.init(dat.info);
                     djl.interact.init(dat.info);
                     $scope.category = djl.interact.getInteractyData().category;
