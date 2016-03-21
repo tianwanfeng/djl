@@ -455,9 +455,9 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             if (x == 0) {
                 lineX = conf.itemWdt+10;
                 lineY1 = 0.5*conf.itemHgt + 5;
-                lineX2 = lineX + conf.itemBaseMgn+10;
+                lineX2 = lineX + conf.itemBaseMgn;
             } else {
-                lineX = -1*conf.itemBaseMgn;
+                lineX = -1*conf.itemBaseMgn+10;
                 lineX2 = 10;
                 lineY1 = 0.5*conf.itemHgt + 5;
             }
@@ -467,10 +467,13 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             var text = g.append("a").attr({"xlink:href": ctx+"document/"+data.uri, "target":"_blank"})
                 .append("text").attr("class", "desc").attr('text-anchor', 'middle').attr("transform", "translate(" + textBaseX + ",0)")
     //          .attr("onclick", "djl.chart_timing.detail(evt)")
-                .attr("onmouseover", "djl.chart_timing.inter(evt)").attr("onmouseout", "djl.chart_timing.outer(evt)");
+                //.attr("onmouseover", "djl.chart_timing.inter(evt)").attr("onmouseout", "djl.chart_timing.outer(evt)");
     //          .attr({"d_code": data.caseCode, "d_id": data.caseId, "d_uri": data.uri});
-            var showCsCode = (data.caseCode && data.caseCode.length>17) ? data.caseCode.substring(0,17)+"..." : data.caseCode;
-            text.append("tspan").text(showCsCode).attr({"class": "case-code", "title":data.caseCode, "x":conf.itemMgn.l*2, "y":rectY+textHgt});
+            var subText = function (text,maxlength) {
+               return  (text && text.length>maxlength) ? text.substring(0,maxlength)+"..." : text;
+            };
+            //var showCsCode = (data.caseCode && data.caseCode.length>5) ? data.caseCode.substring(0,5)+"..." : data.caseCode;
+            text.append("tspan").text(subText(data.caseCode,17)).attr({"class": "case-code", "title":data.caseCode, "x":conf.itemMgn.l*2, "y":rectY+textHgt});
             text.append("tspan").text(data.category).attr("class", "case-category")
                 .attr('x', conf.itemMgn.l*2).attr('y', rectY + textHgt*2);
             text.append("tspan").text(this.amountText(data.amount)).attr("class", "case-amount")
@@ -671,7 +674,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
         }
         return positionResult;
     };
-    djl.chart_timing.draw = function(docId, conf, data, position) {
+    djl.chart_timing.draw = function(docId, conf, data, position,nums) {
         //x轴上下两个方向最大的y值
         var maxYUp = d3.max(position.arr.map(function (d) {return d3.max(d.yUp);})), maxYDown = d3.max(position.arr.map(function (d) {return d3.max(d.yDown);}));
         //最大的x坐标
@@ -687,11 +690,12 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
         
         var e = document.getElementById(docId);
         $(e).html("");
-        realWdt = 400;
-        realHgt = 200+data["date"].length*65;
-        var svg = d3.select(e).append("svg").attr("id", "caseChart").attr("class", "timing-svg").attr("width", realWdt).attr("height", realHgt);
         
-        svg.append("line").attr("class", "xAxis").attr("x1", 195).attr("y1", 0).attr("x2", 195).attr("y2", realHgt);
+        realWdt = conf.visWdt + 15;
+        realHgt = 100+nums*(conf.itemHgt+10);
+        var svg = d3.select(e).append("svg").attr("id", "caseChart").attr("class", "timing-svg").attr("width", realWdt).attr("height", realHgt);
+        var timeLineX = conf.itemWdt + conf.itemBaseMgn + 5;
+        svg.append("line").attr("class", "xAxis").attr("x1", timeLineX).attr("y1", 0).attr("x2", timeLineX).attr("y2", realHgt);
         var dateArr = data["date"];
         var offset = 0;
         for (var i = 0; i < dateArr.length; i++) {
@@ -731,23 +735,23 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                     }
                 }
                 var hasLine = (j < 2);
+
                 if (direction) {
                     x = 0;
                 } else {
-                    x = 400-conf.itemWdt -35;
+                    x = conf.visWdt - conf.itemWdt;
                 }
                 
-                y = (i+j+offset)*(conf.itemHgt+10);
-                if (j>0) {
-                    offset ++;
-                }
-                svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
-                .attr("transform", "translate("+(165)+","+(y+30)+")");
+                y = offset*(conf.itemHgt+10);
 
+                svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
+                .attr("transform", "translate("+(0.5*conf.visWdt-35)+","+(y+0.5*conf.itemHgt+10)+")");
+                offset ++;
                 djl.chart_timing.drawCase(svg, conf, x, y, yUpHgt, grpData[j], hasLine);
                 direction = !direction;
             }
         }
+        console.log(offset);
     };
     djl.chart_timing.processAmount = function (data){
         var obj = {};
@@ -796,7 +800,8 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                         
                         var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
                         var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
-                        djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position);
+                        var nums = data.caseInfos.length;
+                        djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,nums);
                     }
                 }
             });

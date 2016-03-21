@@ -52,6 +52,7 @@
 		margin: 0 0 4px 81px;
 		border-bottom: 1px solid #ccd3d9;}
 		.lawer_info li{
+			min-height: 24px;
 			display: block;
 			padding-left: 18px;}
 			.lawer_info li::before{

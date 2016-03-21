@@ -103,7 +103,8 @@ angular.module('myApp.controllers')
 				var data = dat.info || {};
 				var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
 				var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
-				djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position);
+				var nums = data.caseInfos.length;
+				djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,nums);
 				$scope.amount = djl.chart_timing.processAmount(data);
 			}
 		});
