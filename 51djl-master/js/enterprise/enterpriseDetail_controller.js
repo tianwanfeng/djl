@@ -94,6 +94,17 @@ angular.module('myApp.controllers')
 				var data = djl.chart_quarterCaseAmount.dataProcess(dat.info);
 				//djl.chart_quarterCaseAmount.draw("svgQuarterCaseChart", djl.chart_quarterCaseAmount.conf, data);
 				djl.chart_quarterCaseAmount.drwLineArea("#case_statistic_wrap",data);
+
+				$(window).scroll(function(){ 
+		            //获取窗口的滚动条的垂直位置 
+		            var s = $(window).scrollTop(); 
+		            //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐 
+		            if( s > 500){ 
+		                $("#scrollVar").fadeIn(100); 
+		            }else{ 
+		                $("#scrollVar").fadeOut(200); 
+		            }; 
+		        }); 
 			}
 		});
 
