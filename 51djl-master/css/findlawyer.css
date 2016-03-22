@@ -281,6 +281,7 @@
 /*案由选择*/
 .case_sel{
 	background:#fff;
+	overflow: hidden;
 }
 .case_sel li{
 	padding-left: 26px;
@@ -333,6 +334,15 @@
 	color: #00a3ff;
 	font-size: 1.3rem;
 }
+.no_result_list li a{
+	position: relative;
+	height: 43px;
+	line-height: 43px;
+	border-top: 1px solid #c8c7cc;
+	color: #00a3ff;
+	font-size: 1.3rem;
+}
+
 .no_result_list li:after{
 	position: absolute;
 	right: 13px;
