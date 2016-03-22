@@ -445,7 +445,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 rectY = conf.itemMgn.b - 1;
                 lineY1 = conf.itemMgn.b;
             }
-            var textHgt = 22, textBaseX = conf.itemWdt/2 - conf.itemMgn.l;
+            var textHgt = 16, textBaseX = conf.itemWdt/2 - conf.itemMgn.l;
             
             var color = data.role==0?"#ff3a00":(data.role==1?"#00a3ff":"#96aab4");
 
@@ -462,7 +462,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 lineY1 = 0.5*conf.itemHgt + 5;
             }
             if (hasLine)
-                // g.append("line").attr("class", "line").attr({"x1": lineX, "y1": lineY1, "x2": lineX2, "y2": lineY1, "stroke": color});
+                //g.append("line").attr("class", "line").attr({"x1": lineX, "y1": lineY1, "x2": lineX2, "y2": lineY1, "stroke": color});
             
             var text = g.append("a").attr({"xlink:href": ctx+"document/"+data.uri, "target":"_blank"})
                 .append("text").attr("class", "desc newdesc").attr('text-anchor', 'middle').attr("transform", "translate(" + textBaseX + ",0)")
@@ -746,10 +746,10 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 // 加矩形
                 // svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
                 svg.append("rect").attr("class", "rect_time")
-                .attr({"width": 60, "height": 10, "x": 0.5*conf.visWdt-15, "y": y+0.5*conf.itemHgt+10, "stroke": '#c8c8c8',"fill":"#fff"});
+                .attr({"width": 57, "height": 16, "x": 0.5*conf.visWdt-17, "y": y+0.5*conf.itemHgt-8, "stroke": '#c8c8c8',"fill":"#fff"});
 
                 svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
-                .attr("transform", "translate("+(0.5*conf.visWdt-35)+","+(y+0.5*conf.itemHgt+10)+")");
+                .attr("transform", "translate("+(0.5*conf.visWdt-15)+","+(y+0.5*conf.itemHgt+4)+")");
                 offset ++;
                 djl.chart_timing.drawCase(svg, conf, x, y, yUpHgt, grpData[j], hasLine);
                 direction = !direction;
