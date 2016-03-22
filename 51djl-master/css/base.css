@@ -214,6 +214,16 @@ a.search-btn {
 }
 
 
+/*d3补充样式*/
+.newdesc{
+  font-size: .9rem !important;
+  line-height: 1rem !important;
+}
+.case-date{
+  font-size: .9rem !important;
+
+}
+
 
 
 

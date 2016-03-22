@@ -465,7 +465,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 g.append("line").attr("class", "line").attr({"x1": lineX, "y1": lineY1, "x2": lineX2, "y2": lineY1, "stroke": color});
             
             var text = g.append("a").attr({"xlink:href": ctx+"document/"+data.uri, "target":"_blank"})
-                .append("text").attr("class", "desc").attr('text-anchor', 'middle').attr("transform", "translate(" + textBaseX + ",0)")
+                .append("text").attr("class", "desc newdesc").attr('text-anchor', 'middle').attr("transform", "translate(" + textBaseX + ",0)")
     //          .attr("onclick", "djl.chart_timing.detail(evt)")
                 //.attr("onmouseover", "djl.chart_timing.inter(evt)").attr("onmouseout", "djl.chart_timing.outer(evt)");
     //          .attr({"d_code": data.caseCode, "d_id": data.caseId, "d_uri": data.uri});
