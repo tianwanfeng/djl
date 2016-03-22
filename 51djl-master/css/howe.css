@@ -53,13 +53,15 @@
 	color: #1b1a20;
 	font-weight: normal;
 }
-.detail_wrap .lawer_box_detail .lawer_info_id{
+.lawer_info li.lawer_info_id::before{
 	background: url(../img/icon_lawer_id.png) no-repeat left center;
     background-size: 13px 13px;
+
 }
-.detail_wrap .lawer_box_detail .lawer_info_phone{
+.lawer_info li.lawer_info_phone::before{
 	background: url(../img/icon_lawer_phone.png) no-repeat left center;
     background-size: 13px 13px;
+
 }
 .detail_wrap .lawer_box_detail .lawer_info_phone .phone_login{
 	width: 64px;
