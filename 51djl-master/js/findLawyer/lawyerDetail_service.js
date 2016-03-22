@@ -140,7 +140,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             
         },
         drwPie: function (id,data) {
-            var width = window.screen.width * 0.92 * 0.65,
+            var width = window.screen.width * 0.92 * 0.6,
                 height = 140,
                 radius = Math.min(width, height) / 2;
 
@@ -239,7 +239,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
                         return function(t) {
                             var d2 = interpolate(t);
                             var pos = outerArc.centroid(d2);
-                            pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+                            pos[0] = (radius-10) * (midAngle(d2) < Math.PI ? 1 : -1);
                             return "translate("+ pos +")";
                         };
                     })
@@ -270,7 +270,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
                         return function(t) {
                             var d2 = interpolate(t);
                             var pos = outerArc.centroid(d2);
-                            pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+                            pos[0] = (radius-10) * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
                             if(letterPos.length < data.data.length){
                                 letterPos.push(arc.centroid(d2));
                                 d.data.letterPos = arc.centroid(d2);

@@ -421,17 +421,17 @@
 }
 .chart_list{
 	border-top: 1px #d9d9d9 solid;
-	width: 35%;
+	width: 40%;
 	padding: 6px 0;
 	float: left;
 }
 .pie{
-	width: 65%;
+	width: 60%;
 	float: left;
 	margin-top: 20px;
 }
 .chart_list li{
-	height: 16px;
+	/* height: 16px; */
 	line-height: 16px;
 	font-size: 0.9rem;
 }
