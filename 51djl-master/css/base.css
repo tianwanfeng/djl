@@ -189,7 +189,8 @@ a.search-btn {
   font-size: 1.5rem;
 }
 .header_company{
-  position: relative;
+  position: fixed;
+  width: 100%;
   height: 46px;
   line-height: 46px;
 }

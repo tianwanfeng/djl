@@ -38,6 +38,8 @@
 
 }
 .findlawyer_select .inputbox input{
+	box-sizing:border-box;
+	width: calc(100% - 100px);
 	margin-left: 5px;
 	padding-left: 20px;
 	background: url('../img/search.png') no-repeat 3px 2px;
