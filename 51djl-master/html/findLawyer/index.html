@@ -13,7 +13,7 @@
                 <input placeholder="案由+地域/律所/律师" ng-model="searchKeys" my-focused="hideBanner()"></input>
                 <div class="button" ng-click="searchLawyer()">找律师</div>
             </div>
-            <div class="tip shadow" ng-show="errorTip">
+            <div class="tip shadow" ng-show="errorTip && focusVar2==0">
                 <div class="tip_sar"></div>
                 <div class="tip_box">
                     <div class="tip_icon"></div>

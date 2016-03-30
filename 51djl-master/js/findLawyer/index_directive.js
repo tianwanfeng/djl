@@ -25,10 +25,12 @@ flyrIndexDirective.directive('myTouchstart', [function() {
 
   element.bind('focus', function(event) {
           scope.$apply(function() { 
+            scope.focusVar2 = 1;
             scope.$eval(attr.myFocused);
           });
         }).bind('blur', function(evt) {
             scope.focusVar = 0;
+            scope.focusVar2 = 0;
         });;
     };
 }]);

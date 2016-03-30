@@ -11,7 +11,7 @@
             <strong>{{searchKeys}}</strong>
         </div><!-- /.list_title -->
 
-        <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box" ng-controller="lawyerliCtrl">
+        <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box clearfix" ng-controller="lawyerliCtrl">
             <a href="#/findLawyer/detail/{{lawyer.id}}#header">
                 <div class="avatar_box">
                     <img src="{{lawyer.photo}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'" alt="">

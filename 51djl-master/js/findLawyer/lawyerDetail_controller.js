@@ -3,7 +3,11 @@ angular.module('myApp.controllers')
   .controller('findLawyerDetailCtrl', ['$scope','$http','$routeParams','lyrpageChart','$rootScope','$location',
     function($scope,$http,$routeParams,lyrpageChart,$rootScope,$location) {
         $scope.id = $routeParams.id;
-        
+        $scope.itemShowMax = 2;
+        $scope.cotsMax = $scope.itemShowMax;
+        $scope.showCotsVar = true;
+        $scope.ctgsMax = $scope.itemShowMax;
+        $scope.showCtgsVar = true;
         var djl = lyrpageChart;
         //更新：$scope.id 为律师id
         $http.get("data/lawyerInfo.json")
@@ -30,6 +34,8 @@ angular.module('myApp.controllers')
                     $scope.total = djl.interact.getInteractyData().total; 
 
                     $scope.categorytotal = $scope.total;
+                    $scope.chartCots = djl.data.cots;
+                    $scope.chartCtgs = djl.data.ctgs;
                     //文书-查看更多按钮显隐
                     $scope.moreVar = $scope.maxBookSize < $scope.categorytotal;
 
@@ -222,6 +228,24 @@ angular.module('myApp.controllers')
 
         $scope.goFindLawyerIndex = function () {
             $location.path('/findLawyer/index');
+        };
+
+        $scope.toggleShowCots = function (data) {
+            $scope.showCotsVar = !$scope.showCotsVar;
+            if ($scope.showCotsVar) {
+                $scope.cotsMax = $scope.itemShowMax;
+            } else {
+                 $scope.cotsMax = data.length;
+            }
+        };
+
+        $scope.toggleShowCtgs = function (data) {
+            $scope.showCtgsVar = !$scope.showCtgsVar;
+            if ($scope.showCtgsVar) {
+                $scope.ctgsMax = $scope.itemShowMax;
+            } else {
+                 $scope.ctgsMax = data.length;
+            }
         };
         
   }])

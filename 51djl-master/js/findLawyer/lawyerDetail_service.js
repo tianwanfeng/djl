@@ -29,7 +29,9 @@ lawyerDetailServices.factory('lyrpageChart', function(){
     };
 
     djl.data = {
-        "cases": []
+        "cases": [],
+        "cots":[],
+        "ctgs":[]
     };
 
     djl.myd3chart = {
@@ -521,7 +523,8 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             var chart = this.dataTransform(data);
             //djl.myd3chart.drwBarChart("#chart_1",chart);
             djl.myd3chart.drwPie("#pie_1",chart);
-            djl.myd3chart.courtList("cotNameList",chart);
+            djl.data.cots = chart;
+            //djl.myd3chart.courtList("cotNameList",chart);
             this.drawBar("chart_1", data.items,"法院");
             //this.courtList("cotName", data.items);
             //this.drawPie("pie_1", data.items);
@@ -603,9 +606,9 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             data = this.datProcess(data);
             var chart = this.dataTransform(data);
             //djl.myd3chart.drwBarChart("#chart_2",chart);
-            djl.myd3chart.drwPie("#pie_2",chart);2
-            djl.myd3chart.courtList("ctgNameList",chart);
-
+            djl.myd3chart.drwPie("#pie_2",chart);
+            //djl.myd3chart.courtList("ctgNameList",chart);
+            djl.data.ctgs = chart;
             djl.chart.court.drawBar("chart_2", data.items,"案由");
             /*this.categoryList("ctgName", data.items);
             this.drawPie("ctgGraphCaserate", data.items);*/

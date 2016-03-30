@@ -13,7 +13,7 @@
                 <div class="avatar_box">
                     <img src="img/avatar.jpg" alt="">
                     {{lawyerInfo.lawyerName}}
-                    <span class="certified">已认证</span>
+                    <span class="certified" ng-show="{{lawyerInfo.isRegist == 1}}">已认证</span>
                 </div><!-- /.avatar_box -->
 
                 <ul class="lawer_info">
@@ -75,20 +75,29 @@
                                 <div id="chart_1"></div>
                                 <div class="chart_des">
                                     <ul class="chart_list" id="cotNameList">
+                                        <li ng-repeat="x in chartCots.data | limitTo:cotsMax" >
+                                            {{x.letter}}&nbsp;&nbsp;&nbsp;{{x.name}}
+                                        </li>
                                     </ul>
+                                    <div class="" ng-show="chartCots.data.length > itemShowMax" ng-click="toggleShowCots(chartCots.data)" ng-class="{'show':showCotsVar}">更多</div>
                                     <div class="pie" id="pie_1"></div>
                                 </div>
                             </div>
                         </div>
+                        <hr/>
                         <div class="item_other">
                             <div class="item_other_title">
-                                基于案由的案件及胜诉率统计
+                                <b class="item_title_text">基于案由的案件及胜诉率统计</b>
                             </div>
                             <div class="item_other_detail">
                                 <div id="chart_2"></div>
                                 <div class="chart_des">
                                     <ul class="chart_list" id="ctgNameList">
+                                        <li ng-repeat="x in chartCtgs.data | limitTo:ctgsMax" >
+                                            {{x.letter}}&nbsp;&nbsp;&nbsp;{{x.name}}
+                                        </li>
                                     </ul>
+                                    <div class="" ng-show="chartCtgs.data.length > itemShowMax" ng-click="toggleShowCtgs(chartCtgs.data)" ng-class="{'show':showCtgsVar}">更多</div>
                                     <div class="pie" id="pie_2"></div>
                                 </div>
                             </div>
@@ -100,8 +109,8 @@
                         <li ng-click="cotShow()"><a >地域&nbsp;&nbsp;></a></li>
                     </ul>
                     <div class="item_other">
-                        <div class="item_other_title item_title_control">
-                            <b class="item_title_text">所选条件：</b>
+                        <div class="item_other_title">
+                            所选条件：
                             <span ng-repeat="x in caseSelected" class="case_select">{{x+" "}}</span>
                         </div>
                         <div class="item_other_detail">
@@ -133,8 +142,8 @@
                         </div>
                     </div>
                     <div class="item_other">
-                        <div class="item_other_title">
-                            相关文书：
+                        <div class="item_other_title item_title_control">
+                            <b class="item_title_text">相关文书</b>
                         </div>
                         <div class="item_other_detail">
                             <div class="hidden" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter as showbooks"></div>
