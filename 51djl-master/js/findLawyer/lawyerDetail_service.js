@@ -73,7 +73,14 @@ lawyerDetailServices.factory('lyrpageChart', function(){
                 svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis);
+                    .call(xAxis)
+                    .append("text")
+                    .text("案由")
+                    .attr({"class":"x-text", "x":width, "y":0, "dx":"-1.4em", "dy":"1.4em"});
+                    //.append("text")
+                    //.attr("transform", "translate(" + 10 + ",0)")
+                    //.text("案由")
+                    ;
 
                 svg.append("g")
                     .attr("class", "y axis")
@@ -83,29 +90,32 @@ lawyerDetailServices.factory('lyrpageChart', function(){
                     .attr("y", -18)
                     .attr("dy", ".71em")
                     .style("text-anchor", "end")
-                    .text("（件）数件案");
+                    .text("案件数(件)")
+                    .attr({"class":"y-text","dx":"-1em"});
 
                 var bars = svg.append("g")
                     .attr("class", "bar_g")
                     .selectAll(".bar").data(data.data).enter()
                     .append("g").attr("class", "bar");
 
+                var barWid = Math.min(x.rangeBand(),20);
+                console.log(x.rangeBand());
                 bars.append("rect")
                     .attr("x", function(d) { return x(d.letter); })
-                    .attr("width", x.rangeBand())
+                    .attr("width", barWid)
                     .attr("y", function(d) { return y(d.count); })
                     .attr("height", function(d) { return height - y(d.count); })
                     .attr("fill", function(d) {return d.color});
 
                 bars.append("text")
                     .text(function(d){ return d.count})
-                    .attr("x", function(d) { return x(d.letter) + x.rangeBand()/2; })
+                    .attr("x", function(d) { return x(d.letter) + barWid/2; })
                     .attr("y", function(d) { return y(d.count) - 5; })
                     .attr("fill", "#898989")
                     .attr("text-anchor", "middle");
 
                 var line = d3.svg.line()
-                    .x(function(d) { return x(d.letter) + x.rangeBand()/2; })
+                    .x(function(d) { return x(d.letter) + barWid/2; })
                     .y(function(d) { return y(d.count / 2); });
 
                 var lines = svg.append("g")
@@ -117,7 +127,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
 
                 circle.append("circle")
                     .attr("class","points")
-                    .attr("cx",function(d){ return x(d.letter) + x.rangeBand()/2; })
+                    .attr("cx",function(d){ return x(d.letter) + barWid/2; })
                     .attr("cy",function(d){ return y(d.count / 2); })
                     .attr("r",2)
                     .attr("fill", "#ff3a00");
@@ -125,7 +135,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
                 circle.append("text")
                     .attr("class", "text_persent")
                     .text(function(d){ return d.persent + '%'})
-                    .attr("x", function(d) { return x(d.letter) + x.rangeBand()/2; })
+                    .attr("x", function(d) { return x(d.letter) + barWid/2; })
                     .attr("y", function(d) { return y(d.count / 2) - 8; })
                     .attr("fill", "#444")
                     .attr("text-anchor", "middle");
@@ -202,7 +212,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
 
                 slice.enter()
                     .insert("path")
-                    .style("fill", function(d) { return color(d.data.count); })
+                    .style("fill", function(d,i){return djl.chart.colors(i);})
                     .attr("class", "slice");
 
                 slice
@@ -320,7 +330,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
     },
     "court": {
         "barConf": {
-            "zone":{"wdt": 470, "hgt": 320, "margin": {"top": 0, "right": 10, "bottom": 20, "left": 20}},
+            "zone":{"wdt": window.screen.width*0.92, "hgt": 150, "margin": {"top": 0, "right": 10, "bottom": 20, "left": 20}},
             "bar": {"wdt": 25, "minHgt": 16, "maxHgt": 0.75, "span": 10},
         },
         "dataTransform":function (data) {
@@ -390,16 +400,131 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             
             return r;
         },
-        
+        "drawBar": function(cid, dat, type) {
+            var cf = this.barConf, wdt = cf.zone.wdt-cf.zone.margin.left-cf.zone.margin.right, hgt = cf.zone.hgt-cf.zone.margin.top-cf.zone.margin.bottom;
+            barPadding = (dat) ? cf.bar.span*dat.length/wdt : 0;
+            
+            var x = d3.scale.ordinal().rangeBands([0, wdt], barPadding);
+            var y = d3.scale.linear().range([hgt, 0]);
+            
+            var xAxis = d3.svg.axis().scale(x).orient("bottom").outerTickSize(0);
+            var yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0).tickFormat("");
+            
+            var c = document.getElementById(cid);
+            var zone = d3.select(c).append("svg").attr({"class": "gragh-ctg-item svg", "width": cf.zone.wdt, "height": cf.zone.hgt})
+                .append("g").attr("transform", "translate("+cf.zone.margin.left+","+cf.zone.margin.top+")");
+                
+            x.domain(dat.map(function(d){ return d.letter; }));
+            y.domain([0, d3.max(dat, function(d){ return d.num; })]);
+            
+            var xXAxis = zone.append("g").attr({"class": "x axis", "transform": "translate(0,"+(hgt+1)+")"}).call(xAxis);
+            xXAxis.append("text").text(type).attr({"class":"x-text", "x":wdt, "y":0, "dx":"-1.4em", "dy":"1.4em"});
+            var yYAxis = zone.append("g").attr({"class": "y axis","transform": "translate(-1,0)"}).call(yAxis);
+            yYAxis.append("text").text("案件数(件)").attr({"class":"y-text","dx":"-1em"});
+            
+            var yHgtTransfor = function(v){return cf.bar.minHgt + (hgt-y(v))*cf.bar.maxHgt;};
+            var yTransform = function(v){return hgt-yHgtTransfor(v);};
+            var percentCalc = function(datItem){
+                if (!datItem) {return 0;}
+                var r = 0;
+                if (!datItem.num) {return r;}
+                else {return new Number(datItem.win*100/datItem.num);}
+            };
+            
+            var drawBar = function(){
+                var barGs = zone.selectAll(".barG").data(dat).enter().append("g")
+                    .attr("class", "barG").attr("transform", function(d) {return "translate("+x(d.letter)+","+yTransform(d.num)+")"});
+                barGs.append("rect")
+                    .attr({"class": "bar", "fill": function(d,i){return djl.chart.colors(i);}, "width": cf.bar.wdt, "height": function(d){return yHgtTransfor(d.num);}})
+                    .attr({"x": function(d){return (x.rangeBand()-cf.bar.wdt)/2;}, "y": 0})
+                barGs.append("text")
+                    .attr({"class":"bar-tag", "text-anchor":"middle", "x":function(d){return x.rangeBand()/2;}, "y":"-5px"})
+                    .text(function(d){return d.num;});
+            }();
+            
+            var drawLine = function(){
+                var line = d3.svg.line().interpolate("linear")
+                    .x(function(d){return x.rangeBand()/2+x(d.letter);}).y(function(d){return hgt-yHgtTransfor(d.win);});
+                zone.append("path").datum(dat).attr("class", "line").attr("d", line);
+                //add circle
+                zone.selectAll("circle").data(dat).enter().append("circle")
+                    .attr("cx", function(d){return x.rangeBand()/2+x(d.letter);}).attr("cy", function(d){return hgt-yHgtTransfor(d.win);})
+                    .attr("r",3).attr('class', 'circle');
+                // show data detail
+                dat.forEach(function (datum, index) {
+                    var p = percentCalc(datum), dy = (p >= 50)?"1.4em":"-0.7em";
+                    zone.append("g").attr("transform", "translate("+(x.rangeBand()/2+x(datum.letter))+","+(hgt-yHgtTransfor(datum.win)) + ")")
+                        .append("text").text(p.toFixed(0)+"%").attr({"class":"line-text", "text-anchor":"middle", "dy":dy});
+                });
+            }();
+        },
+        "categoryList": function(cid, dat) {
+            if (dat) {
+                $("#"+cid).append("<dl class='dl-horizontal' id='ctgNameList'></dl>");
+                var target = $("#ctgNameList"), maxLength = 0;
+                $.each(dat, function(i,e){
+                    var name = e.name || ""; 
+                    maxLength = Math.max(maxLength, name.length);
+                    target.append("<dt>"+e.letter+"</dt><dd class='text-overflow' title='"+name+"'>"+name+"</dd>");
+                });
+                target.css("width", Math.min(21, maxLength+4.3)+"em");
+            }
+        },
+        "pieConf": {
+            "zone":{"wdt":window.screen.width * 0.92 * 0.6, "hgt":170},
+            "pie":{"outRadius":60, "inRadius":48},
+            "line":{"radius":120, "wdt":0},
+            "wordWdt":12
+        },
+        "drawPie": function(cid, dat) {
+            var cf = this.pieConf;
+            var centerX = cf.zone.wdt/2, centerY = cf.zone.hgt/2;
+            var svg = d3.select("#"+cid).append("svg").attr({"width": cf.zone.wdt, "height": cf.zone.hgt, "class": "svg gragh-ctg-rate"});
+    //      svg.append("line").attr({"stroke":"#f00", "stroke-width":"1px", "x1":0, "x2":cf.zone.wdt, "y1":centerY, "y2":centerY});
+            var text = svg.append("text").attr({"x":centerX, "y":centerY, "text-anchor":"middle"});
+            text.append("tspan").attr({"x":centerX, "y":centerY-18, "text-anchor":"middle", "class":"pie-tit"}).text("占律师");
+            text.append("tspan").attr({"x":centerX, "y":centerY+5, "text-anchor":"middle", "class":"pie-tit"}).text("所有案件");
+            text.append("tspan").attr({"x":centerX, "y":centerY+28, "text-anchor":"middle", "class":"pie-tit"}).text("的比例");
+            
+            var pie = d3.layout.pie().value(function(d){return d.num;}).sort(function(d1,d2){return d1.letter.localeCompare(d2.letter);});
+            var dataset = pie(dat);
+            var radius = Math.min(cf.zone.wdt,cf.zone.hgt)/2;
+            cf.pie.outRadius = radius*0.8;
+            cf.pie.inRadius = radius*0.5;
+            cf.line.radius = radius*0.9;
+            var arc = d3.svg.arc().outerRadius(cf.pie.outRadius).innerRadius(cf.pie.inRadius);
+            
+            var arcs = svg.selectAll("g").data(dataset).enter().append("g").attr({"transform": "translate("+centerX+","+centerY+")"});
+            arcs.append("path").attr("fill", function(d,i){return djl.chart.colors(i);}).attr("d", function(d){return arc(d);});
+                
+            var lineOutArc = d3.svg.arc().outerRadius(cf.line.radius).innerRadius(cf.line.radius);
+            var lineInArc = d3.svg.arc().outerRadius(cf.pie.outRadius).innerRadius(cf.pie.outRadius);
+            var midAngle = function(d) { return (d.endAngle+d.startAngle)/2; };
+            
+            arcs.append("polyline").attr("class","arc-line").attr("points", function(d) {
+                var direction = midAngle(d) < Math.PI;
+                var p0 = lineInArc.centroid(d), p1 = lineOutArc.centroid(d), p2 = [p1[0]+(direction ? cf.line.wdt : -cf.line.wdt), p1[1]];
+                return [p0, p1, p2];
+            });
+            var texts = arcs.append("text").attr({"class":"arc-txt", "x":function(d){return arc.centroid(d)[0];}, "y":function(d){return arc.centroid(d)[1];}});
+            texts.append("tspan").text(function(d){return d.data.letter;}).attr({"class":"ctg-name"})
+                .attr("dx", function(d){return midAngle(d)<Math.PI?"-0.2em":"-0.4em";})
+                .attr("dy", function(d){return midAngle(d)<Math.PI?"0.2em":"0.4em";});
+            texts.append("tspan").text(function(d){return d.data.rate;}).attr("class", "ctg-rate")
+                .attr("x", function(d){return lineOutArc.centroid(d)[0];})
+                .attr("y", function(d){return lineOutArc.centroid(d)[1]-5;})
+                .attr("dx", function(d){return midAngle(d)<Math.PI?"0.2em":"-0.2em";})
+                .attr("text-anchor", function(d){return midAngle(d) < Math.PI ? "start" : "end";});
+        },
         "courtInit": function(data) {
             data = this.datProcess(data);
             var chart = this.dataTransform(data);
-            djl.myd3chart.drwBarChart("#chart_1",chart);
+            //djl.myd3chart.drwBarChart("#chart_1",chart);
             djl.myd3chart.drwPie("#pie_1",chart);
             djl.myd3chart.courtList("cotNameList",chart);
-            /*this.drawBar("cotGraphCasenum", data.items);
-            this.courtList("cotName", data.items);
-            this.drawPie("cotGraphCaserate", data.items);*/
+            this.drawBar("chart_1", data.items,"法院");
+            //this.courtList("cotName", data.items);
+            //this.drawPie("pie_1", data.items);
         }
     },
     "category": {
@@ -477,12 +602,12 @@ lawyerDetailServices.factory('lyrpageChart', function(){
         "categoryInit": function(data) {
             data = this.datProcess(data);
             var chart = this.dataTransform(data);
-            djl.myd3chart.drwBarChart("#chart_2",chart);
+            //djl.myd3chart.drwBarChart("#chart_2",chart);
             djl.myd3chart.drwPie("#pie_2",chart);2
             djl.myd3chart.courtList("ctgNameList",chart);
 
-            /*this.drawBar("ctgGraphCasenum", data.items);
-            this.categoryList("ctgName", data.items);
+            djl.chart.court.drawBar("chart_2", data.items,"案由");
+            /*this.categoryList("ctgName", data.items);
             this.drawPie("ctgGraphCaserate", data.items);*/
         }
     },

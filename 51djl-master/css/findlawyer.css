@@ -330,7 +330,7 @@
 	position: relative;
 	height: 43px;
 	line-height: 43px;
-	border-top: 1px solid #c8c7cc;
+	border-top: 0.5px solid #c8c7cc;
 	color: #00a3ff;
 	font-size: 1.3rem;
 }

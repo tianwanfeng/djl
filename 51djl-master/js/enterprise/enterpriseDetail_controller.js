@@ -14,14 +14,22 @@ angular.module('myApp.controllers')
 		$scope.bookListVar = false;
 		$scope.tConditions = "全部";
 		$scope.rConditions = "全部";
-
+		$scope.focusVar = 0;
 		$scope.amount = {
 
 		}
 		$scope.timeparams = {
-			"startDate": $scope.tstart,
-			"endDate": $scope.tend,
-			"fragmentedDate": $scope.tFgd,
+			"startDate": "",
+			"endDate": "",
+			"fragmentedDate": "",
+			"category": [],
+			"area": [],
+			"court": []
+		};
+		var tmpTimeparams = {
+			"startDate": "",
+			"endDate": "",
+			"fragmentedDate": "",
 			"category": [],
 			"area": [],
 			"court": []
@@ -50,9 +58,16 @@ angular.module('myApp.controllers')
 			return ret;
 
 		};
-		var tmpTimeparams = $scope.timeparams;
+		
 
 	   $scope.relation = {
+			"relStart": "",
+			"relEnd": "",
+			"relFragment": 0,
+			"plaintiffs": [],
+			"category": []
+		};
+		$scope.tmpRelation = {
 			"relStart": "",
 			"relEnd": "",
 			"relFragment": 0,
@@ -82,9 +97,7 @@ angular.module('myApp.controllers')
 			return ret;
 
 		};
-		$scope.tmpRelation = $scope.relation;
-		//alert($scope.id);
-		//更新：$scope.id 为律师id
+		
 		var djl = enterprisePageChart;
 
 		//表格，条件初始化
@@ -182,17 +195,25 @@ angular.module('myApp.controllers')
 			$scope.detailBodyVar = false;
 		};
 		//时间轴图-日期选择
+		$scope.titouchStart = function (x) {
+			$scope.tiActiveVar = x;
+		};
 		$scope.fgdSel = function (x) {
-			//$scope.tend = '';
-			//$scope.tstart = '';
+			$scope.tiActiveVar = 0;
+			$('.time_sel_check li').removeClass('right');
 			tmpTimeparams.endDate = "";
 			$scope.tend = '';
 			tmpTimeparams.startDate = "";
 			$scope.tstart = '';
-			$scope.tFgd = x;
-			tmpTimeparams.fragmentedDate = x;
-			$('.time_sel_check li').removeClass('right');
-			$('.time_sel_check li[f='+x+']').addClass('right');
+
+			if ($scope.tFgd != x) {
+				$scope.tFgd = x;
+				tmpTimeparams.fragmentedDate = x;
+				$('.time_sel_check li[f='+x+']').addClass('right');
+			} else {
+				$scope.tFgd = 0;
+			}
+			
 		}
 		$scope.$watch('tstart',function(newValue,oldValue, scope){
 			tmpTimeparams.startDate = newValue;
@@ -245,8 +266,25 @@ angular.module('myApp.controllers')
 			console.log(tmpTimeparams.category);
 		}); 
 		//时间轴图-刷新数据
-		$scope.refreshTimeChart = function () {
-			$scope.timeparams = tmpTimeparams;
+		
+		$scope.time_refreshTimeChart = function () {
+			$scope.timeparams.fragmentedDate = tmpTimeparams.fragmentedDate;
+			$scope.timeparams.startDate = tmpTimeparams.startDate;
+			$scope.timeparams.endDate = tmpTimeparams.endDate;
+			refreshTimeChart();
+		};
+
+		$scope.ctg_refreshTimeChart = function () {
+			$scope.timeparams.category = tmpTimeparams.category;
+			refreshTimeChart();
+		};
+
+		$scope.cot_refreshTimeChart = function () {
+			$scope.timeparams.court = tmpTimeparams.court;
+			refreshTimeChart();
+		};
+
+		var refreshTimeChart = function () {
 			$scope.ctgSelVar = false;
 			$scope.cotSelVar = false;
 			$scope.timingDateSelVar = false;
@@ -261,8 +299,8 @@ angular.module('myApp.controllers')
 					var data = dat.info || {};
 					var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
 					var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
-					djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position);
-					$scope.tConditions = getTCondtions(tmpTimeparams);
+					djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,data.caseInfos.length);
+					$scope.tConditions = getTCondtions($scope.timeparams);
 				}
 			});
 		}
@@ -275,9 +313,17 @@ angular.module('myApp.controllers')
 		}
 
 		//关系图-日期选择
+		$scope.tFocused = function(x) {
+			$scope.focusVar = x;
+		};
+
+		$scope.rtouchStart = function (x) {
+			$scope.relActiveVar = x;
+		};
 		$scope.refgdSel = function (x) {
 			//$scope.tend = '';
 			//$scope.tstart = '';
+			$scope.relActiveVar = 0;
 			$scope.tmpRelation.relEnd = "";
 			$scope.reend = '';
 			$scope.tmpRelation.relStart = "";
@@ -310,7 +356,7 @@ angular.module('myApp.controllers')
 
 		$scope.$on ('PlnSelDel',function(d,data) {
 			for (var i = 0;i < $scope.tmpRelation.plaintiffs.length; i++) {
-				if ($scope.tmpRelation.plaintiffs[i] == data.name) {
+				if ($scope.tmpRelation.plaintiffs[i] == data) {
 					$scope.tmpRelation.plaintiffs.splice(i, 1);
 				}
 			}
@@ -344,12 +390,26 @@ angular.module('myApp.controllers')
 		};
 
 		//关系图-刷新数据
-		$scope.refreshRelationChart = function () {
+		$scope.time_refreshRelationChart = function () {
+			$scope.relation.relFragment = $scope.tmpRelation.relFragment;
+			$scope.relation.relEnd = $scope.tmpRelation.relEnd;
+			$scope.relation.relStart = $scope.tmpRelation.relStart;
+			refreshRelationChart();
+		}
+		$scope.plf_refreshRelationChart = function () {
+			$scope.relation.plaintiffs = $scope.tmpRelation.plaintiffs;
+			refreshRelationChart();
+		}
+		$scope.ctg_refreshRelationChart = function () {
+			$scope.relation.category = $scope.tmpRelation.category;
+			refreshRelationChart();
+		}
+		var refreshRelationChart = function () {
 			$scope.rectgSelVar = false;
 			$scope.plaintiffrelVar = false;
 			$scope.reDateSelVar = false;
 			$scope.detailBodyVar = true;
-			$scope.relation = $scope.tmpRelation;
+			//$scope.relation = $scope.tmpRelation;
 			//post $http.get("data/roleSummary2.json",params).success(...)
 			 var params = djl.relConditions.paramFormat($scope.id,$scope.relation);
 			

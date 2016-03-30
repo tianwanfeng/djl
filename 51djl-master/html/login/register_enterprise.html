@@ -8,12 +8,12 @@
     <div class="register_box">
         <div class="register_wrap">
             <div class="register_tab">
-                <a href="#/register/enterprise">企业</a>
-                <a class="current">个人</a>
+                <a class="current">企业</a>
+                <a href="#/register/personal">个人</a>
             </div><!-- /.register_tab -->
             <form name="myForm" novalidate>
                 <label class="reg_label" for="name">
-                    <span>姓名</span>
+                    <span>企业名称</span>
                     <input type="text" name="name"  ng-model="name" required ng-focus  ng-maxlength="30">
                     <div class="tip shadow tip_login" ng-show="myForm.name.$dirty && myForm.name.$invalid && !myForm.name.$focused">
                         <div class="tip_sar"></div>
@@ -45,7 +45,7 @@
                 </label>
 
                 <div class="reg_label right">
-                    <a class="label_title" href="javascript:void(0);" ng-click="getCheckCode()">获取验证码</a>
+                    <a class="label_title" href="javascript:void(0);">获取验证码</a>
                     <input type="text" name="code" id="code">
                 </div>
 
@@ -81,15 +81,13 @@
                 </label>
 
                 <label class="apply_label" for="apply">
-                    <input type="checkbox" checked="checked" ng-model="apply"/>
+                    <input type="checkbox" name="apply" id="apply" checked="checked" />
                     我同意并阅读
                     <a target="_blank" href="#">《点击律服务协议》</a>
                 </label>
 
-                <button class="btn_red"
-                    ng-click="personalSubmit()"
-                    ng-disabled="myForm.$invalid || !apply"
-                >注册登录</button>
+                <input type="submit" class="btn_red" value="注册登录" ng-disabled="myForm.phone.$dirty && myForm.phone.$invalid ||  
+myForm.pwd1.$dirty && myForm.pwd1.$invalid || myForm.pwd2.$dirty && myForm.pwd2.$invalid">
             </form>
         </div><!-- /.register_wrap -->
     </div><!-- /.register_box -->

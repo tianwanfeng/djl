@@ -122,22 +122,22 @@
     <div class="header_back">
         <div class="back" ng-click="reCancel()"></div>
         <div class="title">时间选择</div>
-        <div class="sure" ng-click="refreshRelationChart()">确定</div>
+        <div class="sure" ng-click="time_refreshRelationChart()">确定</div>
     </div>
     <div class="main">    
         <ul class="time_sel_check case_sel">
-            <li ng-click="refgdSel(1)" r="1" ng-class="{'right':retFgd == 1}">最近一年半</li>
-            <li ng-click="refgdSel(2)" r="2" ng-class="{'right':retFgd == 2}">最近半年</li>
-            <li ng-click="refgdSel(3)" r="3" ng-class="{'right':retFgd == 3}">今年至今</li>
-            <li ng-click="refgdSel(4)" r="4" ng-class="{'right':retFgd == 4}">有记录至今</li>
+            <li my-touchstart="rtouchStart(1)" my-touchend="refgdSel(1)" r="1" ng-class="{'right':retFgd == 1,'active':relActiveVar == 1}">最近一年半</li>
+            <li my-touchstart="rtouchStart(2)" my-touchend="refgdSel(2)" r="2" ng-class="{'right':retFgd == 2,'active':relActiveVar == 2}">最近半年</li>
+            <li my-touchstart="rtouchStart(3)" my-touchend="refgdSel(3)" r="3" ng-class="{'right':retFgd == 3,'active':relActiveVar == 3}">今年至今</li>
+            <li my-touchstart="rtouchStart(4)" my-touchend="refgdSel(4)" r="4" ng-class="{'right':retFgd == 4,'active':relActiveVar == 4}">有记录至今</li>
         </ul>
 
         <div class="date_picker">
             <div class="date_picker_input_box display-flexbox">
                 <div class="date_picker_input_title">时间范围：</div>
                 <div class="flexbox-children">
-                    <input readonly type="text" ng-model="restart" ts-datepicker placeholder="选择起始时间" class="date_picker_input active"/>
-                    <input readonly type="text" ng-model="reend" te-datepicker placeholder="选择结束时间" class="date_picker_input"/>
+                    <input readonly type="text" ng-model="restart" ts-datepicker placeholder="选择起始时间" class="date_picker_input" ng-class="{'active': focusVar ==1}" my-focused = "tFocused(1)"/>
+                    <input readonly type="text" ng-model="reend" te-datepicker placeholder="选择结束时间" class="date_picker_input" ng-class="{'active': focusVar ==2}" my-focused = "tFocused(2)"/>
                 </div>
             </div>
         </div>
@@ -147,13 +147,13 @@
     <div class="header_back">
         <div class="back" ng-click="reCancel()"></div>
         <div class="title">原告选择</div>
-        <div class="sure" ng-click="refreshRelationChart()">确定</div>
+        <div class="sure" ng-click="plf_refreshRelationChart()">确定</div>
     </div>
     <div class="main">    
         <ul class="case_sel">
-            <li ng-controller="plaintifflCtrl" ng-click="plaintiffSel(x)" 
+            <li ng-controller="plaintifflCtrl" my-touchstart="touchStart()" my-touchend="plaintiffSel(x)" 
                 ng-repeat="x in plaintiffs | orderBy :'x'"
-                ng-class="{'right':plaintiffClickVar}">
+                ng-class="{'right':plaintiffClickVar,'active': activeVar}">
                 {{x}}
             </li>
         </ul>
@@ -163,13 +163,13 @@
     <div class="header_back">
         <div class="back" ng-click="reCancel()"></div>
         <div class="title">案由选择</div>
-        <div class="sure" ng-click="refreshRelationChart()">确定</div>
+        <div class="sure" ng-click="ctg_refreshRelationChart()">确定</div>
     </div>
     <div class="main">    
         <ul class="case_sel">
-            <li ng-controller="rectgSelCtrl" ng-click="rectgSel(x)" 
+            <li ng-controller="rectgSelCtrl" my-touchstart="touchStart()" my-touchend="rectgSel(x)" 
                 ng-repeat="x in recategory | orderBy :'name'"
-                ng-class="{'right':rectgClickVar}">
+                ng-class="{'right':rectgClickVar,'active': activeVar}">
                 {{x.name}}({{x.count}})
             </li>
         </ul>
@@ -179,22 +179,22 @@
     <div class="header_back">
         <div class="back" ng-click="timingCancel()"></div>
         <div class="title">时间选择</div>
-        <div class="sure" ng-click="refreshTimeChart()">确定</div>
+        <div class="sure" ng-click="time_refreshTimeChart()">确定</div>
     </div>
     <div class="main">    
         <ul class="time_sel_check case_sel">
-            <li ng-click="fgdSel(1)" f="1" ng-class="{'right':tFgd == 1}">最近一年半</li>
-            <li ng-click="fgdSel(2)" f="2" ng-class="{'right':tFgd == 2}">最近半年</li>
-            <li ng-click="fgdSel(3)" f="3" ng-class="{'right':tFgd == 3}">今年至今</li>
-            <li ng-click="fgdSel(4)" f="4" ng-class="{'right':tFgd == 4}">有记录至今</li>
+            <li my-touchstart="titouchStart(1)" my-touchend="fgdSel(1)" f="1" ng-class="{'right':tFgd == 1,'active':tiActiveVar == 1}">最近一年半</li>
+            <li my-touchstart="titouchStart(2)" my-touchend="fgdSel(2)" f="2" ng-class="{'right':tFgd == 2,'active':tiActiveVar == 2}">最近半年</li>
+            <li my-touchstart="titouchStart(3)" my-touchend="fgdSel(3)" f="3" ng-class="{'right':tFgd == 3,'active':tiActiveVar == 3}">今年至今</li>
+            <li my-touchstart="titouchStart(4)" my-touchend="fgdSel(4)" f="4" ng-class="{'right':tFgd == 4,'active':tiActiveVar == 4}">有记录至今</li>
         </ul>
 
         <div class="date_picker">
             <div class="date_picker_input_box display-flexbox">
                 <div class="date_picker_input_title">时间范围：</div>
                 <div class="flexbox-children">
-                    <input readonly type="text" ng-model="tstart" ts-datepicker placeholder="选择起始时间" class="date_picker_input active"/>
-                    <input readonly type="text" ng-model="tend" te-datepicker placeholder="选择结束时间" class="date_picker_input"/>
+                    <input readonly type="text" ng-model="tstart" ts-datepicker placeholder="选择起始时间" class="date_picker_input" ng-class="{'active': focusVar ==1}" my-focused = "tFocused(1)"/>
+                    <input readonly type="text" ng-model="tend" te-datepicker placeholder="选择结束时间" class="date_picker_input" ng-class="{'active': focusVar ==2}" my-focused = "tFocused(2)"/>
                 </div>
             </div>
         </div>
@@ -204,13 +204,13 @@
     <div class="header_back">
         <div class="back" ng-click="timingCancel()"></div><!-- ng-click="cotCancel()" -->
         <div class="title">地域选择</div>
-        <div class="sure" ng-click="refreshTimeChart()">确定</div>
+        <div class="sure" ng-click="cot_refreshTimeChart()">确定</div>
     </div>
     <div class="main">    
         <ul class="case_sel">
-            <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
+            <li ng-controller="cotSelCtrl" my-touchstart="touchStart()" my-touchend="cotSel(x)" 
                 ng-repeat="x in court | orderBy :'name'"
-                ng-class="{'right':cotClickVar}">
+                ng-class="{'right':cotClickVar,'active': activeVar}">
                 {{x.name}}({{x.count}})
             </li>
         </ul>
@@ -220,13 +220,13 @@
     <div class="header_back">
         <div class="back" ng-click="timingCancel()"></div><!-- ng-click="cotCancel()" -->
         <div class="title">案由选择</div>
-        <div class="sure" ng-click="refreshTimeChart()">确定</div>
+        <div class="sure" ng-click="ctg_refreshTimeChart()">确定</div>
     </div>
     <div class="main">    
         <ul class="case_sel">
-            <li ng-controller="ctgSelCtrl" ng-click="ctgSel(x)" 
+            <li ng-controller="ctgSelCtrl" my-touchstart="touchStart()" my-touchend="ctgSel(x)" 
                 ng-repeat="x in category | orderBy :'name'"
-                ng-class="{'right':ctgClickVar}">
+                ng-class="{'right':ctgClickVar,'active': activeVar}">
                 {{x.name}}({{x.count}})
             </li>
         </ul>

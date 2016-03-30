@@ -42,7 +42,7 @@ body {
 input {
   margin: 0;
   padding: 0;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   border-style: none;
 }
 
@@ -185,9 +185,7 @@ a.search-btn {
   font-size: 1.5rem;
 }
 .header_company{
-  position: fixed;
-  width: 100%;
-  z-index: 20;
+  position: relative;
   height: 46px;
   line-height: 46px;
 }
@@ -213,7 +211,9 @@ a.search-btn {
   padding-top: 47px;
 }
 
-
+/* input:focus {
+  border: 1px solid #ff7200;
+} */
 /*d3补充样式*/
 .newdesc{
   font-size: .9rem !important;

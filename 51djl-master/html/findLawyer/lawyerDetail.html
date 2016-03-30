@@ -1,4 +1,6 @@
-
+<head>
+    <link rel="stylesheet" href="css/lyr.detail.css" media="all">
+</head>
 
     <div class="topbar" id="header" ng-show="detailBodyVar">
         <div class="toolbar_btn back_btn" ng-click="goBackPage()"></div>
@@ -157,7 +159,10 @@
                 </div>
             </div>
         </div>
-        
+        <div class="right_btn_wrap">
+            <a gotop style="display:none" id="scrollVar">滑动到页首</a>
+            <a href="#">对话</a>
+        </div><!-- /.right_btn_wrap -->
     </div>
     <div ng-show="categorySelVar">
             <div class="header_back"><!-- ng-click="ctgCancel()" -->
@@ -167,9 +172,8 @@
             </div>
             <div class="main">    
                 <ul class="case_sel">
-                    <li ng-controller="categorySelCtrl" ng-click="categorySel(x)" 
-                        ng-repeat="x in category | orderBy :'name'"
-                        ng-class="{'right':categoryClickVar}">
+                    <li ng-controller="categorySelCtrl"  my-touchstart="touchStart()" my-touchend="categorySel(x)" ng-repeat="x in category | orderBy :'name'"
+                        ng-class="{'right':categoryClickVar,'active': activeVar}">
                         {{x.name}}({{x.count}})
                     </li>
                 </ul>
@@ -184,11 +188,22 @@
         </div>
         <div class="main">    
             <ul class="case_sel">
-                <li ng-controller="cotSelCtrl" ng-click="cotSel(x)" 
-                    ng-repeat="x in court | orderBy :'name'"
-                    ng-class="{'right':cotClickVar}">
+                <li ng-controller="cotSelCtrl" my-touchstart="touchStart()" my-touchend="cotSel(x)" ng-repeat="x in court | orderBy :'name'" ng-class="{'right':cotClickVar,'active': activeVar}">
                     {{x.name}}({{x.count}})
                 </li>
             </ul>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(window).scroll(function(){ 
+            //获取窗口的滚动条的垂直位置 
+            var s = $(window).scrollTop(); 
+            //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐 
+            if( s > 500){ 
+                $("#scrollVar").fadeIn(100); 
+            }else{ 
+                $("#scrollVar").fadeOut(200); 
+            }; 
+        }); 
+    </script>

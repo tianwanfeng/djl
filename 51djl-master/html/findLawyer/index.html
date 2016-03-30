@@ -5,12 +5,12 @@
         <div class="header-sel"  ng-click="areaSelect()">{{curArea}}</div>
     </div>
     <div class="main panel">
-        <div class="findlawyer_head_pic" ng-show="pannerVar">
+        <div class="findlawyer_head_pic" ng-show="bannerVar">
             <img src="img/findlawyer_head.jpg"/>
         </div>
         <div class="findlawyer_select">
             <div class="inputbox">
-                <input placeholder="案由+地域/律所/律师" ng-model="searchKeys"></input>
+                <input placeholder="案由+地域/律所/律师" ng-model="searchKeys" my-focused="hideBanner()"></input>
                 <div class="button" ng-click="searchLawyer()">找律师</div>
             </div>
             <div class="tip shadow" ng-show="errorTip">
@@ -27,7 +27,7 @@
         </div>
         <div>
             <ul index="{{x.index}}" ng-repeat="x in list" class="icon-text-line clearfix">
-                <li index="{{y.index}}" ng-repeat="y in x.menus" ng-click="flm_select(y)">
+                <li index="{{y.index}}" ng-repeat="y in x.menus" my-touchstart="touchStart()" my-touchend="flm_select(y)" ng-class="{'active': activeVar}">
                     <div class="icon {{ y.shortName }}"></div>
                     <div class="text">{{ y.categoryName }}</div>
                 </li>
@@ -57,12 +57,12 @@
             <div class="city-first-list">
                 <div class="title">
                     <span class="text">当前选择：</span>
-                    <span class="title-first" ng-click="provinceSelect(provinces)">全国</span>
-                    <span ng-show="provincesFlag" class="provinces title-second" ng-click="citySelect(citys)">{{provinceName}}</span>
+                    <span class="title-first" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="provinceSelect(provinces)" >全国</span>
+                    <span ng-show="provincesFlag" class="provinces title-second" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="citySelect(citys)">{{provinceName}}</span>
                     <span ng-show="citysFlag" class="citys title-second">{{cityName}}</span>
                 </div>
                 <div class="clearfix">
-                    <div ng-repeat="x in area" class="item" ng-click="getSubAreas(x)"><div>{{x.name}}</div></div>
+                    <div ng-repeat="x in area" class="item" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="getSubAreas(x)"><div>{{x.name}}</div></div>
                 </div>
             </div>
         </div>    

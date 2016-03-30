@@ -389,15 +389,15 @@
 	font-size: 1.3rem;
 	color: #403e3e;
 }
-.bar {
+/* .bar {
   fill: steelblue;
 }
 
 .bar:hover {
   fill: brown;
-}
+} */
 
-.axis {
+/* .axis {
   font: 10px sans-serif;
 }
 
@@ -410,7 +410,7 @@
 
 .x.axis path {
   display: none;
-}
+} */
 .text_persent{
 	font-size: 0.8rem;
 }
