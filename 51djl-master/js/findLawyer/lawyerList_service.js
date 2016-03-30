@@ -88,6 +88,7 @@ lawyerListServices.factory('lyrListChart', function(){
                 experience = (year - parseInt(det.careerStart.substring(0, 4)));
             } catch(e){ experience = ""; }}
             if (det.photos) {
+                var fileDomain = "http://pic.51djl.cn/";
                 try {
                     var photoArr = eval("("+det.photos+")");
                     if (photoArr.length > 0) {

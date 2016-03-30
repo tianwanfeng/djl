@@ -12,7 +12,7 @@ angular.module('myApp.controllers')
                 if (dat.info) {
                     $scope.isLastPageVar = dat.info.dat.lastPage;
                     //$scope.isLastPageVar = false;//恢复注释，一直显示"查看更多"按钮
-                    
+                    djl.data.info = [];
                     djl.query.resultProcess(dat.info);
                     $scope.lawyerList = djl.getData().info;
 

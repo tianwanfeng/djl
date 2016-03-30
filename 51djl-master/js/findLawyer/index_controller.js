@@ -1,7 +1,7 @@
 
 angular.module('myApp.controllers',[])
   .controller('findLawyerIndexCtrl', ['$scope','$http','$location', function($scope,$http,$location) {
-        $scope.pannerVar = true;
+        $scope.bannerVar = true;
         $scope.errorTip = false;
         //搜索关键字临时cache
         var tmpCtgKey ={
@@ -35,6 +35,9 @@ angular.module('myApp.controllers',[])
         $scope.searchKeys="";
         $scope.curArea = "选择";
 
+        $scope.hideBanner = function() {
+            $scope.bannerVar = false;
+        }
         //地域选择
         $scope.areaSelect = function() {
             //51djl_jquery 
@@ -100,7 +103,7 @@ angular.module('myApp.controllers',[])
 
         //一级菜单-点击事件
         $scope.flm_select = function (data) {
-            $scope.pannerVar = false;
+            $scope.bannerVar = false;
             var lv0MenuIndex = data.index.split('.')[0];
 
             $scope.subMenuTitlelv1 = data.categoryName;

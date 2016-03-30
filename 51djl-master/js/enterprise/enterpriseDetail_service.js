@@ -746,10 +746,10 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 // 加矩形
                 // svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
                 svg.append("rect").attr("class", "rect_time")
-                .attr({"width": 57, "height": 16, "x": 0.5*conf.visWdt-17, "y": y+0.5*conf.itemHgt-8, "stroke": '#c8c8c8',"fill":"#fff"});
+                .attr({"width": 56, "height": 16, "x": timeLineX-25, "y": y+0.5*conf.itemHgt-8, "stroke": '#c8c8c8',"fill":"#fff"});
 
                 svg.append("text").text(dateArr[i].substring(0,10)).attr("class", "case-date")
-                .attr("transform", "translate("+(0.5*conf.visWdt-15)+","+(y+0.5*conf.itemHgt+4)+")");
+                .attr("transform", "translate("+(timeLineX-24)+","+(y+0.5*conf.itemHgt+4)+")");
                 offset ++;
                 djl.chart_timing.drawCase(svg, conf, x, y, yUpHgt, grpData[j], hasLine);
                 direction = !direction;

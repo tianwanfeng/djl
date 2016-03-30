@@ -39,7 +39,7 @@ angular.module('myApp.controllers')
         $scope.detailBodyVar = true;
 
         //交互分析/综合分析tab切换处理
-        $scope.tabVar = 1;
+        $scope.tabVar = 2;
         
         $scope.tabSelected1 = function () {
             $scope.tabVar = 1;
