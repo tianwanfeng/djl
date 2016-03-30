@@ -42,7 +42,7 @@ body {
 input {
   margin: 0;
   padding: 0;
-  -webkit-appearance: none;
+  /*-webkit-appearance: none;*/
   border-style: none;
 }
 
