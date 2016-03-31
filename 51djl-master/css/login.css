@@ -65,6 +65,7 @@
     font-size: 1.3rem;
 }
 .login_button{
+    display: block;
     width: 274px;
     height: 49px;
     line-height: 49px;
@@ -74,6 +75,7 @@
     text-align: center;
     font-size: 1.8rem;
     color: #6c808a;
+    background-color: transparent;
 }
 .login_forget{
     padding-right: 10px;
@@ -169,3 +171,13 @@
     .btn_red:disabled{
         color: #f2f3f7;
     }
+
+
+.user a{color: #fff;}
+
+
+
+
+
+
+

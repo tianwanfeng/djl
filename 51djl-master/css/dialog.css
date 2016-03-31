@@ -104,3 +104,33 @@
 	padding: 8px;
 	margin: 0;
 }
+
+
+
+.common_dialog {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.4);
+	z-index: 1000;
+}
+.alert_wrapper {
+	border-radius: 5px;
+	background: #fff;
+	margin: 45% 10px;
+}
+.alert_wrapper .title{
+	font-size: 1.2rem;
+	padding:10px 0 5px 21px;
+	border-bottom: 1px solid #919191;
+}
+.alert_main{
+	height: 90px;
+	line-height: 90px;
+	text-align: center;
+	font-size: 1.5rem;
+
+}
