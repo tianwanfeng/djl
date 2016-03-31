@@ -465,6 +465,21 @@
 .lawyerDetail_rate_l .rate b.blue{
 	background: #00a3f5;
 }
+.chart_list_more{
+	text-align: center;
+	border-top: 1px solid #d9d9d9;
+	padding: 5px 0;
+}
+.chart_list_more span{
+	padding-right: 15px;
+	background: url('../img/sarr.png') no-repeat right;
+	background-size: 10px 7px;
+}
+.chart_list.open .chart_list_more span{
+	background: url('../img/sarr_open.png') no-repeat right;
+	background-size: 10px 7px;
+
+}
 
 
 
