@@ -3,7 +3,7 @@ angular.module('myApp.controllers')
   .controller('findLawyerDetailCtrl', ['$scope','$http','$routeParams','lyrpageChart','$rootScope','$location',
     function($scope,$http,$routeParams,lyrpageChart,$rootScope,$location) {
         $scope.id = $routeParams.id;
-        $scope.itemShowMax = 2;
+        $scope.itemShowMax = 7;
         $scope.cotsMax = $scope.itemShowMax;
         $scope.showCotsVar = true;
         $scope.ctgsMax = $scope.itemShowMax;
