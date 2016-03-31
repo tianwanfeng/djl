@@ -505,5 +505,5 @@ angular.module('myApp.controllers')
 		$scope.$on('ctgShow', function(d,data) {  
 			//$scope.ctgClickVar = false; 
 		}); 
-	}]);
+}]);
 

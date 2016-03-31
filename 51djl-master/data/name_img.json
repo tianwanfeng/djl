@@ -1,1 +1,13 @@
-{"code":1,"name":"手机号已注册","img":""}
+{
+    "code": 1,
+    "msg": null,
+    "info": {
+        "loginStatus": 0,
+        "name": "郭超",
+        "isAuth": 0,
+        "userType": 0,
+        "photoLg": "user/photo/201603/15200389834997760_220×220.jpg",
+        "photoMd": "user/photo/201603/15200389834997760_160×160.jpg",
+        "photoSm": "user/photo/201603/15200389834997760_30×30.jpg"
+    }
+}

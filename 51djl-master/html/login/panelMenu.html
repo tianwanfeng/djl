@@ -1,36 +1,35 @@
 <div id="menu" class="menu menu_law">
     <div ng-show="loginStatus==0">
-        no login
         <div><img src=""/></div>
         <div class="text"><span>点击登录</span></div>
         <div class="user"><a href="#/register/personal"><span>用户注册</span></a></div>
         <div class="user"><a href="#/register/lawyer"><span>律师注册</span></a></div>
         <div class="user_1"><span>问题反馈</span></div>
     </div>
-    <div ng-show="loginStatus==1">
-        2 login
+    <div ng-show="userType==0">
+        
     </div>
-    <div ng-show="loginStatus==2">
-        2 login
+    <div ng-show="userType==1">
+        
     </div>
-    <div ng-show="loginStatus==3">
-        3 login
+    <div ng-show="userType==2">
+        
     </div>
 </div>
 
 <script>
     
     var slideout = new Slideout({
-                'panel': document.getElementById('panel'),
-                'menu': document.getElementById('menu'),
-                'side': 'right',
-                'padding': 256,
-                'tolerance': 10
-            });
-            document.querySelector('.js-slideout-toggle').addEventListener('click', function() {
-                slideout.toggle();
-            });
-            document.querySelector('.menu').addEventListener('click', function(eve) {
-                if (eve.target.nodeName === 'A') { slideout.close(); }
-            });
+        'panel': document.getElementById('panel'),
+        'menu': document.getElementById('menu'),
+        'side': 'right',
+        'padding': 256,
+        'tolerance': 10
+    });
+    document.querySelector('.js-slideout-toggle').addEventListener('click', function() {
+        slideout.toggle();
+    });
+    document.querySelector('.menu').addEventListener('click', function(eve) {
+        if (eve.target.nodeName === 'A') { slideout.close(); }
+    });
 </script>

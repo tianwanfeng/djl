@@ -76,7 +76,7 @@
                             <div class="item_other_detail">
                                 <div id="chart_1"></div>
                                 <div class="chart_des">
-                                    <ul class="chart_list" id="cotNameList">
+                                    <ul class="chart_list" id="cotNameList" ng-class="{'open':!showCotsVar}">
                                         <li ng-repeat="x in chartCots.data | limitTo:cotsMax" >
                                             {{x.letter}}&nbsp;&nbsp;&nbsp;{{x.name}}
                                         </li>
