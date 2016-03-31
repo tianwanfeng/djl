@@ -33,4 +33,20 @@ flyrIndexDirective.directive('myTouchstart', [function() {
             scope.focusVar2 = 0;
         });;
     };
-}]);
+}]).directive('panelmenu', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'html/login/panelMenu.html',
+        transclude: true,
+        controller:function($scope,$http){
+            console.info("enter directive controller");
+            $http.get("data/register_err.json").success(function(data){
+               console.info("got data");
+               if(data.info ==1) {
+                  $scope.img = data.img;
+                  $scope.name = data.name;
+               }
+            });
+          }
+      }
+});

@@ -9,7 +9,8 @@ angular.module('myApp', [
   'enterpriseDetailDirective',
   'lyrD3Directive',
   'onfocusDirective',
-  'flyrIndexDirective'
+  'flyrIndexDirective',
+  'ngCookies'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -41,8 +42,13 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'html/login/register_enterprise.html',
         controller: 'enterpriseRegisterCtrl'    
     })
-    .when('/register/personal2', {
-        templateUrl: 'html/login/register_personal2.html',
+    .when('/register/lawyer', {
+        templateUrl: 'html/login/register_lawyer.html',
+        controller: 'lawyerRegisterCtrl'
+    })
+    .when('/login', {
+        templateUrl: 'html/login/login.html',
+        controller: 'loginCtrl'
     });
   $routeProvider.otherwise({redirectTo: '/register/personal'});
 }]);

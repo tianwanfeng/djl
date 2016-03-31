@@ -1,0 +1,74 @@
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.slideout-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+
+.slideout-panel {
+  /*position:relative;*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fafbfb;
+  z-index: 1;
+  will-change: transform;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+/*new*/
+.slideout-menu { left: auto; }
+.btn-hamburger { left: auto; right: 12px;}
+.box { height: 1500px; }
+.menu_law{background: #222222;font-size: 1.5rem;color: #fff;}
+.menu_law img{
+  width: 82px;
+  height: 82px;
+  margin: 13px auto;
+}
+.menu_law>div{text-align: center;}
+.menu_law .text{
+  margin-bottom: 15px;
+}
+.menu_law .user{
+  margin: 25px 0;
+}
+.menu_law .user span{
+  padding-right: 15px;
+  background: url(../img/login_sar.png) no-repeat right 4px;
+  background-size: 8px 8px;
+}
+.menu_law .user_1{
+  text-align: left;
+  margin-top: 200px;
+  padding-left: 50px;
+  background: url(../img/login_info.png) no-repeat 19px 0px;
+  background-size: 16px 16px;
+\
+}
+
+
+
+

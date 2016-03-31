@@ -205,13 +205,14 @@ angular.module('myApp.controllers')
 			$scope.tend = '';
 			tmpTimeparams.startDate = "";
 			$scope.tstart = '';
-
+			
 			if ($scope.tFgd != x) {
 				$scope.tFgd = x;
-				tmpTimeparams.fragmentedDate = x;
 				$('.time_sel_check li[f='+x+']').addClass('right');
+				tmpTimeparams.fragmentedDate = x;
 			} else {
 				$scope.tFgd = 0;
+				tmpTimeparams.fragmentedDate = 0;
 			}
 			
 		}
@@ -300,6 +301,7 @@ angular.module('myApp.controllers')
 					var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
 					var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
 					djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,data.caseInfos.length);
+					$scope.amount = djl.chart_timing.processAmount(data);
 					$scope.tConditions = getTCondtions($scope.timeparams);
 				}
 			});
@@ -320,18 +322,23 @@ angular.module('myApp.controllers')
 		$scope.rtouchStart = function (x) {
 			$scope.relActiveVar = x;
 		};
+
 		$scope.refgdSel = function (x) {
-			//$scope.tend = '';
-			//$scope.tstart = '';
 			$scope.relActiveVar = 0;
+			$('.time_sel_check li').removeClass('right');
 			$scope.tmpRelation.relEnd = "";
 			$scope.reend = '';
 			$scope.tmpRelation.relStart = "";
 			$scope.restart = '';
-			$scope.reFgd = x;
-			$scope.tmpRelation.relFragment = x;
-			$('.time_sel_check li').removeClass('right');
-			$('.time_sel_check li[r='+x+']').addClass('right');
+			
+			if ($scope.reFgd!=x) {
+				$scope.reFgd = x;
+				$scope.tmpRelation.relFragment = x;
+				$('.time_sel_check li[r='+x+']').addClass('right');
+			} else {
+				$scope.reFgd = 0;
+				$scope.tmpRelation.relFragment = 0;
+			}
 		}
 		$scope.$watch('restart',function(newValue,oldValue, scope){
 			$scope.tmpRelation.relStart = newValue;

@@ -1,4 +1,3 @@
-
     <div class="header">
         <div class="header-icon"></div>
         <span>找律师</span>
@@ -27,24 +26,24 @@
         </div>
         <div>
             <ul index="{{x.index}}" ng-repeat="x in list" class="icon-text-line clearfix">
-                <li index="{{y.index}}" ng-repeat="y in x.menus" my-touchstart="touchStart()" my-touchend="flm_select(y)" ng-class="{'active': activeVar}">
+                <li index="{{y.index}}" ng-repeat="y in x.menus" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="flm_select(y)" >
                     <div class="icon {{ y.shortName }}"></div>
                     <div class="text">{{ y.categoryName }}</div>
                 </li>
                 <div class="first-list hidden">
-                    <div index="{{z.index}}" ng-click="slm_select(z)" ng-repeat="z in firstLvlMenu" class="item">
+                    <div index="{{z.index}}" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="slm_select(z)" ng-repeat="z in firstLvlMenu" class="item">
                           {{z.categoryName}}
                     </div>
                 </div>
                 <div class="second-list hidden">
                     <div class="title">
                         <span class="text">当前选择：</span>
-                        <span class="title-first" ng-click="lvl1TitleClick(lvl1Menus)">{{subMenuTitlelv1}}</span>
+                        <span class="title-first" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="lvl1TitleClick(lvl1Menus)">{{subMenuTitlelv1}}</span>
                         <span class="title-second">{{subMenuTitlelv2}}</span>
                 
                     </div>
                     <div class="clearfix">
-                        <div ng-click="tlm_select(o)" ng-repeat="o in secondLvlMenu" class="item">{{o.categoryName}}</div>
+                        <div ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="tlm_select(o)" ng-repeat="o in secondLvlMenu" class="item">{{o.categoryName}}</div>
                     </div>
                 </div>
             </ul>

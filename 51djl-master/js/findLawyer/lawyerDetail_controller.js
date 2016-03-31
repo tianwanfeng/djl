@@ -14,7 +14,7 @@ angular.module('myApp.controllers')
             .success(function(dat) {
                 //初始化页面所需数据
                 if (dat.code == 1 && dat.info) {
-                    $scope.lawyerInfo = dat.info.summary;
+                    $scope.lawyerInfo = dat.info;
                     $("body").scrollTop(0);
                 }
             });

@@ -1,42 +1,44 @@
-
-    <div class="header_company"> 
-        <div class="icon_home"></div>
-        <div class="title">企业诉讼分析</div>
-        <div class="icon_set"></div>
-    </div>
-    <div class="main">    
-        <div class="findlawyer_head_pic">
-            <img src="img/enterprise_head.png"/>
+    <panelmenu></panelmenu>
+    <div id="panel">
+        <div class="header_company"> 
+            <div class="icon_home"></div>
+            <div class="title">企业诉讼分析</div>
+            <div class="icon_set js-slideout-toggle"></div>
         </div>
-        <div class="findlawyer_select">
-            <div class="inputbox">
-                <input placeholder="请输入企业名称" ng-model="searchKeys"></input>
-                <div class="button" ng-click="searchEnterprise()">搜索</div>
+        <div class="main">    
+            <div class="findlawyer_head_pic">
+                <img src="img/enterprise_head.png"/>
             </div>
-            <div class="tip shadow tip_long" ng-show="errorTip && focusVar2==0">
-                <div class="tip_sar"></div>
-                <div class="tip_box">
-                    <div class="tip_icon"></div>
-                    <div>
-                        <span>很抱歉，没有找到您搜索企业的诉讼信息</span>，可能因为： <br/>1、企业名称输入错误（您可以核对企业名称后重新搜索或在记不清楚全称时采用关键字搜索...)。<br/>
-                        2、该企业没有发生过诉讼。 <br/>
-                        3、基于人民法院未将该企业诉讼信息上传互联网，导致搜索不到。
+            <div class="findlawyer_select">
+                <div class="inputbox">
+                    <input placeholder="请输入企业名称" ng-model="searchKeys"></input>
+                    <div class="button" ng-click="searchEnterprise()">搜索</div>
+                </div>
+                <div class="tip shadow tip_long" ng-show="errorTip && focusVar2==0">
+                    <div class="tip_sar"></div>
+                    <div class="tip_box">
+                        <div class="tip_icon"></div>
+                        <div>
+                            <span>很抱歉，没有找到您搜索企业的诉讼信息</span>，可能因为： <br/>1、企业名称输入错误（您可以核对企业名称后重新搜索或在记不清楚全称时采用关键字搜索...)。<br/>
+                            2、该企业没有发生过诉讼。 <br/>
+                            3、基于人民法院未将该企业诉讼信息上传互联网，导致搜索不到。
+                        </div>
                     </div>
+                    
                 </div>
                 
             </div>
-            
-        </div>
-        <div class="enterp_bg" ng-show="judgeVar">
-            <div class="no_result">
-                <div class="no_result_tips">
-                没有找到您搜索的企业，请确认公司名称是否正确，您是在找：
+            <div class="enterp_bg" ng-show="judgeVar">
+                <div class="no_result">
+                    <div class="no_result_tips">
+                    没有找到您搜索的企业，请确认公司名称是否正确，您是在找：
+                    </div>
+                    <ul class="no_result_list">
+                        <li ng-repeat="x in judges">
+                            <a href="#/enterprise/detail/{{x}}">{{$index+1}}、{{x}}</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="no_result_list">
-                    <li ng-repeat="x in judges">
-                        <a href="#/enterprise/detail/{{x}}">{{$index+1}}、{{x}}</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

@@ -1,11 +1,13 @@
 angular.module('myApp.controllers')
-	.controller('enterpriseRegisterCtrl', ['$scope','$http','$location', function($scope,$http,$location) {
+	.controller('lawyerRegisterCtrl', ['$scope','$http','$location', function($scope,$http,$location) {
 	       $scope.apply = true;
-           $scope.loginStatus = 3;
+           $scope.loginStatus = 2;
             $scope.personalSubmit = function () {
                 //register/lawyer/action
                 var param = {
-                    "enterpriseName":$scope.name,
+                    "name":$scope.name,
+                    "office":$scope.office,
+                    "license":$scope.license,
                     "phone":$scope.phone, 
                     "phoneValidNo":$scope.code,
                     "password":$scope.pwd1,

@@ -11,18 +11,20 @@
         <div class="detail_wrap" ng-show="detailBodyVar">
             <div class="lawer_box lawer_box_detail">
                 <div class="avatar_box">
-                    <img src="img/avatar.jpg" alt="">
-                    {{lawyerInfo.lawyerName}}
-                    <span class="certified" ng-show="{{lawyerInfo.isRegist == 1}}">已认证</span>
+                    <img src="http://pic.51djl.cn/{{lawyerInfo.detail.photoMd}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'" alt="">
+                    {{lawyerInfo.summary.lawyerName}}
+                    <span class="certified" ng-show="{{lawyerInfo.base.isVerified == 1}}">已认证</span>
                 </div><!-- /.avatar_box -->
 
                 <ul class="lawer_info">
-                    <li class="lawer_info_sex">{{lawyerInfo.lawyerName}}</li>
-                    <li class="lawer_info_years">３年</li>
-                    <li class="lawer_info_id">{{lawyerInfo.lawyerId}}</li>
-                    <li class="lawer_info_skill">{{lawyerInfo.workField}}</li>
-                    <li class="lawer_info_address">{{lawyerInfo.workArea}}</li>
-                    <li class="lawer_info_company">{{lawyerInfo.lawOffice}}</li>
+                    <li class="lawer_info_sex" ng-show="lawyerInfo.detail.gender ==1">女</li>
+                    <li class="lawer_info_sex" ng-show="lawyerInfo.detail.gender ==0">男</li>
+                    <li class="lawer_info_sex" ng-hide="lawyerInfo.detail.gender ==0||lawyerInfo.detail.gender ==1"></li>
+                    <li class="lawer_info_years">{{lawyerInfo.detail.experienceYear}}年</li>
+                    <li class="lawer_info_id">{{lawyerInfo.summary.lawyerId}}</li>
+                    <li class="lawer_info_skill">{{lawyerInfo.summary.workField}}</li>
+                    <li class="lawer_info_address">{{lawyerInfo.summary.workArea}}</li>
+                    <li class="lawer_info_company">{{lawyerInfo.summary.lawOffice}}</li>
                     <li class="lawer_info_phone"><a class="phone_login" href="####">登录查看</a></li>
                 </ul><!-- /.lawer_info -->
             </div>
