@@ -3,6 +3,8 @@ angular.module('myApp.controllers')
         function($scope,$http,$location) {
             $scope.apply = true;
             $scope.loginStatus = 1;
+            $scope.loginErr = false;
+            
             $scope.personalSubmit = function () {
                 //register/lawyer/action
                 var param = {
@@ -17,7 +19,8 @@ angular.module('myApp.controllers')
                         if (dat.code == 1){
                             alert("submitSuc");
                         }else {
-                            alert(dat.msg);
+                            $scope.errorMsg = dat.msg;
+                            $scope.loginErr = true;
                         }
                     });
             }

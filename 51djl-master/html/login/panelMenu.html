@@ -1,19 +1,27 @@
 <div id="menu" class="menu menu_law">
-    <div ng-show="loginStatus==0">
-        <div><img src=""/></div>
+    <div ng-if="slideMenu.loginStatus==0">
+        <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
         <div class="text"><span>点击登录</span></div>
         <div class="user"><a href="#/register/personal"><span>用户注册</span></a></div>
         <div class="user"><a href="#/register/lawyer"><span>律师注册</span></a></div>
         <div class="user_1"><span>问题反馈</span></div>
     </div>
-    <div ng-show="userType==0">
-        
-    </div>
-    <div ng-show="userType==1">
-        
-    </div>
-    <div ng-show="userType==2">
-        
+    <div ng-if="slideMenu.loginStatus==1">
+        <div ng-if="slideMenu.userType==0">
+            <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
+            <div class="text"><span>{{slideMenu.name}}</span></div>
+            <div class="user_1"><span>{{slideMenu.userType}}</span></div>
+        </div>
+        <div ng-if="slideMenu.userType==1">
+            <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
+            <div class="text"><span>{{slideMenu.name}}</span></div>
+            <div class="user_1"><span>{{slideMenu.userType}}</span></div>
+        </div>
+        <div ng-if="slideMenu.userType==2">
+            <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
+            <div class="text"><span>{{slideMenu.name}}</span></div>
+            <div class="user_1"><span>{{slideMenu.userType}}</span></div>
+        </div>
     </div>
 </div>
 

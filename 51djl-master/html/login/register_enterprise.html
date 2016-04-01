@@ -6,9 +6,9 @@
         <div class="icon_set js-slideout-toggle"></div>
     </div>
     
-    <div class="register_box">
+    <div class="register_box main">
         <div class="register_wrap">
-            <div class="register_tab">
+            <div class="register_tab_enterprise">
                 <a class="current">企业</a>
                 <a href="#/register/personal">个人</a>
             </div><!-- /.register_tab -->
@@ -94,4 +94,11 @@
             </form>
         </div><!-- /.register_wrap -->
     </div><!-- /.register_box -->
+
+    <div class="common_dialog" ng-show="loginErr">
+        <div class="alert_wrapper"> 
+            <div class="title">提示信息</div>
+            <div class="alert_main">{{errorMsg}}</div>
+        </div>
+    </div>
 </div>

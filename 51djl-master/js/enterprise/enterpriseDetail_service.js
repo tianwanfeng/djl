@@ -461,7 +461,6 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 lineX2 = 10;
                 lineY1 = 0.5*conf.itemHgt + 5;
             }
-            if (hasLine)
                 //g.append("line").attr("class", "line").attr({"x1": lineX, "y1": lineY1, "x2": lineX2, "y2": lineY1, "stroke": color});
             
             var text = g.append("a").attr({"xlink:href": ctx+"document/"+data.uri, "target":"_blank"})

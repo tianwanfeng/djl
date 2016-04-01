@@ -8,6 +8,7 @@ angular.module('myApp.controllers')
         $scope.showCotsVar = true;
         $scope.ctgsMax = $scope.itemShowMax;
         $scope.showCtgsVar = true;
+        $scope.gotoRegisterVar = false;
         var djl = lyrpageChart;
         //更新：$scope.id 为律师id
         $http.get("data/lawyerInfo.json")
@@ -16,6 +17,18 @@ angular.module('myApp.controllers')
                 if (dat.code == 1 && dat.info) {
                     $scope.lawyerInfo = dat.info;
                     $("body").scrollTop(0);
+
+                    /*if (dat.info.summary.isRegist == 0) {
+                        $http.get("data/name_img.json").success(function(data){
+                            if(data.code ==1 && data.info.loginStatus == 0) {
+                                $scope.gotoRegisterVar = true;
+                            }
+                        });
+                    }*/
+
+                    if (!dat.info.loginStatus && dat.info.summary.isRegist == 0) {
+                        $scope.gotoRegisterVar = true;
+                    }
                 }
             });
 
@@ -246,6 +259,10 @@ angular.module('myApp.controllers')
             } else {
                  $scope.ctgsMax = data.length;
             }
+        };
+
+        $scope.gotoRegister = function () {
+            $location.path("#/register/lawyer");
         };
         
   }])

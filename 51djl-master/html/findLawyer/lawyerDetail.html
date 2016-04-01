@@ -25,11 +25,12 @@
                     <li class="lawer_info_skill">{{lawyerInfo.summary.workField}}</li>
                     <li class="lawer_info_address">{{lawyerInfo.summary.workArea}}</li>
                     <li class="lawer_info_company">{{lawyerInfo.summary.lawOffice}}</li>
-                    <li class="lawer_info_phone"><a class="phone_login" href="####">登录查看</a></li>
+                    <li class="lawer_info_phone" ng-hide="{{lawyerInfo.loginStatus}}"><a class="phone_login" href="#/login" >登录查看</a></li>
+                    <li class="lawer_info_phone" ng-show="{{lawyerInfo.loginStatus}}">{{lawyerInfo.base.phoneNo}}</li>
                 </ul><!-- /.lawer_info -->
             </div>
-            <div class="item_wrap lawer_zhuce">
-                <span>我是律师王新安，我要注册</span>
+            <div class="lawer_zhuce item_wrap" ng-click="gotoRegister()" ng-show="gotoRegisterVar">
+                <span>我是律师{{lawyerInfo.summary.lawyerName}}，我要注册</span>
             </div>
 
             <div class="lawer_intro">

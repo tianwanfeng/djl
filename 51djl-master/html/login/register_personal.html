@@ -6,7 +6,7 @@
         <div class="icon_set js-slideout-toggle"></div>
     </div>
     
-    <div class="register_box">
+    <div class="register_box main">
         <div class="register_wrap">
             <div class="register_tab">
                 <a href="#/register/enterprise">企业</a>
@@ -95,10 +95,10 @@
         </div><!-- /.register_wrap -->
     </div><!-- /.register_box -->
 
-    <div class="common_dialog" style="display: block;">
-        <div class="alert_wrapper" style="padding:0;box-shadow:none;"> 
+    <div class="common_dialog" ng-show="loginErr">
+        <div class="alert_wrapper"> 
             <div class="title">提示信息</div>
-            <div class="alert_main">该手机号码已被注册</div>
+            <div class="alert_main">{{errorMsg}}</div>
         </div>
     </div>
 </div>

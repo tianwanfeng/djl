@@ -39,14 +39,13 @@ flyrIndexDirective.directive('myTouchstart', [function() {
         templateUrl: 'html/login/panelMenu.html',
         transclude: true,
         controller:function($scope,$http){
-            console.info("enter directive controller");
             $http.get("data/name_img.json").success(function(data){
-               console.info("got data");
+               $scope.slideMenu = {};
                if(data.code ==1) {
-                  $scope.img = data.info.photoLg;
-                  $scope.name = data.info.name;
-                  $scope.loginStatus = data.info.loginStatus;
-                  $scope.userType = data.info.userType;
+                  $scope.slideMenu.img = data.info.photoLg;
+                  $scope.slideMenu.name = data.info.name;
+                  $scope.slideMenu.loginStatus = data.info.loginStatus;
+                  $scope.slideMenu.userType = data.info.userType;
                }
             });
           }
