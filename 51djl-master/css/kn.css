@@ -8,6 +8,9 @@
 	.list_title strong{
 		color: #ff3a00;
 		font-size: 14px;}
+.lawer_box_detail{
+	margin-bottom: 0 !important;
+}
 .lawer_box{
 	padding: 5px 13px 0;
 	background: #fff;

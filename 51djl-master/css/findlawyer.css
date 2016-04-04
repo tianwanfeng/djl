@@ -320,7 +320,7 @@
 	width: 100%;
 	box-sizing: border-box;
 	background: url(../img/enterp_bg.png) no-repeat #fff;
-	background-size: contain;
+	background-size: 100% 100%;
 	padding: 0 2px 0 15px;
 }
 .no_result_tips{
