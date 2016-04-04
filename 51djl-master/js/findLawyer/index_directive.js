@@ -50,4 +50,9 @@ flyrIndexDirective.directive('myTouchstart', [function() {
             });
           }
       }
+}).directive('lyrfooter', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'html/login/footer.html',
+      }
 });
