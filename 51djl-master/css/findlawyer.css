@@ -465,6 +465,14 @@
 .lawyerDetail_rate_l .rate b.blue{
 	background: #00a3f5;
 }
+.zero .rate{
+	height: 2px;
+	width: 60px;
+	position: relative;
+	top: 5px;
+	left: 15px;
+}
+.zero .number{display: none;}
 .chart_list_more{
 	text-align: center;
 	border-top: 1px solid #d9d9d9;
