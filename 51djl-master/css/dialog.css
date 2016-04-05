@@ -15,6 +15,10 @@
 	border-radius: 10px;
 	max-height: 400px;
 	overflow: auto;
+	/*border-bottom: 1px solid #cccccc;*/
+		border-bottom: 1px solid #ff780a;
+	
+
 }
 	.dialog_list_title{
 		background: #08a6f5;
@@ -37,9 +41,9 @@
 	.dialog_list ul{
 		border-left: 1px solid #ff780a;
 		border-right: 1px solid #ff780a;
-		border-bottom: 1px solid #ff780a;
 	}
 	.dialog_list ul li{position:relative;color: #0e0e0e;font-size: .9rem;padding: 11px 8px 26px 8px;border-bottom: 1px solid #cccccc;}
+	.dialog_list ul li:last-child{border-bottom: none;}
 	.dialog_list ul li .time{position: absolute;right: 8px;bottom: 0px;}
 	.dialog_list_title .cancel{
 		width: 25px;

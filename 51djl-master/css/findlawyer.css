@@ -318,6 +318,7 @@
 /*企业诉讼*/
 .enterp_bg{
 	width: 100%;
+	min-height: 200px;
 	box-sizing: border-box;
 	background: url(../img/enterp_bg.png) no-repeat #fff;
 	background-size: 100% 100%;
@@ -500,7 +501,6 @@
 	background-size: 10px 10px;
 	
 }
-
 
 
 

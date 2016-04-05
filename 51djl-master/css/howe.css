@@ -133,6 +133,9 @@
 	background: #ff3a00;
 	right: 12px;
 }
+.case_company .item_wrap a.control_company#follow_btn.disabled{
+	background: #a5b3bb;
+}
 .item{
 	margin: 0 13px;
 	margin-bottom: 2px;
@@ -265,12 +268,18 @@
 .item_wrap_filter{
 	width: 92%;
 	margin:0 auto;
-	margin-top: 10px;
 	border:1px #a5b3bb solid;
 	border-right: 0;
 	overflow: hidden;
 	zoom:1;
 }
+.item_wrap_condition{
+	padding-top: 10px;
+	padding-bottom: 20px;
+	background: #fff;
+	border-bottom: 1px solid #96aab4;
+}
+
 .item_wrap_filter li{
 	box-sizing:border-box;
 	-moz-box-sizing:border-box; /* Firefox */
@@ -307,6 +316,9 @@
 }
 .item_other_title.item_title_control{
 	line-height: 20px;
+}
+.item_title_control_line{
+	border-bottom: 1px solid #c8c8c8;
 }
 .case_select{
 	color: #ff3a00;

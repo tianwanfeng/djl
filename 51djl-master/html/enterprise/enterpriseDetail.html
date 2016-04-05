@@ -42,6 +42,7 @@
             </div>
         </div>
         <div ng-show="tabVar == 1">
+            <div class="item_wrap_condition">
             <ul class="item_wrap_filter item_wrap_filter_3">
                 <li ng-click="case_timeSelShow()"><a>时间&nbsp;&nbsp;></a></li>
                 <li ng-click="case_cotSelShow()"><a>地域&nbsp;&nbsp;></a></li>
@@ -96,20 +97,25 @@
                         </div>  
                     </div>
                 </div>
-            
+            </div>
             <div class="chart timing scroll" id="caseTimingChart"></div>
         </div>
         <div ng-show="tabVar == 2">
-            <ul class="item_wrap_filter item_wrap_filter_3">
-                <li ng-click="rel_timeSelShow()"><a>时间&nbsp;&nbsp;></a></li>
-                <li ng-click="rel_plnSelShow()"><a>原告&nbsp;&nbsp;></a></li>
-                <li ng-click="rel_ctgSelShow()"><a>案由&nbsp;&nbsp;></a></li>
-            </ul>
-            <div class="item_other_title item_title_control">
-                <b class="item_title_text">所选条件：</b>
-                <span class="case_select">{{rConditions}}</span>
+            <div class="item_wrap_condition">
+                <ul class="item_wrap_filter item_wrap_filter_3">
+                    <li ng-click="rel_timeSelShow()"><a>时间&nbsp;&nbsp;></a></li>
+                    <li ng-click="rel_plnSelShow()"><a>原告&nbsp;&nbsp;></a></li>
+                    <li ng-click="rel_ctgSelShow()"><a>案由&nbsp;&nbsp;></a></li>
+                </ul>
+                <div class="item_other">
+                <div class="item_other_title item_title_control item_title_control_line">
+                    <b class="item_title_text">所选条件：</b>
+                    <span class="case_select">{{rConditions}}</span>
+                </div>
+                </div>
+                <div class="chart rel-svg" id="relation"></div>
+
             </div>
-            <div class="chart rel-svg" id="relation"></div>
         </div>
     </div>
 </div>
