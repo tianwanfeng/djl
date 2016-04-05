@@ -10,17 +10,40 @@
         <div ng-if="slideMenu.userType==0">
             <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
             <div class="text"><span>{{slideMenu.name}}</span></div>
-            <div class="user_1"><span>{{slideMenu.userType}}</span></div>
+            <div class="user_list user_list_gr"><a href="#/register/personal"><span>个人信息</span></a></div>
+            <div class="user_list user_list_zh"><a href="#/register/lawyer"><span>账号安全</span></a></div>
+            <div class="user_list user_list_gz"><a href="#/register/lawyer"><span>我的关注</span></a></div>
+            <div class="user_list user_list_fk"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
+
         </div>
         <div ng-if="slideMenu.userType==1">
-            <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
+            <div class="login_v_box">
+                <img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/>
+                <div class="login_v"></div>
+            </div>
             <div class="text"><span>{{slideMenu.name}}</span></div>
-            <div class="user_1"><span>{{slideMenu.userType}}</span></div>
+            <div class="user_list user_list_gr"><a href="#/register/personal"><span>企业信息</span></a></div>
+            <div class="user_list user_list_qyrz"><a href="#/register/personal"><span>企业认证</span></a></div>
+            <div class="user_list user_list_zzh"><a href="#/register/personal"><span>子账号管理</span></a></div>
+            <div class="user_list_line"></div>
+            <div class="user_list user_list_zh"><a href="#/register/lawyer"><span>账号安全</span></a></div>
+            <div class="user_list user_list_gz"><a href="#/register/lawyer"><span>我的关注</span></a></div>
+            <div class="user_list_line"></div>
+            <div class="user_list user_list_fk"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
         </div>
         <div ng-if="slideMenu.userType==2">
-            <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
+            <div class="login_v_box">
+                <img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/>
+                <div class="login_auth"></div>
+            </div>
             <div class="text"><span>{{slideMenu.name}}</span></div>
-            <div class="user_1"><span>{{slideMenu.userType}}</span></div>
+            <div class="user_list user_list_zc"><a href="#/register/personal"><span>注册状态</span></a></div>
+            <div class="user_list user_list_gr"><a href="#/register/personal"><span>个人信息</span></a></div>
+            <div class="user_list user_list_zy"><a href="#/register/lawyer"><span>职业信息</span></a></div>
+            <div class="user_list_line"></div>
+            <div class="user_list user_list_zh"><a href="#/register/lawyer"><span>账号安全</span></a></div>
+            <div class="user_list_line"></div>
+            <div class="user_list user_list_fk"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
         "loginStatus": 1,
         "name": "郭超",
         "isAuth": 0,
-        "userType": 0,
+        "userType": 1,
         "photoLg": "user/photo/201603/15200389834997760_220×220.jpg",
         "photoMd": "user/photo/201603/15200389834997760_160×160.jpg",
         "photoSm": "user/photo/201603/15200389834997760_30×30.jpg"

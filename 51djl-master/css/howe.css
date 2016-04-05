@@ -534,7 +534,9 @@ polyline{
 .time_line{
 	position: absolute;
 	width: 1px;
-	height: calc(100% - 10px);
+	width: -webkit-calc(100% - 10px);
+	width: -moz-calc(100% - 10px);
+	width: calc(100% - 10px);
 	left: 50%;
 	margin-left: -1px;
 	background: #c8c8c8;
