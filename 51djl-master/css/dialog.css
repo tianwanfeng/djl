@@ -15,9 +15,13 @@
 	border-radius: 10px;
 	max-height: 400px;
 	overflow: auto;
+	min-width: 80%;
+	width: -webkit-calc(100% - 10px);
+	width: -moz-calc(100% - 10px);
+	width: calc(100% - 10px);
 	/*border-bottom: 1px solid #cccccc;*/
-		border-bottom: 1px solid #ff780a;
-	
+	border-bottom: 1px solid #ff780a;
+
 
 }
 	.dialog_list_title{
@@ -43,6 +47,7 @@
 		border-right: 1px solid #ff780a;
 	}
 	.dialog_list ul li{position:relative;color: #0e0e0e;font-size: .9rem;padding: 11px 8px 26px 8px;border-bottom: 1px solid #cccccc;}
+	.dialog_list ul li a{line-height: 1.4rem;}
 	.dialog_list ul li:last-child{border-bottom: none;}
 	.dialog_list ul li .time{position: absolute;right: 8px;bottom: 0px;}
 	.dialog_list_title .cancel{
