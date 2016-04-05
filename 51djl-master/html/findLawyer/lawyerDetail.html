@@ -156,7 +156,7 @@
                         <div class="item_other_detail">
                             <div class="hidden" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter as showbooks"></div>
                             <ul class="item_book_list">
-                                <li class="red_book" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter| limitTo:maxBookSize">
+                                <li my-touchstart="touchStart()" my-touchend="touchEnd()" ng-class="{'active': activeVar}" class="red_book" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter| limitTo:maxBookSize">
                                     <div class="item_book {{x.bgSty}}">
                                         <div class="item_book_name">
                                             <a href="{{x.link}}">{{x.tit}}</a>
