@@ -37,13 +37,13 @@
             <table class="lawer_tb">
                 <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
                     
-                    <td>
+                    <td style="width:25%;">
                         <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
                     </td>
-                    <td>
+                    <td style="width:75%;">
                         <ul class="percent_ul">
                             <li ng-repeat="y in x.courts">
-                                <span>
+                                <span class="text-overflow">
                                     {{y.court}}
                                     <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
                                 </span>
