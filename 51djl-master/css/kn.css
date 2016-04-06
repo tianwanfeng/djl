@@ -84,6 +84,9 @@
 		text-align: center;}
 	.lawer_tb_wrap{}
 	.lawer_tb{
+		width: -webkit-calc(100% - 80px);
+		width: -moz-calc(100% - 80px);
+		width: calc(100% - 80px);
 		margin: 3px 0 0;
 		min-height: 116px;
 		font-size: 9px;}
@@ -108,7 +111,7 @@
 			.border_wrap{
 				padding: 25px 3px;
 				/*margin-left: 5px;*/
-				white-space: nowrap;
+				/*white-space: nowrap;*/
 				border-left: 1px solid #d1d3d6;}
 			.percent_ul{overflow: hidden;}
 				.percent_ul li{
@@ -122,7 +125,7 @@
 						display: block;
 						float: left;}
 					.percent_ul span{
-						width: 100px;
+						width: 60%;
 						/* width: 160px; */
 						font-size: .9rem;
 						text-indent: 2px;
@@ -138,7 +141,7 @@
 							position: absolute;
 							background: #00c0ef;}
 						.percent_ul li:nth-child(even) span.color_span{background: #ffa200;}
-					.percent_ul small{width: 33px;padding: 0 4px;}
+					.percent_ul small{text-align:center;width: 33px;padding: 0 4px;}
 					.percent_ul strong{font-weight: normal;}
 	.show_btn{
 		height: 25px;
