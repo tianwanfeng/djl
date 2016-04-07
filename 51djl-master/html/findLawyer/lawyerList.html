@@ -28,34 +28,38 @@
                 </ul><!-- /.lawer_info -->
                 <!-- <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie> -->
             </a>
-            <div class="d3_wrap">
+            
+            <!--chart.drwPersent("#pie_1");-->
+            <div class="lawer_tb_box">
+                <div class="d3_wrap">
                     所查类型案件<br />占比为：<br />
-                   <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie>
+                    <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie>
                     <span>{{lawyer.hitRate}}%</span>
                 </div>
-            <!--chart.drwPersent("#pie_1");-->
-            <table class="lawer_tb">
-                <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
-                    
-                    <td style="width:25%;">
-                        <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
-                    </td>
-                    <td style="width:75%;">
-                        <ul class="percent_ul">
-                            <li ng-repeat="y in x.courts">
-                                <span class="text-overflow">
-                                    {{y.court}}
-                                    <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
-                                </span>
-                                <small>{{y.winRate}}</small>
-                                <strong>({{y.num}}件)</strong>
-                            </li>
-                            
-                        </ul><!-- /.percent_ul -->
-                    </td>
-                </tr>
-            </table><!-- /.lawer_tb -->
+                <table class="lawer_tb">
+                    <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
+                        
+                        <td style="width:25%;">
+                            <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
+                        </td>
+                        <td style="width:75%;">
+                            <ul class="percent_ul">
+                                <li ng-repeat="y in x.courts">
+                                    <span class="text-overflow">
+                                        {{y.court}}{{y.court}}{{y.court}}{{y.court}}
+                                        <span class="color_span" style="width:{{y.winRate}}">{{y.court}}{{y.court}}{{y.court}}{{y.court}}</span>
+                                    </span>
+                                    <small>{{y.winRate}}</small>
+                                    <strong>({{y.num}}件)</strong>
+                                </li>
+                                
+                            </ul><!-- /.percent_ul -->
+                        </td>
+                    </tr>
+                </table><!-- /.lawer_tb -->
+            </div>
             <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
+
         </div><!-- /.lawer_box -->
         <div class="right_btn_wrap">
             <a gotop style="display:none" id="scrollVar">滑动到页首</a>
