@@ -1,7 +1,7 @@
     <panelmenu></panelmenu>
     <div id="panel">
         <div class="header_company"> 
-            <div class="icon_home"></div>
+            <a href="http://m.51djl.com/"><div class="icon_home"></div></a>
             <div class="title">企业诉讼分析</div>
             <div class="icon_set js-slideout-toggle"></div>
         </div>
@@ -12,7 +12,7 @@
             <div class="findlawyer_select">
                 <div class="inputbox">
                     <input placeholder="请输入企业名称" ng-model="searchKeys" my-focused></input>
-                    <div class="button" ng-click="searchEnterprise()">搜索</div>
+                    <div class="button" my-touchstart="touchStart()" my-touchend="searchEnterprise()" ng-class="{'active': activeVar}">搜索</div>
                 </div>
                 <div class="tip shadow tip_long" ng-show="errorTip && focusVar2==0">
                     <div class="tip_sar"></div>

@@ -21,10 +21,10 @@
             "careerStart": "2015-01-01",
             "school": null,
             "address": null,
-            "description": null,
+            "description": "我是一个正直的律师",
             "photos": "[\"user/photo/201603/15200389834997760_160×160.jpg\",\"user/photo/201603/15200389834997760_30×30.jpg\",\"user/photo/201603/15200389834997760_220×220.jpg\"]",
-            "writtenWork": null,
-            "news": null,
+            "writtenWork": [{"title":"律师十八式","pubDate":"2015-12-1","publish":"出版社"},{"title":"文章","pubDate":"2015-2-1","publish":"合集"}],
+            "news": [{"site":"新浪","title":"很好的律师","url":"http://www.sina.com"}],
             "photo": "user/photo/201603/15200389834997760_220×220.jpg",
             "lawyerNews": null,
             "lawyerWrittenWorks": null,
@@ -47,6 +47,7 @@
             "isVerified": 1,
             "aliveStatus": null,
             "registerTime": null
+            
         }
     }
 }

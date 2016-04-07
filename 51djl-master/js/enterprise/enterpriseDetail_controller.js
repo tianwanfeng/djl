@@ -15,6 +15,17 @@ angular.module('myApp.controllers')
 		$scope.tConditions = "全部";
 		$scope.rConditions = "全部";
 		$scope.focusVar = 0;
+		$scope.chartData = {
+			casestat:[],
+			caseSum:{
+				data:[],
+				position:[],
+				nums:0
+			},
+			roleSum: {
+				data:[]
+			}
+		};
 		$scope.amount = {
 
 		}
@@ -99,70 +110,70 @@ angular.module('myApp.controllers')
 		};
 		
 		var djl = enterprisePageChart;
+		//获取订阅关系
+		$http.get("data/subscription.json?enterpriseName="+$scope.id)
+			.success(function(dat){
+				if (dat.code == 1) {
+					$scope.subStatus = dat.info.status;
+				}
+			});
 
 		//表格，条件初始化
-		var loadCaseStatChart = function () {
-			$http.get("data/quarterCaseAmount.json?enterpriseName="+$scope.id)
-				.success(function(dat) {
-				 if (dat.code == 1) {
-					var data = djl.chart_quarterCaseAmount.dataProcess(dat.info);
-					//djl.chart_quarterCaseAmount.draw("svgQuarterCaseChart", djl.chart_quarterCaseAmount.conf, data);
-					djl.chart_quarterCaseAmount.drwLineArea("#case_statistic_wrap",data);
+		$http.get("data/quarterCaseAmount.json?enterpriseName="+$scope.id)
+			.success(function(dat) {
+			 if (dat.code == 1) {
+				var data = djl.chart_quarterCaseAmount.dataProcess(dat.info);
+				$scope.chartData.casestat = data;
+				djl.chart_quarterCaseAmount.drwLineArea("#case_statistic_wrap",data);
 
-					$(window).scroll(function(){ 
-			            //获取窗口的滚动条的垂直位置 
-			            var s = $(window).scrollTop(); 
-			            //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐 
-			            if( s > 500){ 
-			                $("#scrollVar").fadeIn(100); 
-			            }else{ 
-			                $("#scrollVar").fadeOut(200); 
-			            }; 
-			        }); 
-				}
-			});
-		};
-		
-		var loadTimingChart = function () {
-			$http.get("data/caseSummary.json?enterpriseName="+$scope.id)
-				.success(function(dat) {
-				 if (dat.code == 1) {
-					var data = dat.info || {};
-					var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
-					var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
-					var nums = data.caseInfos.length;
-					djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,nums);
-					$scope.amount = djl.chart_timing.processAmount(data);
-				}
-			});
-		};
-		
-
-		var loadRelationChart = function () {
-			$http.get("data/roleSummary.json?enterpriseName="+$scope.id)
-				.success(function(dat) {
-				 if (dat.code == 1) {
-					var processedData = djl.chart_relation.dataProcess(dat.info);        
-					djl.chart_relation.conf.height = 
-					djl.chart_relation.conf.hgt.min + processedData.nodes.length * djl.chart_relation.conf.hgt.ratio;
-					djl.chart_relation.draw("#relation", djl.chart_relation.conf, processedData);
-					$scope.plaintiffs = djl.chart_relation.formatPlaintiffs(processedData,$scope.id);
-				}
-			});
-		};
+				$(window).scroll(function(){ 
+		            //获取窗口的滚动条的垂直位置 
+		            var s = $(window).scrollTop(); 
+		            //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐 
+		            if( s > 500){ 
+		                $("#scrollVar").fadeIn(100); 
+		            }else{ 
+		                $("#scrollVar").fadeOut(200); 
+		            }; 
+		        }); 
+			}
+		});
+	
+		$http.get("data/caseSummary.json?enterpriseName="+$scope.id)
+			.success(function(dat) {
+			 if (dat.code == 1) {
+				var data = dat.info || {};
+				var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
+				var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
+				var nums = data.caseInfos.length;
+				$scope.chartData.caseSum.data = processedData;
+				$scope.chartData.caseSum.position = position;
+				$scope.chartData.caseSum.nums = nums;
+				djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,nums);
+				$scope.amount = djl.chart_timing.processAmount(data);
+			}
+		});
 		
 
-		loadRelationChart();
-        loadTimingChart();
-        loadCaseStatChart();
-
+		$http.get("data/roleSummary.json?enterpriseName="+$scope.id)
+			.success(function(dat) {
+			 if (dat.code == 1) {
+				var processedData = djl.chart_relation.dataProcess(dat.info);        
+				djl.chart_relation.conf.height = 
+				djl.chart_relation.conf.hgt.min + processedData.nodes.length * djl.chart_relation.conf.hgt.ratio;
+				$scope.chartData.roleSum.data = processedData;
+				djl.chart_relation.draw("#relation", djl.chart_relation.conf, processedData);
+				$scope.plaintiffs = djl.chart_relation.formatPlaintiffs(processedData,$scope.id);
+			}
+		});
+		
 		//判断手机横竖屏状态：
         window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
             djl.chart_relation.conf.width = document.body.clientWidth * 0.92;
-            //djl.chart_timing.conf.width = document.body.clientWidth * 0.92;
-            loadRelationChart();
-            loadTimingChart();
-            loadCaseStatChart();
+			djl.chart_relation.conf.height = $scope.chartData.roleSum.height;
+			djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, $scope.chartData.caseSum.data, $scope.chartData.caseSum.position,$scope.chartData.caseSum.nums);
+			djl.chart_relation.draw("#relation", djl.chart_relation.conf, $scope.chartData.roleSum.data);
+			djl.chart_quarterCaseAmount.drwLineArea("#case_statistic_wrap",$scope.chartData.casestat);
         }, false);
 
 		$http.get("data/caseCategories.json?enterpriseName="+$scope.id)
@@ -320,6 +331,11 @@ angular.module('myApp.controllers')
 					var data = dat.info || {};
 					var processedData = djl.chart_timing.dataProcess(data.caseInfos || []);
 					var position = djl.chart_timing.posCalculate(djl.chart_timing.conf, processedData);
+					
+					$scope.chartData.caseSum.data = processedData;
+					$scope.chartData.caseSum.position = position;
+					$scope.chartData.caseSum.nums = nums;
+
 					djl.chart_timing.draw("caseTimingChart", djl.chart_timing.conf, processedData, position,data.caseInfos.length);
 					$scope.amount = djl.chart_timing.processAmount(data);
 					$scope.tConditions = getTCondtions($scope.timeparams);
@@ -448,6 +464,8 @@ angular.module('myApp.controllers')
 					var processedData = djl.chart_relation.dataProcess(dat.info);        
 					djl.chart_relation.conf.height = 
 					djl.chart_relation.conf.hgt.min + processedData.nodes.length * djl.chart_relation.conf.hgt.ratio;
+					$scope.chartData.roleSum.data = processedData;
+					$scope.chartData.roleSum.height = djl.chart_relation.conf.height;
 					djl.chart_relation.draw("#relation", djl.chart_relation.conf, processedData);
 					$scope.rConditions = getReCondtions($scope.relation);
 				}
