@@ -97,6 +97,13 @@ body {
   background: url(../img/login_info.png) no-repeat 19px 0px;
   background-size: 16px 16px;
 }
+.menu_law .user_out{
+  height: 23px;
+  line-height: 23px;
+  background: url(../img/login_exit.png) no-repeat 19px 0px;
+  background-size: 18px 22px;
+}
+
 .menu_law .user_list{
   height: 53px;
   line-height: 53px;
