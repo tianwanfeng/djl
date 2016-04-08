@@ -37,6 +37,7 @@ angular.module('myApp.controllers')
             .success(function(dat) {
                 //初始化页面所需数据
                 if (dat.code == 1 && dat.info) {
+                    $scope.chartData = dat.info;
                     djl.chart.init(dat.info);
                     djl.interact.init(dat.info);
                     $scope.category = djl.interact.getInteractyData().category;
@@ -54,6 +55,12 @@ angular.module('myApp.controllers')
 
                 }
             });
+
+        //判断手机横竖屏状态：
+        window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+            djl.chart.init($scope.chartData);
+            djl.interact.init($scope.chartData);
+        }, false);
 
         $scope.detailBodyVar = true;
 
@@ -103,7 +110,7 @@ angular.module('myApp.controllers')
         //案由选择-右上角确定按钮-点击事件
         $scope.categorySure = function (){
             dftCategoryFilter = CategoryFilter = tmpCategoryFilter;
-            CotFilter = [];
+            //CotFilter = [];
             $scope.categorySelVar = false;
             $scope.caseSelected = getCaseSelected();
             $scope.maxBookSize = 10;
@@ -178,7 +185,7 @@ angular.module('myApp.controllers')
         //地域选择-确认按钮-点击事件
         $scope.cotSure = function (){
             dftCotFilter = CotFilter = tmpCotFilter;
-            CategoryFilter = [];
+            //CategoryFilter = [];
             $scope.cotSelVar = false;
             $scope.caseSelected = getCaseSelected();
             $scope.maxBookSize = 10;

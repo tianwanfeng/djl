@@ -1,5 +1,5 @@
     <div class="header">
-        <div class="header-icon"></div>
+        <a href="http://m.51djl.com/"><div class="header-icon"></div></a>
         <span>找律师</span>
         <div class="header-sel"  ng-click="areaSelect()">{{curArea}}</div>
     </div>
@@ -10,7 +10,7 @@
         <div class="findlawyer_select">
             <div class="inputbox">
                 <input placeholder="案由+地域/律所/律师" ng-model="searchKeys" my-focused="hideBanner()" my-focused></input>
-                <div class="button" ng-click="searchLawyer()">找律师</div>
+                <div class="button" my-touchstart="touchStart()" my-touchend="searchLawyer()" ng-class="{'active': activeVar}">找律师</div>
             </div>
             <div class="tip shadow" ng-show="errorTip && focusVar2==0">
                 <div class="tip_sar"></div>

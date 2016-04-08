@@ -34,29 +34,27 @@
             </div>
 
             <div class="lawer_intro">
-                <div class="item_title">
+                <div class="item_title" ng-if="lawyerInfo.detail.news!=null||lawyerInfo.detail.writtenWork!=null||awyerInfo.detail.description!=null">
                     律师介绍
                 </div>
-                <div class="item_wrap">
+                <div class="item_wrap" ng-if="lawyerInfo.detail.description!=null">
                     <div class="item item_self">
                         <div class="item_left">自我 <br> 描述：</div>
-                        <div class="item_right">江苏省南京市律师事务所江苏省南京市律师事务所江苏省南京市律师事务所江苏省南京市律师事务所江苏省南京市律师江苏省南京市律师事务所</div>
+                        <div class="item_right">{{lawyerInfo.detail.description}}</div>
                     </div>
                 </div>
-                <div class="item_wrap next_item_wrap">
-                    <div class="item item_report">
+                <div class="item_wrap next_item_wrap" ng-if="lawyerInfo.detail.news!=null||lawyerInfo.detail.writtenWork!=null">
+                    <div ng-if="lawyerInfo.detail.news!=null" class="item item_report">
                         <div class="item_left">媒体 <br> 报道：</div>
                         <div class="item_right">
-                            <a href="####">|&nbsp;&nbsp;&nbsp;xx纠纷案例xx纠纷案例xx纠纷案例xx纠纷案例</a>
-                            <a href="####">|&nbsp;&nbsp;&nbsp;xx纠纷案例xx纠纷案例xx纠纷案例xx纠纷案例</a>
+                            <a href="x.url" ng-repeat="x in lawyerInfo.detail.news">|&nbsp;&nbsp;&nbsp;{{x.title}}</a>
                         </div>
                     </div>
-                    <div class="item item_workbook">
+                    <div class="item item_workbook" ng-if="lawyerInfo.detail.writtenWork!=null">
                         <div class="item_left">相关 <br> 著作：</div>
                         <div class="item_right">
                             <ul class="workbook_list">
-                                <li>| <span class="book_name">xx纠纷案例</span><span class="book_press">南京人民日报出版社出版</span><span class="book_time">2015/12/20</span></li>
-                                <li>| <span class="book_name">xx纠纷案例</span><span class="book_press">南京人民日报出版社出版</span><span class="book_time">2015/12/20</span></li>
+                                <li ng-repeat="x in lawyerInfo.detail.writtenWork">| <span class="book_name">{{x.title}}</span><span class="book_press">{{x.publish}}</span><span class="book_time">{{x.pubpubDate}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -100,12 +98,13 @@
                             <div class="item_other_detail">
                                 <div id="chart_2"></div>
                                 <div class="chart_des">
-                                    <ul class="chart_list" id="ctgNameList">
+                                    <ul class="chart_list" id="ctgNameList" ng-class="{'open':!showCtgsVar}">
                                         <li ng-repeat="x in chartCtgs.data | limitTo:ctgsMax" >
                                             {{x.letter}}&nbsp;&nbsp;&nbsp;{{x.name}}
                                         </li>
+                                        <li class="chart_list_more" ng-show="chartCtgs.data.length > itemShowMax" ng-click="toggleShowCtgs(chartCtgs.data)" ng-class="{'show':showCtgsVar}"><span>更多</span></li>
                                     </ul>
-                                    <div class="" ng-show="chartCtgs.data.length > itemShowMax" ng-click="toggleShowCtgs(chartCtgs.data)" ng-class="{'show':showCtgsVar}">更多</div>
+                                    
                                     <div class="pie" id="pie_2"></div>
                                 </div>
                             </div>
@@ -156,7 +155,7 @@
                         <div class="item_other_detail">
                             <div class="hidden" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter as showbooks"></div>
                             <ul class="item_book_list">
-                                <li class="red_book" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter| limitTo:maxBookSize">
+                                <li my-touchstart="touchStart()" my-touchend="touchEnd()" ng-class="{'active': activeVar}" class="red_book" ng-repeat="x in books | filter:courtFilter | filter:categoryFilter| limitTo:maxBookSize">
                                     <div class="item_book {{x.bgSty}}">
                                         <div class="item_book_name">
                                             <a href="{{x.link}}">{{x.tit}}</a>

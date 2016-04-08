@@ -30,6 +30,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
         }
     };
     djl.chart_quarterCaseAmount.drwLineArea = function (id, dat) {
+        $(id).html("");
         var margin = {top: 10, right: 0, bottom: 14, left: 16}
             height = 100,
             width = document.body.clientWidth * 0.92,
@@ -971,7 +972,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
 
     djl.chart_relation = {
         "conf": {
-            "width": 400, /*svg宽度*/
+            "width": document.body.clientWidth * 0.92, /*svg宽度*/
             "hgt": {"ratio":35, "min":200, "max":3200}, /*svg高度系数/最小高度/最大高度*/
             "height": 200,  /*svg高度*/
             "nodeRadius": {"items": [30, 36, 40, 45, 50], "min": 30, "max": 50}, /*节点半径参数*/
@@ -985,11 +986,12 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
             return null;
         },
         "draw": function(docId, conf, data) {
+            conf.width = document.body.clientWidth * 0.92;
             $(docId).html("");
             
             var svgHgt = Math.min(conf.height, conf.hgt.max);
             
-            var svg = d3.select(docId).append("svg").attr("class", "rel").attr("width",window.screen.width).attr("height", svgHgt);
+            var svg = d3.select(docId).append("svg").attr("class", "rel").attr("width",document.body.clientWidth).attr("height", svgHgt);
             
             var force = d3.layout.force()
                 .nodes(data.nodes).links(data.edges)
@@ -1085,7 +1087,7 @@ enterpriseDetailServices.factory('enterprisePageChart', function(){
                 $c.empty();
                 $.each(d.cases, function(i, e){
                     $c.append("<li><a target='_blank' href='"+ctx+"document/"+d.urls[i]+"' title='【"+d.codes[i]+"】"+d.titles[i]+"'>"+"<span>"+(i+1)+
-                            "、</span>"+d.titles[i]+"</a><span class='time'>"+ d.codes[i] +"</span></li>")
+                            "、</span>"+d.titles[i]+"</a><span class='time'>【"+ d.codes[i] +"】</span></li>")
                 });
             });
             

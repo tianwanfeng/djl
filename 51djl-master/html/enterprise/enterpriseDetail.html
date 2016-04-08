@@ -8,13 +8,18 @@
 
     
 </head>
-<div ng-show="detailBodyVar">
+<div class="topbar" id="header" ng-show="detailBodyVar">
+    <div class="toolbar_btn back_btn" ng-click="goBackPage()"></div>
+    <span class="title">律师详情</span>
+    <div class="toolbar_btn srh_btn" ng-click="goFindLawyerIndex()"></div>
+</div>
+<div class="main" ng-show="detailBodyVar">
 <div class="detail_wrap">
     <div class="case_company">
         <div class="item_wrap">
             <h1 class="company_name">{{id}}</h1>   
-            <a class="control_company" id="cancel_follow_btn" href="####">取消关注</a>
-            <a class="control_company" id="follow_btn" href="####"><span>+&nbsp;</span>关注</a>
+            <a ng-if="subStatus==1" class="control_company" id="cancel_follow_btn" href="####">取消关注</a>
+            <a ng-if="subStatus==0" class="control_company" id="follow_btn" href="####"><span>+&nbsp;</span>关注</a>
         </div>
     </div>
     <div class="case_statistic">

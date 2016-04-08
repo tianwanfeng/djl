@@ -38,7 +38,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
         drwBarChart: function (id,data) {
             var margin = {top: 10, right: 0, bottom: 14, left: 20}
                 height = 150,
-                width = window.screen.width * 0.92  - margin.left - margin.right;
+                width = document.body.clientWidth * 0.92  - margin.left - margin.right;
             var x = d3.scale.ordinal()
                 .rangeRoundBands([0, width], .1);
 
@@ -152,7 +152,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             
         },
         drwPie: function (id,data) {
-            var width = window.screen.width * 0.92 * 0.6,
+            var width = document.body.clientWidth * 0.92 * 0.6,
                 height = 140,
                 radius = Math.min(width, height) / 2;
 
@@ -332,7 +332,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
     },
     "court": {
         "barConf": {
-            "zone":{"wdt": window.screen.width*0.92, "hgt": 150, "margin": {"top": 0, "right": 10, "bottom": 20, "left": 20}},
+            "zone":{"wdt": document.body.clientWidth*0.92, "hgt": 150, "margin": {"top": 0, "right": 10, "bottom": 20, "left": 20}},
             "bar": {"wdt": 25, "minHgt": 16, "maxHgt": 0.75, "span": 10},
         },
         "dataTransform":function (data) {
@@ -473,7 +473,7 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             }
         },
         "pieConf": {
-            "zone":{"wdt":window.screen.width * 0.92 * 0.6, "hgt":170},
+            "zone":{"wdt":document.body.clientWidth * 0.92 * 0.6, "hgt":170},
             "pie":{"outRadius":60, "inRadius":48},
             "line":{"radius":120, "wdt":0},
             "wordWdt":12
@@ -522,6 +522,10 @@ lawyerDetailServices.factory('lyrpageChart', function(){
             data = this.datProcess(data);
             var chart = this.dataTransform(data);
             //djl.myd3chart.drwBarChart("#chart_1",chart);
+            djl.chart.court.barConf.zone.wdt = document.body.clientWidth*0.92;
+            djl.chart.court.pieConf.zone.wdt = document.body.clientWidth*0.92 * 0.6;
+            $('#pie_1').empty();
+            $('#chart_1').empty();
             djl.myd3chart.drwPie("#pie_1",chart);
             djl.data.cots = chart;
             //djl.myd3chart.courtList("cotNameList",chart);
@@ -605,6 +609,10 @@ lawyerDetailServices.factory('lyrpageChart', function(){
         "categoryInit": function(data) {
             data = this.datProcess(data);
             var chart = this.dataTransform(data);
+            djl.chart.court.barConf.zone.wdt = document.body.clientWidth*0.92;
+            djl.chart.court.pieConf.zone.wdt = document.body.clientWidth*0.92 * 0.6;
+            $('#pie_2').empty();
+            $('#chart_2').empty();
             //djl.myd3chart.drwBarChart("#chart_2",chart);
             djl.myd3chart.drwPie("#pie_2",chart);
             //djl.myd3chart.courtList("ctgNameList",chart);
