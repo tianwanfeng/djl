@@ -81,6 +81,9 @@ body {
 .menu_law .text{
   margin-bottom: 15px;
 }
+.menu_law .text a{
+  color: #fff;
+}
 .menu_law .user{
   margin: 25px 0;
 }
@@ -96,6 +99,9 @@ body {
   padding-left: 50px;
   background: url(../img/login_info.png) no-repeat 19px 0px;
   background-size: 16px 16px;
+}
+.menu_law .user_1 a{
+  color: #fff;
 }
 .menu_law .user_out{
   height: 23px;
