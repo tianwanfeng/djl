@@ -103,6 +103,9 @@
 .detail_wrap .next_item_wrap{
 	margin-top: 4px;
 }
+.case_statistic_wrap{
+	text-align: center;
+}
 .case_company .item_wrap{
 	height: 60px;
 	padding:12px 13px;
