@@ -1,10 +1,10 @@
 <div id="menu" class="menu menu_law">
     <div ng-if="slideMenu.loginStatus==0">
         <div><img src="http://pic.51djl.cn/{{slideMenu.img}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'"/></div>
-        <div class="text"><span>点击登录</span></div>
+        <div class="text"><a href="#/login"><span>点击登录</span></a></div>
         <div class="user"><a href="#/register/personal"><span>用户注册</span></a></div>
         <div class="user"><a href="#/register/lawyer"><span>律师注册</span></a></div>
-        <div class="user_1"><span>问题反馈</span></div>
+        <div class="user_1"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
     </div>
     <div ng-if="slideMenu.loginStatus==1">
         <div ng-if="slideMenu.userType==0">
@@ -14,7 +14,7 @@
             <div class="user_list user_list_zh"><a href="#/register/lawyer"><span>账号安全</span></a></div>
             <div class="user_list user_list_gz"><a href="#/register/lawyer"><span>我的关注</span></a></div>
             <div class="user_list user_list_fk"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
-            <div class="user_1 user_out"><span>安全退出</span></div>
+            <div class="user_1 user_out"><a href="#/register/lawyer"><span>安全退出</span></a></div>
 
 
         </div>
@@ -32,7 +32,7 @@
             <div class="user_list user_list_gz"><a href="#/register/lawyer"><span>我的关注</span></a></div>
             <div class="user_list_line"></div>
             <div class="user_list user_list_fk"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
-            <div class="user_1 user_out"><span>安全退出</span></div>
+            <div class="user_1 user_out"><a href="#/register/lawyer"><span>安全退出</span></a></div>
 
         </div>
         <div ng-if="slideMenu.userType==2">
@@ -48,7 +48,7 @@
             <div class="user_list user_list_zh"><a href="#/register/lawyer"><span>账号安全</span></a></div>
             <div class="user_list_line"></div>
             <div class="user_list user_list_fk"><a href="#/register/lawyer"><span>问题反馈</span></a></div>
-            <div class="user_1 user_out"><span>安全退出</span></div>
+            <div class="user_1 user_out"><a href="#/register/lawyer"><span>安全退出</span></a></div>
             
         </div>
     </div>

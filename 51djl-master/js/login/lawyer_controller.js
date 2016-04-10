@@ -19,6 +19,7 @@ angular.module('myApp.controllers')
                     .success(function(dat){
                         if (dat.code == 1){
                             alert("submitSuc");
+                            $location.path("#/findLawyer/index");
                         }else {
                             $scope.errorMsg = dat.msg;
                             $scope.loginErr = true;

@@ -25,13 +25,14 @@ angular.module('myApp.controllers')
                 $http.post("data/register_suc.json",param)
                     .success(function(dat){
                         if (dat.code == 1){
-                            alert("submitSuc");
+                            //alert("submitSuc");
                             $cookieStore.put("djlUser", {
                                 account: $scope.account,
                                 password: $scope.password,
                                 autologin:$scope.autologin, 
                             });
                             $cookieStore.put("djl.autologin",$scope.autologin);
+                            $location.path("/findLawyer/index");
                         }else {
                             $scope.errorVar = true;
                         }

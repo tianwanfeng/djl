@@ -16,7 +16,8 @@ angular.module('myApp.controllers')
                 $http.post("data/register_err.json",param)
                     .success(function(dat){
                         if (dat.code == 1){
-                            alert("submitSuc");
+                            //alert("submitSuc");
+                            $location.path('/findLawyer/index');
                         }else {
                             $scope.errorMsg = dat.msg;
                             $scope.loginErr = true;

@@ -14,10 +14,11 @@ angular.module('myApp.controllers')
                     "password":$scope.pwd1,
                     "confirmPassword":$scope.pwd2
                 };
-                $http.post("data/register_err.json",param)
+                $http.post("data/register_suc.json",param)
                     .success(function(dat){
                         if (dat.code == 1){
                             alert("submitSuc");
+                            $location.path("/findLawyer/index");
                         }else {
                             $scope.errorMsg = dat.msg;
                             $scope.loginErr = true;
