@@ -125,7 +125,7 @@
                                 <li class="clearfix" ng-repeat = "x in cases | filter:courtFilter | filter:categoryFilter">
                                     <div class="lawyerDetail_rate_l floatl">
                                         <div>{{x.ctg}}</div>
-                                        <div class="tu" ng-class="{'zero':x.rate=='0%'}">
+                                        <div class="tu" ng-class="{'zero':x.rate=='-'}">
                                             <span>占比</span>
                                             <span class="rate"><b style="width:{{x.rate}};"></b></span>
                                             <span class="number">{{x.rate}}</span>
@@ -136,7 +136,7 @@
                                             <span>{{x.cot}}</span>
                                             <span class="num">{{x.num}}件</span>
                                         </div>
-                                        <div class="tu" ng-class="{'zero':x.winRate=='0%'}">
+                                        <div class="tu" ng-class="{'zero':x.winRate=='-'}">
                                             <span>胜诉率</span>
                                             <span class="rate"><b class="blue" style="width:{{x.winRate}};"></b></span>
                                             <span class="number">{{x.winRate}}</span>

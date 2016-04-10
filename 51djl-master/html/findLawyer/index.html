@@ -31,7 +31,7 @@
                     <div class="text">{{ y.categoryName }}</div>
                 </li>
                 <div class="first-list hidden">
-                    <div index="{{z.index}}" ng-class="{'active': activeVar}" my-touchstart="touchStart()" my-touchend="slm_select(z)" ng-repeat="z in firstLvlMenu" class="item">
+                    <div index="{{z.index}}" ng-class="{'active': activeVar,'menumore':{{z.subCategories.length>0}}}" my-touchstart="touchStart()" my-touchend="slm_select(z)" ng-repeat="z in firstLvlMenu" class="item">
                           {{z.categoryName}}
                     </div>
                 </div>

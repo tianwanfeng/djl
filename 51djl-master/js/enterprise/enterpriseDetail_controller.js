@@ -480,8 +480,8 @@ angular.module('myApp.controllers')
             window.history.go(-1);
         };
 
-        $scope.goFindLawyerIndex = function () {
-            $location.path('/findLawyer/index');
+        $scope.goFindEnterpriseIndex = function () {
+            $location.path('/enterprise/index');
         };
         
 }])
