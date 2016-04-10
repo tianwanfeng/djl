@@ -132,9 +132,20 @@
 	padding:0;box-shadow:none;
 }
 .alert_wrapper .title{
+	position: relative;
 	font-size: 1.2rem;
 	padding:10px 0 5px 21px;
 	border-bottom: 1px solid #919191;
+}
+.alert_wrapper .title .close{
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	right: 0;
+	top: 5px;
+	background: url(../img/close.png) no-repeat;
+	background-size: 16px 16px;
+
 }
 .alert_main{
 	height: 90px;

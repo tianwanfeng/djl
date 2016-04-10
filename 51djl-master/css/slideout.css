@@ -10,7 +10,7 @@ body {
   bottom: 0;
   right: 0;
   z-index: 0;
-  width: 256px;
+  width: 216px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: none;
@@ -44,8 +44,8 @@ body {
 .box { height: 1500px; }
 .menu_law{background: #222222;font-size: 1.5rem;color: #fff;}
 .menu_law img{
-  width: 82px;
-  height: 82px;
+  width: 90px;
+  height: 90px;
   margin: 13px auto;
 }
 .login_v_box{
