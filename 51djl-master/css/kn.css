@@ -173,6 +173,9 @@
 	text-align: center;
 	line-height: 30px;
 	margin-bottom: 10px;}
+.more:active {
+	background: #B7B2B2;
+}
 footer{
 	padding-top: 15px;
 	font-size: 13px;

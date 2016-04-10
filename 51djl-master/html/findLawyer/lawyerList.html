@@ -27,7 +27,7 @@
                     <li class="lawer_info_company">{{lawyer.wkOffice}}</li>
                 </ul><!-- /.lawer_info -->
                 <!-- <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie> -->
-            </a>
+            
             
             <!--chart.drwPersent("#pie_1");-->
             <div class="lawer_tb_box">
@@ -58,8 +58,8 @@
                     </tr>
                 </table><!-- /.lawer_tb -->
             </div>
+            </a>
             <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
-
         </div><!-- /.lawer_box -->
         <div class="right_btn_wrap">
             <a gotop style="display:none" id="scrollVar">滑动到页首</a>
