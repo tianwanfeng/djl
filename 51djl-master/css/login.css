@@ -141,7 +141,7 @@
             border-right: 1px solid #6c808a;}
             .reg_label.right > span,
             .reg_label.right > .label_title{
-                width: 33%;
+                width: 40%;
 
                 position: absolute;
                 right: 0px;
@@ -150,6 +150,9 @@
                 float: right;
                 border: none;
                 border-left: 1px solid #6c808a;}
+            .reg_label.right > .label_title:disabled{
+                color: #b5bbc0;
+            }
         .reg_label input[type="text"],
         .reg_label input[type="password"]{
             width: 72.4%;
