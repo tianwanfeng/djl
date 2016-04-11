@@ -122,7 +122,7 @@
 
     <div class="common_dialog" ng-show="loginErr">
         <div class="alert_wrapper"> 
-            <div class="title">提示信息<span class="close"></span></div>
+            <div class="title">提示信息<span class="close" ng-click="loginErr=false"></span></div>
             <div class="alert_main">{{errorMsg}}</div>
         </div>
     </div>

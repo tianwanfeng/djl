@@ -3,6 +3,8 @@ angular.module('myApp.controllers',[])
   .controller('findLawyerIndexCtrl', ['$scope','$http','$location', function($scope,$http,$location) {
         $scope.bannerVar = true;
         $scope.errorTip = false;
+        var ctgSelFlag = false;
+        var defautCity = "北京"
         //搜索关键字临时cache
         var tmpCtgKey ={
             type:"ctg",
@@ -33,7 +35,7 @@ angular.module('myApp.controllers',[])
         $scope.searchCategory = "";
         $scope.searchArea="";
         $scope.searchKeys="";
-        $scope.curArea = "选择";
+        $scope.curArea = defautCity;
 
         $scope.hideBanner = function() {
             $scope.bannerVar = false;
@@ -99,6 +101,7 @@ angular.module('myApp.controllers',[])
             $scope.searchCategory = data.categoryName;
             //$scope.searchKeys = data.categoryName + " " + $scope.searchArea; 
             setSearchKey(data.categoryName,tmpCtgKey);
+            ctgSelFlag = true;
         }
 
         //一级菜单-点击事件
@@ -128,6 +131,8 @@ angular.module('myApp.controllers',[])
                 $('.first-list').addClass('hidden');
                 $('.first-list').eq(lv0MenuIndex).removeClass('hidden');   
             }
+
+            ctgSelFlag = true;
         };
 
         //二级菜单-点击事件
@@ -150,6 +155,8 @@ angular.module('myApp.controllers',[])
             $scope.secondLvlMenu = newMenuList;
             
             $('.second-list').eq(lv0MenuIndex).removeClass('hidden');
+
+            ctgSelFlag = true;
         };
 
         //三级菜单-点击事件
@@ -162,6 +169,8 @@ angular.module('myApp.controllers',[])
 
             //$scope.searchKeys = $scope.searchCategory + " " + $scope.searchArea;
             setSearchKey(data.categoryName,tmpCtgKey);
+
+            ctgSelFlag = true;
         }
 
         $scope.toLawyerList = function (searchKeys) {
@@ -189,7 +198,9 @@ angular.module('myApp.controllers',[])
 
         $scope.searchLawyer = function () {
             var kw = $scope.searchKeys;
-
+            if (ctgSelFlag && kw.indexOf(" ")<0) {
+                kw = kw + " "+defautCity;
+            }
             $http.get("data/lawyerList.json?kw="+kw).success(function(dat) {
              if (dat.code == 1) {
                     $location.path('/findLawyer/list/'+kw);
