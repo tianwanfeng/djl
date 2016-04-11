@@ -4,7 +4,7 @@ angular.module('myApp.controllers')
             $scope.apply = true;
             $scope.loginStatus = 1;
             $scope.loginErr = false;
-            $scope.paracont = "»ñÈ¡ÑéÖ¤Âë";
+            $scope.paracont = "è·å–éªŒè¯ç ";
             $scope.paraclass = "but_null";
             $scope.paraevent = true;
             $scope.second = 60;
@@ -44,11 +44,11 @@ angular.module('myApp.controllers')
                                     timePromise = undefined;
 
                                     $scope.second = 60;
-                                    $scope.paracont = "ÖØ·¢ÑéÖ¤Âë";
+                                    $scope.paracont = "é‡å‘éªŒè¯ç ";
                                     $scope.paraclass = "but_null";
                                     $scope.paraevent = true;
                                 }else{
-                                    $scope.paracont = $scope.second + "Ãëºó¿ÉÖØ·¢";
+                                    $scope.paracont = $scope.second + "ç§’åå¯é‡å‘";
                                     $scope.paraclass = "not but_null";
                                     $scope.second--;
                                 }
