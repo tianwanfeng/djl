@@ -12,7 +12,8 @@
         </div><!-- /.list_title -->
 
         <div ng-repeat="lawyer in lawyerList track by $index" class="lawer_box clearfix" ng-controller="lawyerliCtrl">
-            <a href="#/findLawyer/detail/{{lawyer.id}}#header">
+            <div  my-touchstart="touchStart($index)" my-touchend="goLawyerDetail(lawyer.id)" ng-class="{'liactive': detVar==$index}">
+           <!-- <div ng-click="goLawyerDetail(lawyer.id,$index)"> -->
                 <div class="avatar_box">
                     <img src="{{lawyer.photo}}" onerror="this.src='http://www.51djl.cn:80/views/img/default.jpg'" alt="">
                     {{lawyer.name}}
@@ -29,36 +30,36 @@
                 <!-- <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie> -->
             
             
-            <!--chart.drwPersent("#pie_1");-->
-            <div class="lawer_tb_box">
-                <div class="d3_wrap">
-                    所查类型案件<br />占比为：<br />
-                    <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie>
-                    <span>{{lawyer.hitRate}}%</span>
+                <!--chart.drwPersent("#pie_1");-->
+                <div class="lawer_tb_box">
+                    <div class="d3_wrap">
+                        所查类型案件<br />占比为：<br />
+                        <pie id="{{$index}}" data="{{lawyer.hitRate}}"></pie>
+                        <span>{{lawyer.hitRate}}%</span>
+                    </div>
+                    <table class="lawer_tb">
+                        <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
+                            
+                            <td style="width:25%;">
+                                <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
+                            </td>
+                            <td style="width:75%;">
+                                <ul class="percent_ul">
+                                    <li ng-repeat="y in x.courts">
+                                        <span class="text-overflow">
+                                            {{y.court}}
+                                            <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
+                                        </span>
+                                        <small>{{y.winRate}}</small>
+                                        <strong>({{y.num}}件)</strong>
+                                    </li>
+                                    
+                                </ul><!-- /.percent_ul -->
+                            </td>
+                        </tr>
+                    </table><!-- /.lawer_tb -->
                 </div>
-                <table class="lawer_tb">
-                    <tr ng-repeat = "x in lawyer.caseAreaData | limitTo:maxShow">
-                        
-                        <td style="width:25%;">
-                            <div class="border_wrap">{{x.city}}<br />（{{x.nums}}件）</div>
-                        </td>
-                        <td style="width:75%;">
-                            <ul class="percent_ul">
-                                <li ng-repeat="y in x.courts">
-                                    <span class="text-overflow">
-                                        {{y.court}}
-                                        <span class="color_span" style="width:{{y.winRate}}">{{y.court}}</span>
-                                    </span>
-                                    <small>{{y.winRate}}</small>
-                                    <strong>({{y.num}}件)</strong>
-                                </li>
-                                
-                            </ul><!-- /.percent_ul -->
-                        </td>
-                    </tr>
-                </table><!-- /.lawer_tb -->
             </div>
-            </a>
             <div ng-show="lawyer.caseAreaData.length>1" class="show_btn" ng-class="{'show':showVar}" ng-click="toggleShowMore(lawyer)">显示</div>
         </div><!-- /.lawer_box -->
         <div class="right_btn_wrap">
@@ -66,10 +67,12 @@
             <a href="#">对话</a>
         </div><!-- /.right_btn_wrap -->
 
-        <a ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</a>
+        <div ng-hide="isLastPageVar" ng-click="getMoreLawyers()" class="more">查看更多</div>
     </div>
     <script type="text/javascript">
-        $(window).scroll(function(){ 
+        $(window).scroll(function(e){ 
+            e.preventDefault(); 
+            e.stopPropagation(); 
             //获取窗口的滚动条的垂直位置 
             var s = $(window).scrollTop(); 
             //当窗口的滚动条的垂直位置大于页面的最小高度时，让返回顶部元素渐现，否则渐隐 
@@ -78,5 +81,15 @@
             }else{ 
                 $("#scrollVar").fadeOut(200); 
             }; 
-        }); 
+        });
+
+        var locked = false;
+        window.addEventListener('touchmove', function(ev){
+            locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+        }, true);
+        function stopTouchendPropagation(ev){
+            ev.stopPropagation();
+            window.removeEventListener('touchend', stopTouchendPropagation, true);
+            locked = false;
+        }
     </script>

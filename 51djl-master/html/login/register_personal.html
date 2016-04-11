@@ -46,7 +46,7 @@
                 </label>
 
                 <div class="reg_label right">
-                    <a class="label_title" href="javascript:void(0);" ng-click="getCheckCode()">获取验证码</a>
+                    <button class="paraclass" ng-click="getCheckCode()" ng-disabled="second<60">{{paracont}}</button>
                     <input type="text" name="code" ng-model="code">
                 </div>
 
@@ -97,7 +97,7 @@
 
     <div class="common_dialog" ng-show="loginErr">
         <div class="alert_wrapper"> 
-            <div class="title">提示信息<span class="close"></span></div>
+            <div class="title">提示信息<span class="close" ng-click="loginErr=false"></span></div>
             <div class="alert_main">{{errorMsg}}</div>
         </div>
     </div>

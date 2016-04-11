@@ -415,6 +415,10 @@
 	font-size: 1.3rem;
 	color: #403e3e;
 }
+
+.item_more.active {
+	background: #eee;
+}
 /* .bar {
   fill: steelblue;
 }

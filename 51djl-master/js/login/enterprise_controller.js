@@ -27,7 +27,8 @@ angular.module('myApp.controllers')
 
             $scope.getCheckCode = function (){
                 //base/mobileValidateCode
-                $http.get("data/code.json?mobile="+$scope.phone)
+                if($scope.myForm.phone.$valid) {
+                    $http.get("data/code.json?mobile="+$scope.phone)
                     .success(function(dat){
                         if (dat.code == 1){
                             alert("get check code");
@@ -35,5 +36,6 @@ angular.module('myApp.controllers')
                             alert("get check code error");
                         }
                     });
+                }
             };
     }]);

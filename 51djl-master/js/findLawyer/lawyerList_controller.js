@@ -5,6 +5,8 @@ angular.module('myApp.controllers')
         
         $scope.searchKeys = $routeParams.kw;
         $scope.pageNo = 0;
+        $scope.detVar = -1;
+
         var djl = lyrListChart;
         //更新：$scope.pageNo-当前页，$scope.searchKeys-搜索词
         $http.get("data/lawyerList.json?pageNo="+$scope.pageNo).success(function(dat) {
@@ -37,6 +39,10 @@ angular.module('myApp.controllers')
             });
         };
 
+        $scope.goLawyerDetail = function (data,index) {
+            $scope.detVar=index
+            $location.path("/findLawyer/detail/"+data);
+        };
         $scope.goBackPage = function () {
             window.history.go(-1);
         };
@@ -45,6 +51,9 @@ angular.module('myApp.controllers')
             $location.path('/findLawyer/index');
         };
 
+        $scope.touchStart = function (data) {
+            $scope.detVar = data;
+        };
   }])
 .controller('lawyerliCtrl', ['$scope',
     function($scope) {
