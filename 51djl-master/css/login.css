@@ -132,6 +132,8 @@
         border: 1px solid #999999;}
         .reg_label > span,
         .reg_label > .label_title{
+            color: #6c808a;
+            font-size: 1.4rem;
             width: 27%;
             float: left;
             display: inline-block;
@@ -139,8 +141,14 @@
             border-right: 1px solid #6c808a;}
             .reg_label.right > span,
             .reg_label.right > .label_title{
+                width: 33%;
+
+                position: absolute;
+                right: 0px;
+                top: 9px;
+                background: #fff;
                 float: right;
-                border-right: none;
+                border: none;
                 border-left: 1px solid #6c808a;}
         .reg_label input[type="text"],
         .reg_label input[type="password"]{
@@ -157,6 +165,7 @@
             display: inline-block;
             text-decoration: underline;}
     .btn_red{
+        border: none;
         width: 250px;
         height: 44px;
         display: block;
