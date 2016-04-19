@@ -16,8 +16,7 @@ body {
   display: none;
 }
 
-.slideout-panel {
-  /*position:relative;*/
+/*.slideout-panel {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -27,7 +26,7 @@ body {
   z-index: 1;
   will-change: transform;
 }
-
+*/
 .slideout-open,
 .slideout-open body,
 .slideout-open .slideout-panel {
@@ -94,8 +93,8 @@ body {
   background-size: 8px 8px;
 }
 .menu_law .user_1{
-  position: absolute;
-  bottom: 53px;
+  /*position: absolute;*/
+  /*bottom: 53px;*/
   text-align: left;
   padding-left: 50px;
   background: url(../img/login_info.png) no-repeat 19px 0px;

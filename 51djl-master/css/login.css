@@ -1,6 +1,7 @@
 .header_login{
   background:#fff;
   border-bottom: 1px solid #cccccc;
+  z-index: 20;
 }
 
 
