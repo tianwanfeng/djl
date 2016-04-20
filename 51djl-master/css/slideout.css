@@ -16,7 +16,7 @@ body {
   display: none;
 }
 
-/*.slideout-panel {
+.slideout-panel {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -26,7 +26,7 @@ body {
   z-index: 1;
   will-change: transform;
 }
-*/
+
 .slideout-open,
 .slideout-open body,
 .slideout-open .slideout-panel {
