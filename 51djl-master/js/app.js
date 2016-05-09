@@ -49,6 +49,9 @@ config(['$routeProvider', function($routeProvider) {
     .when('/login', {
         templateUrl: 'html/login/login.html',
         controller: 'loginCtrl'
+    })
+    .when('/info', {
+        templateUrl: 'html/info/info.html',
     });
   $routeProvider.otherwise({redirectTo: '/register/personal'});
 }]);

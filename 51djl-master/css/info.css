@@ -1,0 +1,81 @@
+.main_info{
+	background: #fff;
+	margin-top: 15px;
+	border-bottom: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+	padding-left: 15px;
+}
+.main_info .main_info_item:first-child{
+	border-top: none;
+}
+.main_info_item{
+	position: relative;
+	font-size: 1.4rem;
+	color: #1e2126;
+	height: 44px;
+	line-height: 44px;
+	border-top: 1px solid #cccccc;
+}
+.main_info_txt{
+	float: right;
+	color: #464646;
+	margin-right: 15px;
+}
+.main_info_right{
+	width: 24px;
+	height: 44px;
+	float: right;
+	background: url(../img/go_more.png) no-repeat 0px 15px;
+	background-size: 7px 13px;
+}
+.d-layout-box{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+.d-layout{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 7;
+}
+.d-layout.one{
+	bottom: 59px;
+}
+.d-layout.two{
+	bottom: 7px;
+}
+.d-layout-one{
+	background: #fff;
+	text-align: center;
+	margin: 0 7px;
+	border-radius: 5px;
+
+}
+.d-layout-one>div{
+	height: 44px;
+	line-height: 44px;
+}
+.d-layout-one>div.red{
+	color: #ff3a00;
+}
+.d-layout-one>div.blue{
+	color: #008aff;
+}
+.d-layout-one>div.line{
+	border-bottom: 1px solid #606060;
+}
+
+
+
+
+
+
+
+
+
+
+
