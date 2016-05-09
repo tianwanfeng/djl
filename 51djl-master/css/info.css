@@ -81,17 +81,36 @@
 	background: none;
 }
 .all-layout-box input{
-	padding: 0 8% 0 20px;
+	padding: 0 20px 0 20px;
 	margin-top: 44px;
 	width: 100%;
 	height: 44px;
 	line-height: 44px;
-	background: url(../img/delate.png) no-repeat 97% #fff;
-	background-size: 16px 16px;
+	background: #fff;
+	/*background: url(../img/delate.png) no-repeat 97% #fff;*/
+	/*background-size: 16px 16px;*/
+	box-sizing: border-box;
+	border-bottom: 1px solid #e1e1e1;
+}
+.all-layout-box textarea{
+	padding: 0 20px 0 20px;
+	margin-top: 44px;
+	width: 100%;
+	/*height: 44px;*/
+	/*line-height: 44px;*/
+	height: 50%;
+	background: #fff;
+	/*background: url(../img/delate.png) no-repeat 97% #fff;*/
+	/*background-size: 16px 16px;*/
 	box-sizing: border-box;
 	border-bottom: 1px solid #e1e1e1;
 }
 
+
+.all-layout-box-foot .footer-top{
+	position: absolute;
+	bottom: 0;
+}
 
 
 
